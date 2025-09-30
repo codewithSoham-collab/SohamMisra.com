@@ -1,0 +1,2661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soham Misra</title>
+  <link rel="website icon" type="jpg" href="pic2.jpg">
+  <link rel="stylesheet" media="screen and (max-width: 767px)" href="mobile.css">
+  <link rel="stylesheet" media="screen and (min-width: 768px)" href="desktop.css">
+
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="portfolio-enhanced.css">
+
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true, offset: 100 });
+  </script>
+
+
+
+</head>
+
+<body>
+  <div class="popup-overlay" id="nexus-popup" role="dialog" aria-labelledby="popup-title" aria-hidden="true">
+    <div class="popup-content">
+      <span class="popup-close" role="button" aria-label="Close popup" tabindex="0"><i class="bx bx-x"></i></span>
+      <h3 id="popup-title">Discover NEXUS</h3>
+      <p>
+        Elevate your productivity with NEXUS, the ultimate AI-powered desktop companion. Experience voice commands,
+        system control, and smart tools today!
+      </p>
+      <div class="popup-buttons">
+        <a href="nexus.html" class="popup-button buy" target="_blank" rel="noopener noreferrer">Buy
+          Now</a>
+        <button class="popup-button not-now">Not Now</button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* Popup Styles */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+      z-index: 1000;
+    }
+
+    .popup-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .popup-content {
+      background: linear-gradient(145deg, #1e1e2e, #2a2a3e);
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 238, 255, 0.3);
+      transform: scale(0.7);
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      border: 1px solid rgba(0, 238, 255, 0.2);
+    }
+
+    .popup-overlay.show .popup-content {
+      transform: scale(1);
+    }
+
+    .popup-content h3 {
+      font-size: 1.8rem;
+      color: #fff;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(0, 238, 255, 0.4);
+      font-weight: 700;
+    }
+
+    .popup-content p {
+      font-size: 1rem;
+      color: #e0e0e0;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .popup-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .popup-button {
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .popup-button.buy {
+      background: linear-gradient(135deg, #0ef, #00d4ff);
+      color: #000;
+      box-shadow: 0 4px 15px rgba(0, 238, 255, 0.4);
+    }
+
+    .popup-button.not-now {
+      background: rgba(255, 255, 255, 0.1);
+      color: #0ef;
+      border: 1px solid rgba(0, 238, 255, 0.4);
+    }
+
+    .popup-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 238, 255, 0.5);
+    }
+
+    .popup-button:focus {
+      outline: 3px solid #0ef;
+      outline-offset: 2px;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      color: #0ef;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .popup-close:hover {
+      transform: rotate(90deg);
+    }
+
+    /* Responsive Popup */
+    @media (max-width: 480px) {
+      .popup-content {
+        padding: 20px;
+        max-width: 90%;
+      }
+
+      .popup-content h3 {
+        font-size: 1.5rem;
+      }
+
+      .popup-content p {
+        font-size: 0.9rem;
+      }
+
+      .popup-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .popup-button {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+
+      .popup-overlay,
+      .popup-content,
+      .popup-button,
+      .popup-close {
+        transition: none;
+      }
+
+      .popup-content,
+      .popup-button:hover,
+      .popup-close:hover {
+        transform: none;
+      }
+    }
+  </style>
+
+  <script>
+    // Popup Logic
+    const popup = document.getElementById('nexus-popup');
+    const closePopup = document.querySelector('.popup-close');
+    const notNowButton = document.querySelector('.popup-button.not-now');
+
+    // Check if popup has been shown in this session
+    if (!sessionStorage.getItem('nexusPopupShown')) {
+      setTimeout(() => {
+        popup.classList.add('show');
+        popup.setAttribute('aria-hidden', 'false');
+        sessionStorage.setItem('nexusPopupShown', 'true');
+        // Focus on the popup for accessibility
+        popup.querySelector('.popup-content').focus();
+      }, 15000); // 15 seconds
+    }
+
+    // Close popup on click
+    function closePopupHandler() {
+      popup.classList.remove('show');
+      popup.setAttribute('aria-hidden', 'true');
+    }
+
+    closePopup.addEventListener('click', closePopupHandler);
+    notNowButton.addEventListener('click', closePopupHandler);
+
+    // Close popup on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && popup.classList.contains('show')) {
+        closePopupHandler();
+      }
+    });
+  </script>
+
+
+
+
+
+
+  <script>
+    const titles = [
+      "🚀 Soham Misra | Developer",
+      "✨ Portfolio | Soham Misra",
+      "🌟 Full Stack Developer",
+      "🤖 AI Enthusiast | Soham",
+      "💻 Python Expert | Soham"
+    ];
+
+    let titleIndex = 0;   // which phrase
+    let letterIndex = 0;   // which letter
+    let isDeleting = false;
+
+    function typeEffect() {
+      let current = titles[titleIndex];
+      let display = current.substring(0, letterIndex);
+
+      document.title = display;
+
+      if (!isDeleting) {
+        if (letterIndex < current.length) {
+          letterIndex++;
+        } else {
+          isDeleting = true;
+          setTimeout(typeEffect, 1000); // pause before deleting
+          return;
+        }
+      } else {
+        if (letterIndex > 0) {
+          letterIndex--;
+        } else {
+          isDeleting = false;
+          titleIndex = (titleIndex + 1) % titles.length; // next phrase
+        }
+      }
+
+      setTimeout(typeEffect, isDeleting ? 50 : 120); // faster speed
+    }
+
+    typeEffect();
+  </script>
+  <script>
+    // Nexus Mini Chatbot functionality
+    document.addEventListener('DOMContentLoaded', function () {
+      const chatToggle = document.getElementById('chat-toggle');
+      const chatContainer = document.getElementById('chat-container');
+      const closeChat = document.getElementById('close-chat');
+      const minimizeChat = document.getElementById('minimize-chat');
+      const sendMessage = document.getElementById('send-message');
+      const messageInput = document.getElementById('message-input');
+      const chatMessages = document.getElementById('chat-messages');
+
+      let isMinimized = false;
+      let isDraggingChat = false;
+      let isDraggingToggle = false;
+      let dragOffsetChat = { x: 0, y: 0 };
+      let dragOffsetToggle = { x: 0, y: 0 };
+      let conversationHistory = [];
+
+      // Toggle chat visibility with animation
+      chatToggle.addEventListener('click', () => {
+        if (chatContainer.style.display === 'none' || chatContainer.style.display === '') {
+          chatContainer.style.display = 'flex';
+          setTimeout(() => {
+            chatContainer.classList.add('chat-open');
+            messageInput.focus();
+            if (chatMessages.children.length === 0) {
+              addMessage('Greetings! I\'m Nexus Mini, the chatbot extension of Soham Misra\'s NEXUS AI (Neural Engineered Extended Unified System). I can guide you through any problem, answer queries about this portfolio, or assist with coding and AI tasks. How can I assist you today?', 'bot');
+            }
+            conversationHistory = [];
+          }, 50);
+        } else {
+          chatContainer.classList.remove('chat-open');
+          setTimeout(() => { chatContainer.style.display = 'none'; }, 300);
+        }
+      });
+
+      // Close chat
+      closeChat.addEventListener('click', () => {
+        chatContainer.classList.remove('chat-open');
+        setTimeout(() => { 
+          chatContainer.style.display = 'none';
+        }, 300);
+      });
+
+      // Minimize/maximize chat
+      minimizeChat.addEventListener('click', () => {
+        isMinimized = !isMinimized;
+        const messagesDiv = document.getElementById('chat-messages');
+        const inputDiv = document.getElementById('chat-input');
+        if (isMinimized) {
+          messagesDiv.style.display = 'none';
+          inputDiv.style.display = 'none';
+          minimizeChat.innerHTML = '<i class="bx bx-plus"></i>';
+        } else {
+          messagesDiv.style.display = 'block';
+          inputDiv.style.display = 'flex';
+          minimizeChat.innerHTML = '<i class="bx bx-minus"></i>';
+        }
+      });
+
+      // Send message with typing indicator
+      sendMessage.addEventListener('click', sendChatMessage);
+      messageInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendChatMessage();
+      });
+
+      function sendChatMessage() {
+        const message = messageInput.value.trim();
+        if (message) {
+          addMessage(message, 'user');
+          conversationHistory.push({ role: 'user', content: message });
+          messageInput.value = '';
+          showTypingIndicator();
+          setTimeout(() => {
+            hideTypingIndicator();
+            const botResponse = getAdvancedBotResponse(message.toLowerCase(), conversationHistory);
+            addMessage(botResponse, 'bot');
+            conversationHistory.push({ role: 'bot', content: botResponse });
+          }, 1000);
+        }
+      }
+
+      function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', sender === 'user' ? 'user-message' : 'bot-message');
+        messageDiv.innerHTML = `<p>${text}</p>`;
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function showTypingIndicator() {
+        const typingDiv = document.createElement('div');
+        typingDiv.classList.add('message', 'bot-message', 'typing-indicator');
+        typingDiv.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+        chatMessages.appendChild(typingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function hideTypingIndicator() {
+        const typingDiv = document.querySelector('.typing-indicator');
+        if (typingDiv) typingDiv.remove();
+      }
+
+      // Advanced response logic with NEXUS context, problem guidance, and website queries
+      function getAdvancedBotResponse(message, history) {
+        if (message.includes('nexus') || message.includes('nexus mini')) {
+          return 'I\'m Nexus Mini, a chatbot inspired by Soham Misra\'s NEXUS AI (Neural Engineered Extended Unified System), a Jarvis-like voice assistant built with Python. I can answer queries about this portfolio or guide you through coding, AI, or other problems. Want to explore NEXUS features or need help? Check the Portfolio section!';
+        } else if (message.includes('project') || message.includes('portfolio')) {
+          return 'Soham\'s projects include NEXUS (AI voice assistant), StudyWithSoham (learning hub), and TreadWithSoham (trading platform). Curious about NEXUS\'s neural capabilities or another project? I can guide you through setups or code! See Portfolio for details.';
+        } else if (message.includes('skill') || message.includes('skills')) {
+          return 'Soham excels in Python (99%), AI, web/app development, and Arduino. Skills: HTML (90%), CSS (60%), JavaScript (70%), React (50%). Need help with a skill? Describe your issue for a step-by-step guide, powered by NEXUS logic. Check Skills section!';
+        } else if (message.includes('service') || message.includes('services')) {
+          return 'Services include App Development, Web Development, and Arduino projects. Want to collaborate? I can guide you on project planning or tech choices, inspired by NEXUS\'s unified system approach. Visit Services section!';
+        } else if (message.includes('contact') || message.includes('email') || message.includes('phone')) {
+          return 'Contact Soham at misra.industry@gmail.com or +91 8016847169, or use the Contact section\'s form. Need help crafting a message? I can suggest templates or next steps! Powered by Nexus Mini.';
+        } else if (message.includes('about') || message.includes('who are you') || message.includes('who is soham')) {
+          return 'I\'m Nexus Mini, built by Soham Misra, a Full Stack Developer with 5+ years in Python, AI, and automation. NEXUS, my voice AI, stands for Neural Engineered Extended Unified System. Explore About section for more. Got a specific question about Soham?';
+        } else if (message.includes('home') || message.includes('welcome')) {
+          return 'The Home section showcases Soham\'s passion for modern websites, apps, and Arduino projects. It features an animated intro and social links. Want to navigate elsewhere? Nexus Mini can guide you!';
+        } else if (message.includes('website') || message.includes('site') || message.includes('navigation')) {
+          return 'This portfolio includes Home, About, Services, Skills, Portfolio, and Contact sections. Need navigation help? Tell me your destination, and Nexus Mini will point the way!';
+        } else if (message.includes('studywithsoham')) {
+          return 'StudyWithSoham is a learning hub with tutorials and resources. Struggling with a topic? Nexus Mini suggests: 1) Break it into small chunks, 2) Use active recall, 3) Practice with quizzes. Check Portfolio for the link!';
+        } else if (message.includes('treadwithsoham')) {
+          return 'TreadWithSoham teaches trading basics. New to finance? Nexus Mini advises: 1) Study risk management, 2) Try paper trading, 3) Follow market trends. Visit https://treadwithsoham.netlify.app/ for more!';
+        } else if (message.includes('problem') || message.includes('issue') || message.includes('error') || message.includes('bug') || message.includes('help')) {
+          if (message.includes('code') || message.includes('coding') || message.includes('python') || message.includes('javascript')) {
+            return 'Coding issue? Share the error or code snippet. Nexus Mini\'s guide: 1) Verify syntax, 2) Use debug logs, 3) Implement try-except. Need specific advice? Provide details for tailored steps!';
+          } else if (message.includes('website') || message.includes('web')) {
+            return 'Web problem? For this site: Refresh, check console (F12). For dev issues: 1) Validate HTML/CSS, 2) Clear cache, 3) Test responsiveness. Describe the issue for Nexus Mini\'s step-by-step help!';
+          } else if (message.includes('app') || message.includes('mobile')) {
+            return 'App trouble? Nexus Mini suggests: 1) Check dependencies, 2) Test on emulators, 3) Manage permissions. Specify platform (React Native? Flutter?) for detailed guidance!';
+          } else if (message.includes('arduino')) {
+            return 'Arduino issue? Nexus Mini advises: 1) Check wiring, 2) Monitor serial output, 3) Test with a blink sketch. Share code/setup for precise troubleshooting!';
+          } else {
+            return 'Got a problem? Explain the details: What’s wrong? When did it start? Nexus Mini will provide a step-by-step solution or direct you to the right portfolio section.';
+          }
+        } else {
+          const lastUserMsg = history.filter(h => h.role === 'user').pop()?.content.toLowerCase() || '';
+          if (message.includes('hi') || message.includes('hello') || lastUserMsg.includes('hi') || lastUserMsg.includes('hello')) {
+            return 'Hello! I\'m Nexus Mini, powered by NEXUS AI (Neural Engineered Extended Unified System). I can solve problems, answer portfolio queries, or assist with coding/AI. What’s on your mind?';
+          } else if (message.includes('how are you')) {
+            return 'As Nexus Mini, I\'m running at peak neural performance! How about you—what challenge or question can I tackle today?';
+          } else if (message.includes('what can you do') || message.includes('capabilities')) {
+            return 'Nexus Mini can: Guide you through coding or tech problems, answer all portfolio queries (projects, skills, etc.), provide AI-driven tips, and more. Try: "Help with Python bug" or "What’s in Services?"';
+          } else if (message.includes('ai') || message.includes('artificial intelligence') || message.includes('machine learning')) {
+            return 'AI fan? NEXUS, my parent system, uses speech recognition and NLP. For AI projects: 1) Use NLTK/scikit-learn, 2) Train small models, 3) Deploy with Flask. Need a tutorial or NEXUS details?';
+          } else if (message.includes('guide') || message.includes('tutorial') || message.includes('steps')) {
+            return 'Need guidance? Specify the topic (e.g., "Guide to AI coding" or "Steps for Arduino"). Nexus Mini will deliver clear, NEXUS-inspired steps!';
+          } else if (history.length > 1 && lastUserMsg.includes('project') && message.includes('more')) {
+            return 'More on projects: NEXUS powers voice AI; StudyWithSoham offers quizzes; TreadWithSoham has trading simulators. Want code snippets or setup guides from Nexus Mini?';
+          }
+          return "Nexus Mini here! Ask about this portfolio (e.g., Skills, Projects) or describe a problem for a neural-powered solution. Example: 'Guide me on web debugging'. What’s next?";
+        }
+      }
+
+      // Dragging functionality for both chatbox and toggle button
+      const chatHeader = document.getElementById('chat-header');
+      chatHeader.addEventListener('mousedown', startDragChat);
+      chatHeader.addEventListener('touchstart', startDragChat, { passive: false });
+
+      chatToggle.addEventListener('mousedown', startDragToggle);
+      chatToggle.addEventListener('touchstart', startDragToggle, { passive: false });
+
+      function startDragChat(e) {
+        isDraggingChat = true;
+        const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+        const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+        const rect = chatContainer.getBoundingClientRect();
+        dragOffsetChat.x = clientX - rect.left;
+        dragOffsetChat.y = clientY - rect.top;
+
+        document.addEventListener('mousemove', dragChat);
+        document.addEventListener('touchmove', dragChat, { passive: false });
+        document.addEventListener('mouseup', stopDrag);
+        document.addEventListener('touchend', stopDrag);
+      }
+
+      function dragChat(e) {
+        if (!isDraggingChat) return;
+        e.preventDefault();
+        const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+        const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+        chatContainer.style.left = (clientX - dragOffsetChat.x) + 'px';
+        chatContainer.style.top = (clientY - dragOffsetChat.y) + 'px';
+        chatContainer.style.right = 'auto';
+        chatContainer.style.bottom = 'auto';
+        chatToggle.style.left = (clientX - dragOffsetChat.x - 30) + 'px'; // Align toggle with chatbox
+        chatToggle.style.bottom = (window.innerHeight - (clientY - dragOffsetChat.y + 110)) + 'px';
+        chatToggle.style.right = 'auto';
+        chatToggle.style.position = 'fixed';
+      }
+
+      function startDragToggle(e) {
+        isDraggingToggle = true;
+        const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+        const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+        const rect = chatToggle.getBoundingClientRect();
+        dragOffsetToggle.x = clientX - rect.left;
+        dragOffsetToggle.y = clientY - rect.top;
+
+        document.addEventListener('mousemove', dragToggle);
+        document.addEventListener('touchmove', dragToggle, { passive: false });
+        document.addEventListener('mouseup', stopDrag);
+        document.addEventListener('touchend', stopDrag);
+      }
+
+      function dragToggle(e) {
+        if (!isDraggingToggle) return;
+        e.preventDefault();
+        const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+        const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+        chatToggle.style.left = (clientX - dragOffsetToggle.x) + 'px';
+        chatToggle.style.top = (clientY - dragOffsetToggle.y) + 'px';
+        chatToggle.style.right = 'auto';
+        chatToggle.style.bottom = 'auto';
+        chatContainer.style.left = (clientX - dragOffsetToggle.x + 30) + 'px'; // Align chatbox with toggle
+        chatContainer.style.bottom = (window.innerHeight - (clientY - dragOffsetToggle.y + 110)) + 'px';
+      }
+
+      function stopDrag() {
+        isDraggingChat = false;
+        isDraggingToggle = false;
+        document.removeEventListener('mousemove', dragChat);
+        document.removeEventListener('touchmove', dragChat);
+        document.removeEventListener('mousemove', dragToggle);
+        document.removeEventListener('touchmove', dragToggle);
+        document.removeEventListener('mouseup', stopDrag);
+        document.removeEventListener('touchend', stopDrag);
+      }
+    });
+  </script>
+
+
+  <!-- Splash Screen -->
+  <div id="splash">
+    <div class="blur-bg"></div>
+    <h1 id="name"></h1>
+  </div>
+
+  <!-- Welcome Overlay -->
+  <div id="welcome-overlay">
+    <div class="welcome-bg"></div>
+    <div class="welcome-text">
+      <h1 id="welcome-title"></h1>
+      <p id="welcome-subtitle"></p>
+    </div>
+  </div>
+
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+
+
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+  <div id="progress"></div>
+  <header class="header">
+    <a href="#" class="logo"><b>Soham Misra</b></a>
+
+    <div class="header-right">
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <button id="music-toggle">
+        <i class='bx bx-music'></i>
+      </button>
+    </div>
+
+    <nav class="navbar">
+      <a href="#home" style="--i:1" class="active">Home</a>
+      <a href="#about" style="--i:2">About</a>
+      <a href="#service" style="--i:3">Services</a>
+      <a href="#sk" style="--i:4">Skills</a>
+      <a href="#po" style="--i:5">Portfolio</a>
+      <a href="#contact" style="--i:6">Contact</a>
+      <button id="authBtn" class="auth-btn">Login</button>
+    </nav>
+  </header>
+  <div id="loginModal" class="login-modal">
+    <div class="login-container">
+      <div class="login-form">
+        <button class="close-btn" id="closeBtn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+
+        <!-- Login Form -->
+        <div id="loginView" class="auth-view">
+          <div class="login-header">
+            <div class="login-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="2" />
+                <path d="M12 14c-4 0-7 2-7 5v1h14v-1c0-3-3-5-7-5z" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </div>
+            <h2>Welcome Back</h2>
+            <p>Sign in to your account</p>
+          </div>
+          <form id="loginForm">
+            <div class="input-group">
+              <div class="input-wrapper">
+                <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    stroke="currentColor" stroke-width="2" />
+                  <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" />
+                </svg>
+                <input type="email" id="email" placeholder="Email" required autocomplete="username">
+              </div>
+              <span class="error-msg" id="emailError"></span>
+            </div>
+            <div class="input-group">
+              <div class="input-wrapper">
+                <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2" />
+                  <circle cx="12" cy="16" r="1" fill="currentColor" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" />
+                </svg>
+                <input type="password" id="password" placeholder="Password" required autocomplete="current-password">
+              </div>
+              <span class="error-msg" id="passwordError"></span>
+            </div>
+            <div class="form-options">
+              <label class="checkbox-container">
+                <input type="checkbox" id="rememberMe">
+                <span class="checkmark"></span>
+                Remember Me
+              </label>
+              <a href="#" class="forgot-link" id="forgotLink">Forgot Password?</a>
+            </div>
+            <button type="submit" class="login-btn" disabled>Sign In</button>
+          </form>
+          <div class="divider">
+            <span>or continue with</span>
+          </div>
+          <div class="social-login">
+            <button type="button" class="social-btn google-btn" id="googleBtn">
+              <svg width="20" height="20" viewBox="0 0 24 24">
+                <path fill="#4285F4"
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                <path fill="#34A853"
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                <path fill="#FBBC05"
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                <path fill="#EA4335"
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+              </svg>
+              Google
+            </button>
+            <button type="button" class="social-btn github-btn" id="githubBtn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+              GitHub
+            </button>
+          </div>
+          <div class="auth-switch">
+            <p>Don't have an account? <a href="#" id="showSignup">Sign up</a></p>
+          </div>
+        </div>
+
+        <!-- Signup Form -->
+        <div id="signupView" class="auth-view" style="display: none;">
+          <div class="login-header">
+            <div class="login-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" />
+                <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2" />
+                <line x1="20" y1="8" x2="20" y2="14" stroke="currentColor" stroke-width="2" />
+                <line x1="23" y1="11" x2="17" y2="11" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </div>
+            <h2>Create Account</h2>
+            <p>Join us today</p>
+          </div>
+          <form id="signupForm">
+            <div class="input-group">
+              <div class="input-wrapper">
+                <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M20 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="2" />
+                  <path d="M4 21v-2a4 4 0 0 1 3-3.87" stroke="currentColor" stroke-width="2" />
+                  <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" />
+                </svg>
+                <input type="text" id="signupName" placeholder="Full Name" required>
+              </div>
+              <span class="error-msg" id="signupNameError"></span>
+            </div>
+            <div class="input-group">
+              <div class="input-wrapper">
+                <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    stroke="currentColor" stroke-width="2" />
+                  <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" />
+                </svg>
+                <input type="email" id="signupEmail" placeholder="Email" required>
+              </div>
+              <span class="error-msg" id="signupEmailError"></span>
+            </div>
+            <div class="input-group">
+              <div class="input-wrapper">
+                <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2" />
+                  <circle cx="12" cy="16" r="1" fill="currentColor" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" />
+                </svg>
+                <input type="password" id="signupPassword" placeholder="Password" required>
+              </div>
+              <span class="error-msg" id="signupPasswordError"></span>
+            </div>
+            <button type="submit" class="login-btn" disabled>Create Account</button>
+          </form>
+          <div class="auth-switch">
+            <p>Already have an account? <a href="#" id="showLogin">Sign in</a></p>
+          </div>
+        </div>
+
+        <!-- Forgot Password Form -->
+        <div id="forgotView" class="auth-view" style="display: none;">
+          <div class="login-header">
+            <div class="login-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3" stroke="currentColor" stroke-width="2" />
+                <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3" stroke="currentColor" stroke-width="2" />
+                <path d="M12 3c0 1-1 3-3 3s-3-2-3-3 1-3 3-3 3 2 3 3" stroke="currentColor" stroke-width="2" />
+                <path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </div>
+            <h2>Reset Password</h2>
+            <p>Enter your email to reset password</p>
+          </div>
+          <form id="forgotForm">
+            <div class="input-group">
+              <div class="input-wrapper">
+                <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    stroke="currentColor" stroke-width="2" />
+                  <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" />
+                </svg>
+                <input type="email" id="forgotEmail" placeholder="Email" required>
+              </div>
+              <span class="error-msg" id="forgotEmailError"></span>
+            </div>
+            <button type="submit" class="login-btn" disabled>Send Reset Link</button>
+          </form>
+          <div class="auth-switch">
+            <p>Remember your password? <a href="#" id="backToLogin">Sign in</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Background Music -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <section class="home" id="home" data-animate>
+    <!-- Nexus Mini Chatbot -->
+    <button id="chat-toggle" class="chat-toggle">
+      <img src="https://www.shutterstock.com/image-vector/chat-bot-icon-virtual-smart-600nw-2478937553.jpg"
+        alt="Nexus Mini Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+    </button>
+    <div id="chat-container" class="chat-container">
+      <div class="chat-header" id="chat-header">
+        <img src="https://www.shutterstock.com/image-vector/chat-bot-icon-virtual-smart-600nw-2478937553.jpg"
+          alt="Nexus Mini Logo" style="width: 26px; height: 26px; margin-right: 10px; border-radius: 50%;">
+        <span>Nexus Mini</span>
+        <button id="minimize-chat" class="minimize-btn"><i class='bx bx-minus'></i></button>
+        <button id="close-chat" class="close-btn"><i class='bx bx-x'></i></button>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <!-- Messages will be dynamically added here -->
+      </div>
+      <div class="chat-input" id="chat-input">
+        <input type="text" id="message-input" placeholder="Ask Nexus Mini anything..." maxlength="500">
+        <button id="send-message"><i class='bx bx-send'></i></button>
+      </div>
+    </div>
+
+    <div class="home-content">
+      <h3>Hello, It's Me</h3>
+      <h1 class="typing">Soham Misra</h1>
+      <h3>And I'm a <span class="text"></span> </h3>
+      <p>
+        I am a <b>dedicated programmer</b> with over <b>5 years of experience</b>.<br>
+        Specialized in <b>modern website design</b>, <b>app development</b>,<br>
+        and <b>Arduino-based innovative projects</b>.
+      </p>
+
+      <div class="home-sci">
+        <a href="https://www.instagram.com/rh_soham_17/" style="--i:8"><i class='bx bxl-instagram'></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100086087766581" style="--i:9"><i
+            class='bx bxl-facebook'></i></a>
+        <a href="https://www.instagram.com/sohammisra_official/?next=%2F&hl=en" style="--i:10"><i
+            class='bx bxl-instagram'></i></a>
+      </div>
+      <a href="#" class="btn-box" id="hi">HI</a>
+      <a href="#about" class="btn-box">More About Me</a>
+    </div>
+    <div class="frame">
+      <div class="glow-frame">
+        <img src="first.png" alt="Profile" class="portfolio-image">
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Delay Typed.js initialization until after welcome overlay
+    setTimeout(() => {
+      var typed = new Typed(".text", {
+        strings: ["Programmer", "Web Developer", "App Developer", "Arduino Programmer"],
+        typeSpeed: 100,
+        backSpeed: 50,
+        backDelay: 1000,
+        loop: true
+      });
+    }, 12000); // Start after 12 seconds
+
+    // Professional frame interactions
+    const glowFrame = document.querySelector('.glow-frame');
+    if (glowFrame) {
+      glowFrame.addEventListener('mouseenter', () => {
+        glowFrame.style.transform = 'translateY(-8px)';
+      });
+      glowFrame.addEventListener('mouseleave', () => {
+        glowFrame.style.transform = 'translateY(0)';
+      });
+    }
+  </script>
+
+  <section class="about" id="about" data-animate>
+    <div class="about-img">
+      <img src="second.png" alt="Profile">
+    </div>
+    <div class="about-text">
+      <h2>About <span>Me</span></h2>
+      <h4><b>Full Stack Developer</b></h4>
+      <p>I am Soham Misra, a passionate developer with over 5 years of experience in Python, AI, and automation.
+        Throughout my journey, I have worked on building intelligent systems, interactive GUIs, and advanced
+        automation tools that make technology more powerful and user-friendly. My flagship project, N.E.X.U.S,
+        is a Jarvis-inspired AI assistant capable of system-level control, natural voice interaction, and
+        real-time decision-making. Over the years, I’ve gained strong expertise in problem-solving, creative
+        design, and developing hybrid solutions that integrate both offline and online intelligence. With
+        persistence, adaptability, and innovation at my core, I aim to create impactful projects that push
+        boundaries and enhance everyday human experiences through technology.</p>
+
+      <a href="#contact" class="btn-box">Contact Me</a>
+      <a href="Soham_Misra_CV.docx" class="btn-box" download>
+        Download CV
+      </a>
+
+    </div>
+  </section>
+
+
+  <section class="service" id="service" data-animate>
+    <div class="services" id="services">
+      <div class="container">
+        <h1 class="sub-title">My <span>Services</span></h1>
+        <div class="services-list">
+          <div>
+            <i class='bx bx-code-alt' style='color:#0ef; font-size:40px;'></i>
+            <h2 class="c">App Development</h2>
+            <p>Experienced in designing and building user-friendly apps that combine functionality with
+              intuitive interfaces.</p>
+            <a href="#contact" class="read">Learn More From Me</a>
+          </div>
+
+          <div>
+            <i class='bx bx-globe' style='color:#0ef; font-size:40px;'></i>
+            <h2 class="c">Web Development</h2>
+            <p>Skilled at creating responsive, modern websites that deliver seamless user experiences.</p>
+            <a href="#contact" class="read">Learn More From Me</a>
+          </div>
+
+          <div>
+            <i class='bx bx-chip' style='color:#0ef; font-size:40px;'></i>
+            <h2 class="c">Arduino Projects</h2>
+            <p>Passionate about hardware innovation, developing interactive Arduino-based projects that
+              blend software with real-world applications.</p>
+            <a href="#contact" class="read">Learn More From Me</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="sk" id="sk" data-animate>
+    <center>
+      <h1 class="sub-title">My <span>Skills</span></h1>
+    </center>
+    <div class="skills-wrapper">
+      <div class="container1" id="Skills">
+        <h1 class="heading1">Technical Skills</h1>
+        <div class="Techinical-bars">
+          <div class="bar"><i style="color: #c95d2e" class="bx bxl-html5"></i>
+            <div class="info">
+              <span>HTML</span>
+            </div>
+            <div class="progress-line html">
+              <span></span>
+            </div>
+          </div>
+          <div class="bar"><i style="color: #147bbc" class="bx bxl-css3"></i>
+            <div class="info">
+              <span>CSS</span>
+            </div>
+            <div class="progress-line css">
+              <span></span>
+            </div>
+          </div>
+          <div class="bar"><i style="color: #b0bc1e" class="bx bxl-javascript"></i>
+            <div class="info">
+              <span>JAVASCRIPT</span>
+            </div>
+            <div class="progress-line Javascript">
+              <span></span>
+            </div>
+          </div>
+          <div class="bar"><i style="color: #c32ec9" class="bx bxl-python"></i>
+            <div class="info">
+              <span>PYTHON</span>
+            </div>
+            <div class="progress-line python">
+              <span></span>
+            </div>
+          </div>
+          <div class="bar"><i style="color: #69bcbc" class="bx bxl-react"></i>
+            <div class="info">
+              <span>REACT</span>
+            </div>
+            <div class="progress-line react">
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container1">
+        <h1 class="heading1">Professional Skills</h1>
+        <div class="radial-bars">
+
+
+          <div class="radial-bar">
+            <svg x="0px" y="0px" viewBox="0 0 200 200">
+              <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
+              <circle class="path path-1" cx="100" cy="100" r="80"></circle>
+            </svg>
+            <div class="percentage">90%</div>
+            <div class="text"><b>Creativity</b></div>
+          </div>
+
+
+          <div class="radial-bar">
+            <svg x="0px" y="0px" viewBox="0 0 200 200">
+              <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
+              <circle class="path path-2" cx="100" cy="100" r="80"></circle>
+            </svg>
+            <div class="percentage">65%</div>
+            <div class="text"><b>Designing</b></div>
+          </div>
+
+
+          <div class="radial-bar">
+            <svg x="0px" y="0px" viewBox="0 0 200 200">
+              <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
+              <circle class="path path-3" cx="100" cy="100" r="80"></circle>
+            </svg>
+            <div class="percentage">75%</div>
+            <div class="text"><b>Problem Solving</b></div>
+          </div>
+
+
+          <div class="radial-bar">
+            <svg x="0px" y="0px" viewBox="0 0 200 200">
+              <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
+              <circle class="path path-4" cx="100" cy="100" r="80"></circle>
+            </svg>
+            <div class="percentage">85%</div>
+            <div class="text"><b>Team Work</b></div>
+          </div>
+        </div>
+      </div>
+  </section>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <section class="po" id="po" data-animate aria-label="Portfolio Section">
+    <div class="main-text" id="project">
+      <h2>Latest <span>Projects</span></h2>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <!-- Project 1: TreadWithSoham -->
+          <div class="swiper-slide">
+            <div class="project-card" role="article" aria-labelledby="treadwithsoham-title">
+              <div class="project-image">
+                <img src="tread.webp" alt="TreadWithSoham project preview" loading="lazy">
+                <div class="image-overlay"></div>
+              </div>
+              <div class="layer">
+                <div class="project-info">
+                  <h5 id="treadwithsoham-title">TreadWithSoham</h5>
+                  <div class="project-tags">
+                    <span class="tag">Finance</span>
+                    <span class="tag">Trading</span>
+                  </div>
+                  <p>
+                    A smart platform focused on financial awareness and trading basics. It delivers insights, tips, and
+                    guidance for beginners who want to start their trading journey with confidence.
+                  </p>
+                  <div class="project-links">
+                    <a href="https://treadwithsoham.netlify.app/" class="project-link" target="_blank"
+                      rel="noopener noreferrer">
+                      <i class="bx bx-link-external"></i>
+                      <span>View Project</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: NEXUS -->
+          <div class="swiper-slide">
+            <div class="project-card" role="article" aria-labelledby="nexus-title">
+              <div class="project-image">
+                <img src="nexus.jpg" alt="NEXUS AI Assistant project preview" loading="lazy">
+                <div class="image-overlay"></div>
+              </div>
+              <div class="layer">
+                <div class="project-info">
+                  <h5 id="nexus-title">NEXUS</h5>
+                  <div class="project-tags">
+                    <span class="tag">AI</span>
+                    <span class="tag">Python</span>
+                  </div>
+                  <p>
+                    A Jarvis-inspired AI assistant developed in Python. Nexus integrates voice commands, system control,
+                    productivity tools, and AI-powered responses — designed to be the ultimate all-in-one desktop
+                    companion.
+                  </p>
+                  <div class="project-links">
+                    <a href="nexus.html" class="project-link" target="_blank" rel="noopener noreferrer">
+                      <i class="bx bx-link-external"></i>
+                      <span>View Project</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: TimeYtable -->
+          <div class="swiper-slide">
+            <div class="project-card" role="article" aria-labelledby="timeytable-title">
+              <div class="project-image">
+                <img src="time.jpg" alt="TimeYtable project preview" loading="lazy">
+                <div class="image-overlay"></div>
+              </div>
+              <div class="layer">
+                <div class="project-info">
+                  <h5 id="timeytable-title">TimeYtable</h5>
+                  <div class="project-tags">
+                    <span class="tag">Web App</span>
+                    <span class="tag">Productivity</span>
+                  </div>
+                  <p>
+                    TimeYtable is a modern web app designed to organize daily schedules with ease. It lets users create,
+                    edit, and manage timetables interactively, ensuring better time management and productivity.
+                  </p>
+                  <div class="project-links">
+                    <a href="Timeytable/index.html" class="project-link" target="_blank" rel="noopener noreferrer">
+                      <i class="bx bx-link-external"></i>
+                      <span>View Project</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: Weather App -->
+          <div class="swiper-slide">
+            <div class="project-card" role="article" aria-labelledby="weatherapp-title">
+              <div class="project-image">
+                <img src="web.jpg" alt="Weather App project preview" loading="lazy">
+                <div class="image-overlay"></div>
+              </div>
+              <div class="layer">
+                <div class="project-info">
+                  <h5 id="weatherapp-title">Weather App</h5>
+                  <div class="project-tags">
+                    <span class="tag">Web App</span>
+                    <span class="tag">API</span>
+                  </div>
+                  <p>
+                    A sleek weather application that provides real-time weather information for any location. Features
+                    include current conditions, forecasts, and interactive weather maps with a clean, responsive design.
+                  </p>
+                  <div class="project-links">
+                    <a href="web/index.html" class="project-link" target="_blank" rel="noopener noreferrer">
+                      <i class="bx bx-link-external"></i>
+                      <span>View Project</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: Mini Blog -->
+          <div class="swiper-slide">
+            <div class="project-card" role="article" aria-labelledby="miniblog-title">
+              <div class="project-image">
+                <img src="blog.jpg" alt="Mini Blog project preview" loading="lazy">
+                <div class="image-overlay"></div>
+              </div>
+              <div class="layer">
+                <div class="project-info">
+                  <h5 id="miniblog-title">Mini Blog</h5>
+                  <div class="project-tags">
+                    <span class="tag">Blog</span>
+                    <span class="tag">CMS</span>
+                  </div>
+                  <p>
+                    A minimalist blogging platform where users can create, edit, and publish articles. Features a clean
+                    interface, markdown support, and responsive design for seamless content management.
+                  </p>
+                  <div class="project-links">
+                    <a href="mini-blog/index.html" class="project-link" target="_blank" rel="noopener noreferrer">
+                      <i class="bx bx-link-external"></i>
+                      <span>View Project</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,500&display=swap');
+
+  
+
+    .po {
+      min-height: 100vh;
+      background: url('background.png') no-repeat center center fixed;
+      background-size: cover;
+      background-blend-mode: overlay;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 10px;
+    }
+
+    .po::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 80%, rgba(0, 238, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 238, 255, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+      animation: pulse 10s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 0.5;
+      }
+
+      50% {
+        opacity: 0.9;
+      }
+    }
+
+    .main-text {
+      text-align: center;
+      max-width: 1400px;
+      width: 100%;
+      padding: 0 15px;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 30px;
+    }
+
+    .main-text h2 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      text-shadow: 0 0 20px rgba(0, 238, 255, 0.7);
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    .main-text h2 span {
+      color: #0ef;
+      text-shadow: 0 0 30px rgba(0, 238, 255, 0.9);
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 15px rgba(0, 238, 255, 0.7);
+      }
+
+      to {
+        text-shadow: 0 0 30px rgba(0, 238, 255, 0.9), 0 0 45px rgba(0, 238, 255, 0.5);
+      }
+    }
+
+    .swiper {
+      width: 100%;
+      max-width: 1000px;
+      padding: 20px 10px;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 320px;
+      opacity: 0.5;
+      transition: opacity 0.5s ease;
+    }
+
+    .swiper-slide-active {
+      opacity: 1;
+    }
+
+    .project-card {
+      background: linear-gradient(145deg, #112e42, #0d1b2a);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 238, 255, 0.25);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      width: 100%;
+      max-width: 320px;
+      transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+    }
+
+    .project-card:hover,
+    .project-card:focus-within {
+      transform: translateY(-6px) scale(1.03);
+      border-color: #0ef;
+      box-shadow: 0 12px 35px rgba(0, 238, 255, 0.6),
+        0 0 25px rgba(0, 238, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .project-image {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease, filter 0.5s ease;
+      filter: brightness(0.9);
+    }
+
+    .project-card:hover .project-image img,
+    .project-card:focus-within .project-image img {
+      transform: scale(1.06);
+      filter: brightness(1.05) contrast(1.1);
+    }
+
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg,
+          rgba(0, 238, 255, 0.9) 0%,
+          rgba(17, 46, 66, 0.8) 50%,
+          rgba(0, 238, 255, 0.7) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(3px);
+    }
+
+    .image-overlay::before {
+      content: '👁';
+      font-size: 2.5rem;
+      color: white;
+      transform: scale(0);
+      transition: transform 0.4s ease;
+    }
+
+    .project-card:hover .image-overlay,
+    .project-card:focus-within .image-overlay {
+      opacity: 1;
+    }
+
+    .project-card:hover .image-overlay::before,
+    .project-card:focus-within .image-overlay::before {
+      transform: scale(1);
+    }
+
+    .layer {
+      padding: 20px;
+      background: linear-gradient(145deg, rgba(17, 46, 66, 0.95), rgba(13, 27, 42, 0.95));
+      transition: background 0.5s ease;
+    }
+
+    .project-card:hover .layer,
+    .project-card:focus-within .layer {
+      background: linear-gradient(145deg, rgba(17, 46, 66, 1), rgba(13, 27, 42, 1));
+    }
+
+    .project-info h5 {
+      font-size: 1.8rem;
+      color: #0ef;
+      margin-bottom: 12px;
+      font-weight: 700;
+      text-shadow: 0 0 8px rgba(0, 238, 255, 0.7);
+      transition: all 0.4s ease;
+    }
+
+    .project-card:hover .project-info h5,
+    .project-card:focus-within .project-info h5 {
+      transform: translateX(4px);
+      text-shadow: 0 0 15px rgba(0, 238, 255, 0.9);
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .project-tags .tag {
+      background: linear-gradient(135deg, #0ef, #00d4ff);
+      color: #081b29;
+      padding: 6px 14px;
+      border-radius: 18px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 3px 12px rgba(0, 238, 255, 0.4);
+      transition: all 0.4s ease;
+    }
+
+    .project-tags .tag:hover,
+    .project-tags .tag:focus {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 238, 255, 0.6);
+    }
+
+    .project-info p {
+      color: #e0e0e0;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      text-align: justify;
+      max-width: 280px;
+    }
+
+    .project-links .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #0ef;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 10px 20px;
+      border: 2px solid #0ef;
+      border-radius: 20px;
+      background: transparent;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .project-links .project-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 238, 255, 0.4), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .project-links .project-link:hover::before,
+    .project-links .project-link:focus::before {
+      left: 100%;
+    }
+
+    .project-links .project-link:hover,
+    .project-links .project-link:focus {
+      background: #0ef;
+      color: #081b29;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 238, 255, 0.6);
+      border-color: #00d4ff;
+    }
+
+    .project-links .bx {
+      font-size: 1.2rem;
+      transition: transform 0.4s ease;
+    }
+
+    .project-links .project-link:hover .bx,
+    .project-links .project-link:focus .bx {
+      transform: rotate(90deg);
+    }
+
+    /* PC Styles (min-width: 769px) */
+    @media (min-width: 769px) {
+      .po {
+        padding: 60px 0;
+      }
+
+      .main-text h2 {
+        font-size: 3.6rem;
+      }
+
+      .swiper {
+        max-width: 1200px;
+        padding: 30px 20px;
+      }
+
+      .swiper-slide {
+        width: 360px;
+      }
+
+      .project-card {
+        max-width: 360px;
+      }
+
+      .project-image {
+        height: 240px;
+      }
+
+      .layer {
+        padding: 25px;
+      }
+
+      .project-info h5 {
+        font-size: 2rem;
+      }
+
+      .project-info p {
+        font-size: 1.1rem;
+        max-width: 300px;
+      }
+
+      .project-links .project-link {
+        padding: 12px 24px;
+      }
+    }
+
+    /* Mobile Styles (max-width: 768px) */
+    @media (max-width: 768px) {
+      .po {
+        padding: 40px 0;
+      }
+
+      .main-text h2 {
+        font-size: 2.6rem;
+      }
+
+      .swiper {
+        max-width: 100%;
+        padding: 15px 10px;
+      }
+
+      .swiper-slide {
+        width: 280px;
+      }
+
+      .project-card {
+        max-width: 280px;
+      }
+
+      .project-image {
+        height: 180px;
+      }
+
+      .layer {
+        padding: 18px;
+      }
+
+      .project-info h5 {
+        font-size: 1.6rem;
+      }
+
+      .project-info p {
+        font-size: 0.95rem;
+        max-width: 240px;
+      }
+
+      .project-tags .tag {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+      }
+
+      .project-links .project-link {
+        padding: 8px 18px;
+        font-size: 0.9rem;
+      }
+
+      .project-links .bx {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* Small Mobile Styles (max-width: 480px) */
+    @media (max-width: 480px) {
+      .po {
+        padding: 30px 0;
+      }
+
+      .main-text h2 {
+        font-size: 2rem;
+      }
+
+      .swiper {
+        padding: 10px 5px;
+      }
+
+      .swiper-slide {
+        width: 240px;
+      }
+
+      .project-card {
+        max-width: 240px;
+      }
+
+      .project-image {
+        height: 160px;
+      }
+
+      .layer {
+        padding: 15px;
+      }
+
+      .project-info h5 {
+        font-size: 1.4rem;
+      }
+
+      .project-info p {
+        font-size: 0.85rem;
+        max-width: 200px;
+      }
+
+      .project-tags .tag {
+        padding: 4px 10px;
+        font-size: 0.75rem;
+      }
+
+      .project-links .project-link {
+        padding: 7px 16px;
+        font-size: 0.8rem;
+      }
+
+      .project-links .bx {
+        font-size: 1rem;
+      }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      loop: true,
+      slidesPerView: "auto",
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 150,
+        modifier: 2.5,
+        slideShadows: true,
+      },
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+    });
+  </script>
+
+
+
+
+  <section class="contact" id="contact" data-animate>
+    <div class="contact-text">
+
+      <!-- LEFT COLUMN -->
+      <div class="contact-left">
+        <h2>Contact <span>Me</span></h2>
+        <h4>Let's Work Together</h4>
+        <p>
+          I’m always open to new opportunities, collaborations, or just a friendly chat.
+          Feel free to reach out with your ideas or questions—I’ll get back to you as soon
+          as possible. Let’s create something amazing together!
+        </p>
+
+        <ul class="contact-list">
+          <li>
+            <a href="https://mail.google.com/mail/?view=cm&to=misra.industry@gmail.com" target="_blank">
+              <i class='bx bx-send'></i> misra.industry@gmail.com
+            </a>
+          </li>
+          <li>
+            <a href="tel:+918016847169">
+              <i class='bx bx-phone'></i> +91 8016847169
+            </a>
+          </li>
+        </ul>
+
+        <div class="contact-icon">
+          <a href="https://www.facebook.com/profile.php?id=100086087766581"><i class='bx bxl-facebook-circle'></i></a>
+          <a href="https://wa.me/918016847169" target="_blank"><i class='bx bxl-whatsapp'></i></a>
+          <a href="https://www.instagram.com/sohammisra_official/?next=%2F&hl=en"><i class='bx bxl-instagram'></i></a>
+
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="contact-form">
+        <form id="contactForm"
+          data-script-url="https://script.google.com/macros/s/AKfycbycUW3U22TIRpTLbgYEML8eX8h1v9dpo7Mcyog7qTvw53wlXgveed7yYjEdg-y5_udINw/exec">
+          <input type="text" id="name" name="name" placeholder="Enter Your Name" required>
+          <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
+          <input type="text" id="subject" name="subject" placeholder="Enter Your Subject" required>
+          <textarea id="message" name="message" placeholder="Enter Your Message" required></textarea>
+          <input type="submit" value="Submit" class="send" id="submitBtn">
+        </form>
+        <div id="formMessage" class="form-message"></div>
+      </div>
+      <style>
+        .form-message {
+          margin-top: 10px;
+          padding: 10px;
+          border-radius: 4px;
+          display: none;
+        }
+
+        .form-message.success {
+          background: transparent;
+          color: #c3e6cb;
+          border: 1px solid #155724;
+        }
+
+        .form-message.error {
+          background: transparent;
+          color: #f5c6cb;
+          border: 1px solid #721c24;
+        }
+      </style>
+      <script>
+        const form = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        const scriptUrl = form.getAttribute('data-script-url');
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault(); // Prevent default form submission
+          document.getElementById('submitBtn').disabled = true;
+          formMessage.textContent = '';
+          formMessage.classList.remove('error', 'success');
+          formMessage.style.display = 'none'; // Hide initially
+
+          try {
+            const formData = new FormData(form);
+            const response = await fetch(scriptUrl, {
+              method: 'POST', // Ensure POST method
+              body: formData
+            });
+
+            const result = await response.json();
+
+            if (result.result === 'success') {
+              formMessage.textContent = 'Thank you! Your message has been sent.';
+              formMessage.classList.add('success');
+              formMessage.style.display = 'block';
+              form.reset();
+            } else {
+              throw new Error(result.error || 'Something went wrong');
+            }
+          } catch (error) {
+            formMessage.textContent = 'Oops! There was an error sending your message. Please try again.';
+            formMessage.classList.add('error');
+            formMessage.style.display = 'block';
+          } finally {
+            document.getElementById('submitBtn').disabled = false;
+          }
+        });
+      </script>
+      <!-- https://docs.google.com/spreadsheets/d/1z6DGcRZHcw2-mVBEhz_dYMCxlWgkyYixgj6udybWjFE/edit?gid=0#gid=0 -->
+      <!-- https://sheetdb.io/api/v1/51r9akqyqhuzv -->
+    </div>
+
+
+  </section>
+  <!-- HTML -->
+  <div class="last-text">
+    <p>Misra Group Of Industries</p>
+  </div>
+
+  <a href="#" class="top">
+    <i class='bx bx-arrow-to-top'></i>
+  </a>
+
+
+
+  <script>
+
+    var text2 = "Hello, I am Soham Mishra — a passionate programmer with expertise in creating modern websites, powerful applications, and innovative robotic projects. Thank you for visiting my portfolio.";
+    const utterance = new SpeechSynthesisUtterance(text2);
+    document.getElementById("hi").addEventListener("click", () => { speechSynthesis.speak(utterance); });
+    utterance.pitch = 1;
+    utterance.rate = 1.2;
+    utterance.volume = 1;
+
+  </script>
+
+  <script>
+    // Disable right-click context menu
+    document.addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+      return false;
+    }, { capture: true });
+
+    // Disable developer tools, copy/paste, print, and screenshot shortcuts
+    document.addEventListener("keydown", (event) => {
+      const forbiddenKeys = [
+        "F12", // Developer tools
+        "U",   // Ctrl+U (View source)
+        "S",   // Ctrl+S (Save page)
+        "P",   // Ctrl+P (Print)
+        "C",   // Ctrl+C (Copy)
+        "V",   // Ctrl+V (Paste)
+        "A",   // Ctrl+A (Select all)
+        "X",   // Ctrl+X (Cut)
+        "PrintScreen" // Screenshot key
+      ];
+
+      if (
+        forbiddenKeys.includes(event.key) ||
+        (event.ctrlKey && forbiddenKeys.includes(event.key.toUpperCase())) ||
+        (event.metaKey && forbiddenKeys.includes(event.key.toUpperCase())) || // Mac Cmd
+        (event.ctrlKey && event.shiftKey && ["I", "J", "C"].includes(event.key.toUpperCase()))
+      ) {
+        event.preventDefault();
+        event.stopPropagation();
+        if (event.key === "PrintScreen") {
+          // Attempt to clear clipboard on PrintScreen (limited effectiveness)
+          try {
+            navigator.clipboard.writeText("").catch(() => { });
+          } catch (err) { }
+        }
+        return false;
+      }
+    }, { capture: true, passive: false });
+
+    // Disable text selection
+    document.addEventListener("selectstart", (event) => {
+      event.preventDefault();
+      return false;
+    }, { capture: true });
+
+    // Apply CSS to prevent text selection across browsers
+    document.body.style.cssText += `
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    `;
+
+    // Disable copy, cut, paste
+    ["copy", "cut", "paste"].forEach(event => {
+      document.addEventListener(event, (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+      }, { capture: true });
+    });
+
+    // Disable drag and drop
+    ["dragstart", "drop"].forEach(event => {
+      document.addEventListener(event, (event) => {
+        event.preventDefault();
+        return false;
+      }, { capture: true });
+    });
+
+    // Anti-screenshot: Dynamic watermark on canvas
+    function addWatermark() {
+      const canvas = document.createElement("canvas");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const ctx = canvas.getContext("2d");
+      ctx.globalAlpha = 0.2;
+      ctx.fillStyle = "red";
+      ctx.font = "20px Arial";
+      ctx.fillText("", 100, 100);
+      document.body.appendChild(canvas);
+      canvas.style.position = "fixed";
+      canvas.style.top = "0";
+      canvas.style.left = "0";
+      canvas.style.zIndex = "9998";
+      canvas.style.pointerEvents = "none";
+    }
+    window.addEventListener("load", addWatermark);
+    window.addEventListener("resize", addWatermark);
+
+    // Anti-screenshot: Blur content on focus loss to deter external tools
+    window.addEventListener("blur", () => {
+      document.body.style.filter = "blur(10px)";
+      setTimeout(() => {
+        document.body.style.filter = "none";
+      }, 2000); // Unblur after 2 seconds
+    });
+
+
+
+    // Protect images
+    document.querySelectorAll("img").forEach(img => {
+      img.setAttribute("draggable", "false");
+      img.style.pointerEvents = "none";
+    });
+
+    // Periodic console clear to hide traces
+    setInterval(() => {
+      console.clear();
+    }, 5000);
+
+    // Fallback devtools detection
+    let devtoolsOpen = false;
+    setInterval(() => {
+      if (
+        window.outerWidth - window.innerWidth > 160 ||
+        window.outerHeight - window.innerHeight > 160
+      ) {
+        if (!devtoolsOpen) {
+          devtoolsOpen = true;
+          alert("Developer Tools detected! Access denied.");
+          window.location.href = "about:blank";
+        }
+      } else {
+        devtoolsOpen = false;
+      }
+    }, 500);
+  </script>
+  <script>
+    const cursor = document.querySelector(".cursor");
+    const follower = document.querySelector(".cursor-follower");
+
+    let mouseX = 0, mouseY = 0;
+    let followerX = 0, followerY = 0;
+
+    document.addEventListener("mousemove", e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.transform = `translate(${mouseX - 5}px, ${mouseY - 5}px)`;
+    });
+
+    function animate() {
+      followerX += (mouseX - followerX) * 0.15;
+      followerY += (mouseY - followerY) * 0.15;
+      follower.style.transform = `translate(${followerX - 15}px, ${followerY - 15}px)`;
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    document.addEventListener("click", () => {
+      follower.style.width = "50px";
+      follower.style.height = "50px";
+      setTimeout(() => {
+        follower.style.width = "30px";
+        follower.style.height = "30px";
+      }, 200);
+    });
+
+  </script>
+
+  <!-- GSAP Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- Enhanced Portfolio Animations -->
+  <script src="portfolio-animations.js"></script>
+
+
+
+
+  <script>
+    const nameText = "Soham Misra";
+    const splashNameElement = document.getElementById("name"); // Correct ID
+
+    // Splash typewriter
+    let i = 0;
+    function typeWriter() {
+      if (i < nameText.length && splashNameElement) {
+        splashNameElement.innerHTML += `<span>${nameText.charAt(i)}</span>`;
+        i++;
+        setTimeout(typeWriter, 120);
+      } else {
+        setTimeout(blastName, 500);
+      }
+    }
+
+    // Splash blast
+    function blastName() {
+      gsap.to("#name span", { // Correct ID
+        duration: 1,
+        opacity: 0,
+        scale: 2,
+        x: () => (Math.random() - 0.5) * 200,
+        y: () => (Math.random() - 0.5) * 200,
+        stagger: 0.05,
+        ease: "power2.out",
+        onComplete: showWelcome
+      });
+    }
+
+    // Show welcome overlay with typing
+    function showWelcome() {
+      document.getElementById("splash").style.opacity = "0";
+      setTimeout(() => document.getElementById("splash").remove(), 600);
+
+      const overlay = document.getElementById("welcome-overlay");
+      overlay.classList.add("show");
+
+      typeWriterText("Welcome", "welcome-title", 100, () => {
+        typeWriterText("Portfolio of Soham Misra", "welcome-subtitle", 80, () => {
+          setTimeout(() => {
+            overlay.style.opacity = "0";
+            setTimeout(() => {
+              overlay.remove();
+              document.body.style.overflow = "auto";
+            }, 800);
+          }, 2000);
+        });
+      });
+    }
+
+    // Generic typewriter
+    function typeWriterText(text, elementId, speed, callback) {
+      const el = document.getElementById(elementId);
+      let j = 0;
+      el.style.opacity = 1;
+      function type() {
+        if (j < text.length) {
+          el.innerHTML += `<span>${text.charAt(j)}</span>`;
+          j++;
+          setTimeout(type, speed);
+        } else if (callback) {
+          callback();
+        }
+      }
+      type();
+    }
+
+    // Start splash typing
+    window.onload = typeWriter;
+  </script>
+
+  <script>
+    // Scroll reveal with animations
+    const sections = document.querySelectorAll(".about, .service, .sk, .contact");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+
+    // Home section observer
+    const homeSection = document.querySelector("#home");
+    const homeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          startTyping();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    if (homeSection) homeObserver.observe(homeSection);
+
+    // Scroll progress bar
+    const progress = document.getElementById("progress");
+    window.addEventListener("scroll", () => {
+      let scrollTop = window.scrollY;
+      let docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      let scrollPercent = (scrollTop / docHeight) * 100;
+      progress.style.width = scrollPercent + "%";
+    });
+
+
+  </script>
+
+  <script>
+    const music = document.getElementById("bgMusic");
+    const toggleBtn = document.getElementById("musicToggle");
+    const icon = toggleBtn.querySelector("i");
+
+    // Ensure autoplay starts on Chrome
+    window.addEventListener("load", () => {
+      music.play().catch(err => {
+        console.log("Autoplay blocked:", err);
+      });
+    });
+
+    // Toggle ON/OFF
+    toggleBtn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        icon.className = "bx bx-volume-full"; // on
+      } else {
+        music.pause();
+        icon.className = "bx bx-volume-mute"; // off
+      }
+    });
+  </script>
+  <script>
+    const hamburger = document.querySelector(".hamburger");
+    const navbar = document.querySelector(".navbar");
+
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      navbar.classList.toggle("active");
+    });
+
+    // Optional: close menu when clicking a nav link
+    document.querySelectorAll(".navbar a").forEach(link => {
+      link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navbar.classList.remove("active");
+      });
+    });
+
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.innerWidth <= 768) { // Run only on mobile
+        const animatedItems = document.querySelectorAll("[data-animate]");
+
+        const revealOnScroll = () => {
+          animatedItems.forEach(item => {
+            const rect = item.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 50) {
+              item.classList.add("visible");
+            }
+          });
+        };
+
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll(); // Run once at load
+      }
+    });
+
+
+  </script>
+
+  <script>
+    class LoginSystem {
+      constructor() {
+        this.authBtn = document.getElementById('authBtn');
+        this.loginModal = document.getElementById('loginModal');
+        this.closeBtn = document.getElementById('closeBtn');
+
+        // Views
+        this.loginView = document.getElementById('loginView');
+        this.signupView = document.getElementById('signupView');
+        this.forgotView = document.getElementById('forgotView');
+
+        // Forms
+        this.loginForm = document.getElementById('loginForm');
+        this.signupForm = document.getElementById('signupForm');
+        this.forgotForm = document.getElementById('forgotForm');
+
+        // Login inputs
+        this.emailInput = document.getElementById('email');
+        this.passwordInput = document.getElementById('password');
+        this.rememberMe = document.getElementById('rememberMe');
+
+        // Signup inputs
+        this.signupName = document.getElementById('signupName');
+        this.signupEmail = document.getElementById('signupEmail');
+        this.signupPassword = document.getElementById('signupPassword');
+
+        // Forgot password input
+        this.forgotEmail = document.getElementById('forgotEmail');
+
+        // Navigation links
+        this.showSignup = document.getElementById('showSignup');
+        this.showLogin = document.getElementById('showLogin');
+        this.forgotLink = document.getElementById('forgotLink');
+        this.backToLogin = document.getElementById('backToLogin');
+
+        // Social buttons
+        this.googleBtn = document.getElementById('googleBtn');
+        this.githubBtn = document.getElementById('githubBtn');
+
+        this.currentView = 'login';
+        this.init();
+      }
+
+      init() {
+        this.checkLoginState();
+        this.bindEvents();
+      }
+
+      bindEvents() {
+        this.authBtn.addEventListener('click', () => this.handleAuthClick());
+        this.closeBtn.addEventListener('click', () => this.closeModal());
+        this.loginModal.addEventListener('click', (e) => {
+          if (e.target === this.loginModal) this.closeModal();
+        });
+
+        // Form submissions
+        this.loginForm.addEventListener('submit', (e) => this.handleLogin(e));
+        this.signupForm.addEventListener('submit', (e) => this.handleSignup(e));
+        this.forgotForm.addEventListener('submit', (e) => this.handleForgotPassword(e));
+
+        // Input validation
+        [this.emailInput, this.passwordInput].forEach(input => {
+          input.addEventListener('input', () => this.validateLoginInputs());
+          input.addEventListener('blur', () => this.validateField(input));
+        });
+
+        [this.signupName, this.signupEmail, this.signupPassword].forEach(input => {
+          input.addEventListener('input', () => this.validateSignupInputs());
+          input.addEventListener('blur', () => this.validateField(input));
+        });
+
+        this.forgotEmail.addEventListener('input', () => this.validateForgotInputs());
+        this.forgotEmail.addEventListener('blur', () => this.validateField(this.forgotEmail));
+
+        // View navigation
+        this.showSignup.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.switchView('signup');
+        });
+
+        this.showLogin.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.switchView('login');
+        });
+
+        this.forgotLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.switchView('forgot');
+        });
+
+        this.backToLogin.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.switchView('login');
+        });
+
+        // Social login
+        this.googleBtn.addEventListener('click', () => this.handleGoogleLogin());
+        this.githubBtn.addEventListener('click', () => this.handleGithubLogin());
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') this.closeModal();
+        });
+      }
+
+      switchView(view) {
+        this.loginView.style.display = view === 'login' ? 'block' : 'none';
+        this.signupView.style.display = view === 'signup' ? 'block' : 'none';
+        this.forgotView.style.display = view === 'forgot' ? 'block' : 'none';
+        this.currentView = view;
+        this.resetAllForms();
+      }
+
+      handleAuthClick() {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        if (isLoggedIn) {
+          this.logout();
+        } else {
+          this.openModal();
+        }
+      }
+
+      openModal() {
+        this.loginModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+
+        // Auto-fill remembered email
+        const rememberedEmail = localStorage.getItem('rememberedEmail');
+        if (rememberedEmail && this.currentView === 'login') {
+          this.emailInput.value = rememberedEmail;
+          this.rememberMe.checked = true;
+          this.validateLoginInputs();
+        }
+
+        setTimeout(() => {
+          this.loginModal.classList.add('active');
+          // Focus first input
+          if (this.currentView === 'login') {
+            this.emailInput.focus();
+          } else if (this.currentView === 'signup') {
+            this.signupName.focus();
+          } else if (this.currentView === 'forgot') {
+            this.forgotEmail.focus();
+          }
+        }, 10);
+      }
+
+      closeModal() {
+        this.loginModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        setTimeout(() => {
+          this.loginModal.style.display = 'none';
+          this.switchView('login');
+          this.resetAllForms();
+        }, 300);
+      }
+
+      validateField(input) {
+        const errorElement = document.getElementById(input.id + 'Error');
+        const value = input.value.trim();
+
+        if (!value) {
+          input.style.borderColor = '#ff4444';
+          input.style.boxShadow = '0 0 8px rgba(255, 68, 68, 0.5)';
+          if (errorElement) errorElement.textContent = 'This field is required';
+          return false;
+        }
+
+        // Email validation
+        if (input.type === 'email' && value) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(value)) {
+            input.style.borderColor = '#ff4444';
+            input.style.boxShadow = '0 0 8px rgba(255, 68, 68, 0.5)';
+            if (errorElement) errorElement.textContent = 'Please enter a valid email';
+            return false;
+          }
+        }
+
+        // Password validation
+        if (input.type === 'password' && value && input.id.includes('signup')) {
+          if (value.length < 6) {
+            input.style.borderColor = '#ff4444';
+            input.style.boxShadow = '0 0 8px rgba(255, 68, 68, 0.5)';
+            if (errorElement) errorElement.textContent = 'Password must be at least 6 characters';
+            return false;
+          }
+        }
+
+        // Valid input
+        input.style.borderColor = '#00e5ff';
+        input.style.boxShadow = '0 0 8px rgba(0, 229, 255, 0.3)';
+        if (errorElement) errorElement.textContent = '';
+        return true;
+      }
+
+      validateLoginInputs() {
+        const email = this.emailInput.value.trim();
+        const password = this.passwordInput.value.trim();
+        const loginBtn = this.loginForm.querySelector('.login-btn');
+        loginBtn.disabled = !email || !password;
+      }
+
+      validateSignupInputs() {
+        const name = this.signupName.value.trim();
+        const email = this.signupEmail.value.trim();
+        const password = this.signupPassword.value.trim();
+        const signupBtn = this.signupForm.querySelector('.login-btn');
+        signupBtn.disabled = !name || !email || !password;
+      }
+
+      validateForgotInputs() {
+        const email = this.forgotEmail.value.trim();
+        const forgotBtn = this.forgotForm.querySelector('.login-btn');
+        forgotBtn.disabled = !email;
+      }
+
+      async handleLogin(e) {
+        e.preventDefault();
+
+        const email = this.emailInput.value.trim();
+        const password = this.passwordInput.value.trim();
+        const loginBtn = this.loginForm.querySelector('.login-btn');
+
+        // Validate all fields
+        const emailValid = this.validateField(this.emailInput);
+        const passwordValid = this.validateField(this.passwordInput);
+
+        if (!emailValid || !passwordValid) {
+          this.showMessage('Please fix the errors above', 'error');
+          return;
+        }
+
+        loginBtn.disabled = true;
+        loginBtn.innerHTML = '<div class="btn-loader"></div>Logging in...';
+
+        try {
+          const response = await this.authenticateUser(email, password);
+
+          if (response.success) {
+            this.showMessage('Welcome back, ' + response.user.name.split(' ')[0] + '!', 'success');
+
+            if (this.rememberMe.checked) {
+              localStorage.setItem('rememberLogin', 'true');
+            }
+
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('userName', response.user.name);
+            localStorage.setItem('loginTime', new Date().toISOString());
+
+            setTimeout(() => {
+              this.closeModal();
+              this.updateAuthButton();
+            }, 1500);
+          } else {
+            this.showMessage(response.message || 'Invalid email or password', 'error');
+            // Shake animation for failed login
+            this.loginForm.style.animation = 'shake 0.5s ease-in-out';
+            setTimeout(() => {
+              this.loginForm.style.animation = '';
+            }, 500);
+
+            loginBtn.disabled = false;
+            loginBtn.innerHTML = 'Sign In';
+          }
+        } catch (error) {
+          this.showMessage('Connection error. Please try again.', 'error');
+          loginBtn.disabled = false;
+          loginBtn.innerHTML = 'Sign In';
+        }
+      }
+
+      async handleSignup(e) {
+        e.preventDefault();
+
+        const name = this.signupName.value.trim();
+        const email = this.signupEmail.value.trim();
+        const password = this.signupPassword.value.trim();
+        const signupBtn = this.signupForm.querySelector('.login-btn');
+
+        if (!this.validateField(this.signupName) || !this.validateField(this.signupEmail) || !this.validateField(this.signupPassword)) {
+          return;
+        }
+
+        signupBtn.disabled = true;
+        signupBtn.innerHTML = '<div class="btn-loader"></div>Creating account...';
+
+        try {
+          const response = await this.registerUser(name, email, password);
+
+          if (response.success) {
+            this.showMessage('Account created successfully!', 'success');
+
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('userName', name);
+
+            setTimeout(() => {
+              this.closeModal();
+              this.updateAuthButton();
+            }, 1500);
+          } else {
+            this.showMessage(response.message || 'Registration failed', 'error');
+            signupBtn.disabled = false;
+            signupBtn.innerHTML = 'Create Account';
+          }
+        } catch (error) {
+          this.showMessage('Connection error. Please try again.', 'error');
+          signupBtn.disabled = false;
+          signupBtn.innerHTML = 'Create Account';
+        }
+      }
+
+      async handleForgotPassword(e) {
+        e.preventDefault();
+
+        const email = this.forgotEmail.value.trim();
+        const forgotBtn = this.forgotForm.querySelector('.login-btn');
+
+        if (!this.validateField(this.forgotEmail)) {
+          return;
+        }
+
+        forgotBtn.disabled = true;
+        forgotBtn.innerHTML = '<div class="btn-loader"></div>Sending...';
+
+        try {
+          const response = await this.sendResetEmail(email);
+
+          if (response.success) {
+            this.showMessage('Reset link sent to your email!', 'success');
+            setTimeout(() => {
+              this.switchView('login');
+            }, 2000);
+          } else {
+            this.showMessage(response.message || 'Email not found', 'error');
+          }
+        } catch (error) {
+          this.showMessage('Connection error. Please try again.', 'error');
+        } finally {
+          forgotBtn.disabled = false;
+          forgotBtn.innerHTML = 'Send Reset Link';
+        }
+      }
+
+      async handleGoogleLogin() {
+        this.showMessage('Connecting to Google...', 'info');
+
+        setTimeout(() => {
+          const googleUser = {
+            name: 'Google User',
+            email: 'user@gmail.com'
+          };
+
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('userEmail', googleUser.email);
+          localStorage.setItem('userName', googleUser.name);
+
+          this.showMessage('Google login successful!', 'success');
+
+          setTimeout(() => {
+            this.closeModal();
+            this.updateAuthButton();
+          }, 1500);
+        }, 1000);
+      }
+
+      async handleGithubLogin() {
+        this.showMessage('Connecting to GitHub...', 'info');
+
+        setTimeout(() => {
+          const githubUser = {
+            name: 'GitHub User',
+            email: 'user@github.com'
+          };
+
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('userEmail', githubUser.email);
+          localStorage.setItem('userName', githubUser.name);
+
+          this.showMessage('GitHub login successful!', 'success');
+
+          setTimeout(() => {
+            this.closeModal();
+            this.updateAuthButton();
+          }, 1500);
+        }, 1000);
+      }
+
+      async authenticateUser(email, password) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            const validCredentials = [
+              { email: 'admin@test.com', password: 'admin123', name: 'Admin User' },
+              { email: 'user@test.com', password: 'user123', name: 'Regular User' },
+              { email: 'demo@test.com', password: 'demo123', name: 'Demo User' }
+            ];
+
+            const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+            const allUsers = [...validCredentials, ...registeredUsers];
+
+            // Case-insensitive email matching
+            const user = allUsers.find(cred =>
+              cred.email.toLowerCase() === email.toLowerCase() && cred.password === password
+            );
+
+            if (user) {
+              // Log successful login attempt
+              const loginHistory = JSON.parse(localStorage.getItem('loginHistory') || '[]');
+              loginHistory.push({
+                email: user.email,
+                timestamp: new Date().toISOString(),
+                success: true
+              });
+              localStorage.setItem('loginHistory', JSON.stringify(loginHistory.slice(-10))); // Keep last 10
+
+              resolve({ success: true, user: { name: user.name, email: user.email } });
+            } else {
+              // Log failed login attempt
+              const loginHistory = JSON.parse(localStorage.getItem('loginHistory') || '[]');
+              loginHistory.push({
+                email: email,
+                timestamp: new Date().toISOString(),
+                success: false
+              });
+              localStorage.setItem('loginHistory', JSON.stringify(loginHistory.slice(-10)));
+
+              resolve({ success: false, message: 'Invalid email or password' });
+            }
+          }, 1200); // Slightly faster response
+        });
+      }
+
+      async registerUser(name, email, password) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+
+            const existingUser = registeredUsers.find(user => user.email === email);
+            if (existingUser) {
+              resolve({ success: false, message: 'Email already registered' });
+              return;
+            }
+
+            const newUser = { name, email, password };
+            registeredUsers.push(newUser);
+            localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+
+            resolve({ success: true, user: { name, email } });
+          }, 1500);
+        });
+      }
+
+      async sendResetEmail(email) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            const validEmails = ['admin@test.com', 'user@test.com', 'demo@test.com'];
+            const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+            const allEmails = [...validEmails, ...registeredUsers.map(u => u.email)];
+
+            if (allEmails.includes(email)) {
+              resolve({ success: true });
+            } else {
+              resolve({ success: false, message: 'Email not found' });
+            }
+          }, 1000);
+        });
+      }
+
+      logout() {
+        const userName = localStorage.getItem('userName');
+
+        // Save email for remember me if it was checked
+        if (localStorage.getItem('rememberLogin') === 'true') {
+          const userEmail = localStorage.getItem('userEmail');
+          if (userEmail) {
+            localStorage.setItem('rememberedEmail', userEmail);
+          }
+        }
+
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('userName');
+        localStorage.removeItem('loginTime');
+
+        this.updateAuthButton();
+        this.showMessage(`Goodbye, ${userName ? userName.split(' ')[0] : 'User'}!`, 'info');
+      }
+
+      checkLoginState() {
+        this.updateAuthButton();
+      }
+
+      updateAuthButton() {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        const userName = localStorage.getItem('userName');
+
+        if (isLoggedIn) {
+          this.authBtn.textContent = userName ? `Hi, ${userName.split(' ')[0]}` : 'Logout';
+          this.authBtn.style.background = 'linear-gradient(135deg, #ff4444, #cc0000)';
+        } else {
+          this.authBtn.textContent = 'Login';
+          this.authBtn.style.background = 'linear-gradient(135deg, #00e5ff, #0072ff)';
+        }
+      }
+
+      resetAllForms() {
+        // Reset login form
+        this.loginForm.reset();
+        this.validateLoginInputs();
+        this.resetInputStyles(this.emailInput);
+        this.resetInputStyles(this.passwordInput);
+        this.loginForm.querySelector('.login-btn').innerHTML = 'Sign In';
+
+        // Reset signup form
+        this.signupForm.reset();
+        this.validateSignupInputs();
+        this.resetInputStyles(this.signupName);
+        this.resetInputStyles(this.signupEmail);
+        this.resetInputStyles(this.signupPassword);
+        this.signupForm.querySelector('.login-btn').innerHTML = 'Create Account';
+
+        // Reset forgot form
+        this.forgotForm.reset();
+        this.validateForgotInputs();
+        this.resetInputStyles(this.forgotEmail);
+        this.forgotForm.querySelector('.login-btn').innerHTML = 'Send Reset Link';
+
+        // Clear all error messages
+        document.querySelectorAll('.error-msg').forEach(msg => msg.textContent = '');
+      }
+
+      resetInputStyles(input) {
+        input.style.borderColor = 'rgba(255,255,255,0.3)';
+        input.style.boxShadow = 'none';
+      }
+
+      showMessage(message, type) {
+        const existingMessage = document.querySelector('.message');
+        if (existingMessage) existingMessage.remove();
+
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${type}`;
+        messageDiv.textContent = message;
+
+        Object.assign(messageDiv.style, {
+          position: 'fixed',
+          top: '20px',
+          right: '20px',
+          padding: '15px 20px',
+          borderRadius: '10px',
+          color: '#ffffff',
+          fontWeight: '600',
+          zIndex: '10000',
+          opacity: '0',
+          transform: 'translateX(100px)',
+          transition: 'all 0.4s ease',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)'
+        });
+
+        if (type === 'success') {
+          messageDiv.style.background = 'linear-gradient(135deg, #00e5ff, #4caf50)';
+        } else if (type === 'error') {
+          messageDiv.style.background = 'linear-gradient(135deg, #ff4444, #e91e63)';
+        } else {
+          messageDiv.style.background = 'linear-gradient(135deg, #00e5ff, #0072ff)';
+        }
+
+        document.body.appendChild(messageDiv);
+
+        setTimeout(() => {
+          messageDiv.style.opacity = '1';
+          messageDiv.style.transform = 'translateX(0)';
+        }, 100);
+
+        setTimeout(() => {
+          messageDiv.style.opacity = '0';
+          messageDiv.style.transform = 'translateX(100px)';
+          setTimeout(() => messageDiv.remove(), 400);
+        }, 3000);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      new LoginSystem();
+    });
+  </script>
+
+
+
+
+</body>
+
+</html>

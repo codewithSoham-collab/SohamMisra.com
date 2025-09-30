@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeytable</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <img src="icon.png" alt="Timeytable Icon" class="preloader-icon">
+        <p class="preloader-text">Created by Soham Misra</p>
+    </div>
+
+    <!-- Main App -->
+    <div id="app" class="hidden">
+        <header>
+            <h1>Timeytable</h1>
+        </header>
+        
+        <div class="container">
+            <!-- Add Task Button -->
+            <button id="addTaskBtn" class="add-btn">
+                <span class="plus-icon">+</span>
+            </button>
+
+            <!-- Task Form Modal -->
+            <div id="taskModal" class="modal hidden">
+                <div class="modal-content">
+                    <h2>Add New Task</h2>
+                    <input type="text" id="taskName" placeholder="Enter task name" maxlength="50">
+                    <div class="time-inputs">
+                        <input type="number" id="hours" placeholder="Hours" min="0" max="23" value="0">
+                        <input type="number" id="minutes" placeholder="Minutes" min="0" max="59" value="5">
+                        <input type="number" id="seconds" placeholder="Seconds" min="0" max="59" value="0">
+                    </div>
+                    <div class="modal-buttons">
+                        <button id="startTimer">Start Timer</button>
+                        <button id="cancelTask">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Timers -->
+            <div id="timersContainer"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+   <script>
+    // Disable right-click context menu
+    document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        return false;
+    }, { capture: true });
+
+    // Disable developer tools, copy/paste, print, and screenshot shortcuts
+    document.addEventListener("keydown", (event) => {
+        const forbiddenKeys = [
+            "F12", // Developer tools
+            "U",   // Ctrl+U (View source)
+            "S",   // Ctrl+S (Save page)
+            "P",   // Ctrl+P (Print)
+            "C",   // Ctrl+C (Copy)
+            "V",   // Ctrl+V (Paste)
+            "A",   // Ctrl+A (Select all)
+            "X",   // Ctrl+X (Cut)
+            "PrintScreen" // Screenshot key
+        ];
+
+        if (
+            forbiddenKeys.includes(event.key) ||
+            (event.ctrlKey && forbiddenKeys.includes(event.key.toUpperCase())) ||
+            (event.metaKey && forbiddenKeys.includes(event.key.toUpperCase())) || // Mac Cmd
+            (event.ctrlKey && event.shiftKey && ["I", "J", "C"].includes(event.key.toUpperCase()))
+        ) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (event.key === "PrintScreen") {
+                // Attempt to clear clipboard on PrintScreen (limited effectiveness)
+                try {
+                    navigator.clipboard.writeText("").catch(() => {});
+                } catch (err) {}
+            }
+            return false;
+        }
+    }, { capture: true, passive: false });
+
+    // Disable text selection
+    document.addEventListener("selectstart", (event) => {
+        event.preventDefault();
+        return false;
+    }, { capture: true });
+
+    // Apply CSS to prevent text selection across browsers
+    document.body.style.cssText += `
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    `;
+
+    // Disable copy, cut, paste
+    ["copy", "cut", "paste"].forEach(event => {
+        document.addEventListener(event, (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
+        }, { capture: true });
+    });
+
+    // Disable drag and drop
+    ["dragstart", "drop"].forEach(event => {
+        document.addEventListener(event, (event) => {
+            event.preventDefault();
+            return false;
+        }, { capture: true });
+    });
+
+    // Anti-screenshot: Dynamic watermark on canvas
+    function addWatermark() {
+        const canvas = document.createElement("canvas");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const ctx = canvas.getContext("2d");
+        ctx.globalAlpha = 0.2;
+        ctx.fillStyle = "red";
+        ctx.font = "20px Arial";
+        ctx.fillText("CONFIDENTIAL - DO NOT SCREENSHOT", 100, 100);
+        document.body.appendChild(canvas);
+        canvas.style.position = "fixed";
+        canvas.style.top = "0";
+        canvas.style.left = "0";
+        canvas.style.zIndex = "9998";
+        canvas.style.pointerEvents = "none";
+    }
+    window.addEventListener("load", addWatermark);
+    window.addEventListener("resize", addWatermark);
+
+    // Anti-screenshot: Blur content on focus loss to deter external tools
+    window.addEventListener("blur", () => {
+        document.body.style.filter = "blur(10px)";
+        setTimeout(() => {
+            document.body.style.filter = "none";
+        }, 2000); // Unblur after 2 seconds
+    });
+
+
+
+    // Protect images
+    document.querySelectorAll("img").forEach(img => {
+        img.setAttribute("draggable", "false");
+        img.style.pointerEvents = "none";
+    });
+
+    // Periodic console clear to hide traces
+    setInterval(() => {
+        console.clear();
+    }, 5000);
+
+    // Fallback devtools detection
+    let devtoolsOpen = false;
+    setInterval(() => {
+        if (
+            window.outerWidth - window.innerWidth > 160 ||
+            window.outerHeight - window.innerHeight > 160
+        ) {
+            if (!devtoolsOpen) {
+                devtoolsOpen = true;
+                alert("Developer Tools detected! Access denied.");
+                window.location.href = "about:blank";
+            }
+        } else {
+            devtoolsOpen = false;
+        }
+    }, 500);
+</script>
+</body>
+</html>

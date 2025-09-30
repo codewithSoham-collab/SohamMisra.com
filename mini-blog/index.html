@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Blog Platform</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-blog"></i>
+                <span>MiniBlog</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#dashboard" class="nav-link">Dashboard</a>
+                <a href="#profile" class="nav-link">Profile</a>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="auth-btn" id="authBtn">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="container">
+                <header class="hero">
+                    <h1 class="hero-title fade-in">Welcome to MiniBlog</h1>
+                    <p class="hero-subtitle fade-in">Share your thoughts with the world</p>
+                </header>
+
+                <!-- Search & Filter -->
+                <div class="search-section">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search posts...">
+                    </div>
+                    <div class="filter-tags">
+                        <button class="tag-btn active" data-tag="all">All</button>
+                        <button class="tag-btn" data-tag="tech">Tech</button>
+                        <button class="tag-btn" data-tag="lifestyle">Lifestyle</button>
+                        <button class="tag-btn" data-tag="travel">Travel</button>
+                    </div>
+                </div>
+
+                <!-- Posts Grid -->
+                <div class="posts-grid" id="postsGrid">
+                    <!-- Posts will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Post Detail Page -->
+        <section id="post-detail" class="page">
+            <div class="container">
+                <button class="back-btn" id="backBtn">
+                    <i class="fas fa-arrow-left"></i> Back to Posts
+                </button>
+                <article class="post-detail" id="postDetailContent">
+                    <!-- Post detail content will be loaded here -->
+                </article>
+            </div>
+        </section>
+
+        <!-- Create/Edit Post Page -->
+        <section id="create-post" class="page">
+            <div class="container">
+                <div class="form-container">
+                    <h2 id="formTitle">Create New Post</h2>
+                    <form id="postForm" class="post-form">
+                        <div class="form-group">
+                            <input type="text" id="postTitle" placeholder="Enter post title..." required>
+                        </div>
+                        <div class="form-group">
+                            <select id="postTag" required>
+                                <option value="">Select a tag</option>
+                                <option value="tech">Tech</option>
+                                <option value="lifestyle">Lifestyle</option>
+                                <option value="travel">Travel</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="postContent" placeholder="Write your post content..." required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                            <button type="submit" class="btn-primary" id="submitBtn">Publish Post</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Page -->
+        <section id="dashboard" class="page">
+            <div class="container">
+                <h2>Dashboard</h2>
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalPosts">0</h3>
+                            <p>Total Posts</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalComments">0</h3>
+                            <p>Total Comments</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalLikes">0</h3>
+                            <p>Total Likes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-content">
+                    <div class="chart-container">
+                        <canvas id="postsChart"></canvas>
+                    </div>
+                    <div class="recent-activity">
+                        <h3>Recent Posts</h3>
+                        <div class="activity-list" id="recentPosts">
+                            <!-- Recent posts will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Page -->
+        <section id="profile" class="page">
+            <div class="container">
+                <div class="profile-container">
+                    <h2>Profile Settings</h2>
+                    <form id="profileForm" class="profile-form">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" placeholder="Enter username">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Bio</label>
+                            <textarea id="bio" placeholder="Tell us about yourself..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Update Profile</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating Action Button -->
+    <button class="fab" id="fabBtn">
+        <i class="fas fa-plus"></i>
+    </button>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login">Login</button>
+                    <button class="auth-tab" data-tab="signup">Sign Up</button>
+                </div>
+                <form id="loginForm" class="auth-form active">
+                    <h3>Login</h3>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit" class="btn-primary">Login</button>
+                </form>
+                <form id="signupForm" class="auth-form">
+                    <h3>Sign Up</h3>
+                    <input type="text" placeholder="Username" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit" class="btn-primary">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/posts.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/app.js"></script>
+<script>
+    // Disable right-click context menu
+    document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        return false;
+    }, { capture: true });
+
+    // Disable developer tools, copy/paste, print, and screenshot shortcuts
+    document.addEventListener("keydown", (event) => {
+        const forbiddenKeys = [
+            "F12", // Developer tools
+            "U",   // Ctrl+U (View source)
+            "S",   // Ctrl+S (Save page)
+            "P",   // Ctrl+P (Print)
+            "C",   // Ctrl+C (Copy)
+            "V",   // Ctrl+V (Paste)
+            "A",   // Ctrl+A (Select all)
+            "X",   // Ctrl+X (Cut)
+            "PrintScreen" // Screenshot key
+        ];
+
+        if (
+            forbiddenKeys.includes(event.key) ||
+            (event.ctrlKey && forbiddenKeys.includes(event.key.toUpperCase())) ||
+            (event.metaKey && forbiddenKeys.includes(event.key.toUpperCase())) || // Mac Cmd
+            (event.ctrlKey && event.shiftKey && ["I", "J", "C"].includes(event.key.toUpperCase()))
+        ) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (event.key === "PrintScreen") {
+                // Attempt to clear clipboard on PrintScreen (limited effectiveness)
+                try {
+                    navigator.clipboard.writeText("").catch(() => {});
+                } catch (err) {}
+            }
+            return false;
+        }
+    }, { capture: true, passive: false });
+
+    // Disable text selection
+    document.addEventListener("selectstart", (event) => {
+        event.preventDefault();
+        return false;
+    }, { capture: true });
+
+    // Apply CSS to prevent text selection across browsers
+    document.body.style.cssText += `
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    `;
+
+    // Disable copy, cut, paste
+    ["copy", "cut", "paste"].forEach(event => {
+        document.addEventListener(event, (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
+        }, { capture: true });
+    });
+
+    // Disable drag and drop
+    ["dragstart", "drop"].forEach(event => {
+        document.addEventListener(event, (event) => {
+            event.preventDefault();
+            return false;
+        }, { capture: true });
+    });
+
+    // Anti-screenshot: Dynamic watermark on canvas
+    function addWatermark() {
+        const canvas = document.createElement("canvas");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const ctx = canvas.getContext("2d");
+        ctx.globalAlpha = 0.2;
+        ctx.fillStyle = "red";
+        ctx.font = "20px Arial";
+        ctx.fillText("CONFIDENTIAL - DO NOT SCREENSHOT", 100, 100);
+        document.body.appendChild(canvas);
+        canvas.style.position = "fixed";
+        canvas.style.top = "0";
+        canvas.style.left = "0";
+        canvas.style.zIndex = "9998";
+        canvas.style.pointerEvents = "none";
+    }
+    window.addEventListener("load", addWatermark);
+    window.addEventListener("resize", addWatermark);
+
+    // Anti-screenshot: Blur content on focus loss to deter external tools
+    window.addEventListener("blur", () => {
+        document.body.style.filter = "blur(10px)";
+        setTimeout(() => {
+            document.body.style.filter = "none";
+        }, 2000); // Unblur after 2 seconds
+    });
+
+
+
+    // Protect images
+    document.querySelectorAll("img").forEach(img => {
+        img.setAttribute("draggable", "false");
+        img.style.pointerEvents = "none";
+    });
+
+    // Periodic console clear to hide traces
+    setInterval(() => {
+        console.clear();
+    }, 5000);
+
+    // Fallback devtools detection
+    let devtoolsOpen = false;
+    setInterval(() => {
+        if (
+            window.outerWidth - window.innerWidth > 160 ||
+            window.outerHeight - window.innerHeight > 160
+        ) {
+            if (!devtoolsOpen) {
+                devtoolsOpen = true;
+                alert("Developer Tools detected! Access denied.");
+                window.location.href = "about:blank";
+            }
+        } else {
+            devtoolsOpen = false;
+        }
+    }, 500);
+</script>
+</body>
+</html>

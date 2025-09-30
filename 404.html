@@ -1,0 +1,444 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #0A0A23; /* Deep blue */
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #00FFFF; /* Cyan */
+        }
+        #container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            animation: fadeIn 1.5s ease-in-out;
+            max-width: 80%;
+        }
+        h1 {
+            font-size: 5em;
+            margin: 0;
+            color: #00FFFF; /* Cyan */
+            text-shadow: 0 0 15px #0000FF, 0 0 30px #00FFFF; /* Blue and cyan glow */
+            animation: pulseGlow 2s ease-in-out infinite alternate;
+        }
+        p {
+            font-size: 1.5em;
+            color: #00FFFF;
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+        .home-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(45deg, #0000FF, #00FFFF); /* Blue to cyan */
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+        .home-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.8);
+            background: linear-gradient(45deg, #00FFFF, #0000FF); /* Reverse gradient */
+        }
+        @keyframes pulseGlow {
+            0% {
+                text-shadow: 0 0 10px #0000FF, 0 0 20px #00FFFF;
+            }
+            100% {
+                text-shadow: 0 0 20px #0000FF, 0 0 40px #00FFFF;
+            }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translate(-50%, -60%); }
+            100% { opacity: 1; transform: translate(-50%, -50%); }
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3em;
+            }
+            p {
+                font-size: 1.2em;
+            }
+            .home-btn {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <div class="content">
+        <h1>404</h1>
+        <p>Oops! The page you're looking for doesn't exist.</p>
+        <p>It seems you've ventured into uncharted digital territory.</p>
+        <p>Don't worry, let's get you back on track.</p>
+        <p>Click the button below to return to the homepage.</p>
+        <a href="/" class="home-btn">Go to Home Page</a>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script>
+        // Three.js setup for clearer dotted 3D "404" background with looping diagonal motion
+        const fontName = 'Arial';
+        const textureFontSize = 300; // Larger font for clarity
+        const fontScaleFactor = 0.05; // Sharper scaling
+        const particleColor = 0x00FFFF; // Cyan
+
+        let textureCoordinates = [];
+        let particles = [];
+        let instancedMesh, dummy, group, stringBox = { wScene: 0, hScene: 0 };
+        let animationTime = 0;
+
+        // Scene setup
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0A0A23); // Deep blue
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 20; // Closer for visibility
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('container').appendChild(renderer.domElement);
+
+        // Lights for better contrast
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+        scene.add(ambientLight);
+        const pointLight = new THREE.PointLight(0x00FFFF, 2, 50);
+        pointLight.position.set(10, 10, 15);
+        scene.add(pointLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight.position.set(-10, 10, 10);
+        scene.add(directionalLight);
+
+        // Canvas for text sampling
+        const textCanvas = document.createElement('canvas');
+        const textCtx = textCanvas.getContext('2d');
+
+        group = new THREE.Group();
+        scene.add(group);
+
+        // Sample coordinates for "404"
+        function sampleCoordinates() {
+            const string = '404';
+            const wTexture = textureFontSize * 3;
+            const hTexture = textureFontSize * 1.5;
+
+            textCanvas.width = wTexture;
+            textCanvas.height = hTexture;
+            textCtx.font = `bold ${textureFontSize}px ${fontName}`;
+            textCtx.fillStyle = '#00FFFF';
+            textCtx.textAlign = 'center';
+            textCtx.textBaseline = 'middle';
+            textCtx.clearRect(0, 0, wTexture, hTexture);
+            textCtx.fillText(string, wTexture / 2, hTexture / 2);
+
+            textureCoordinates = [];
+            const samplingStep = 2; // Finer sampling
+            for (let i = 0; i < hTexture; i += samplingStep) {
+                for (let j = 0; j < wTexture; j += samplingStep) {
+                    if (textCtx.getImageData(j, i, 1, 1).data[3] > 0) {
+                        textureCoordinates.push({ x: j - wTexture / 2, y: -i + hTexture / 2 });
+                    }
+                }
+            }
+
+            textureCoordinates = textureCoordinates.map(c => ({
+                x: c.x * fontScaleFactor,
+                y: c.y * fontScaleFactor
+            }));
+
+            stringBox.wScene = Math.max(...textureCoordinates.map(v => Math.abs(v.x))) * 2;
+            stringBox.hScene = Math.max(...textureCoordinates.map(v => Math.abs(v.y))) * 2;
+        }
+
+        // Particle class
+        class Particle {
+            constructor([x, y]) {
+                this.baseX = x;
+                this.baseY = y;
+                this.baseZ = (Math.random() - 0.5) * 5;
+                this.x = this.baseX;
+                this.y = this.baseY;
+                this.z = this.baseZ;
+                this.rotationX = Math.random() * Math.PI * 2;
+                this.rotationY = Math.random() * Math.PI * 2;
+                this.rotationZ = Math.random() * Math.PI * 2;
+                this.scale = 0.8; // Fixed scale
+                this.deltaRotation = 0.02; // Reduced for clarity
+                this.orbitSpeed = 0.08; // Fast orbit
+                this.orbitAngle = Math.random() * Math.PI * 2;
+            }
+            update() {
+                this.rotationX += this.deltaRotation;
+                this.rotationY += this.deltaRotation;
+                this.rotationZ += this.deltaRotation;
+                this.orbitAngle += this.orbitSpeed;
+                // Small orbit to maintain shape clarity
+                this.x = this.baseX + Math.sin(this.orbitAngle) * 1;
+                this.y = this.baseY + Math.cos(this.orbitAngle) * 1;
+                this.z = this.baseZ + Math.sin(this.orbitAngle * 0.8) * 1.5;
+            }
+        }
+
+        // Create instanced mesh
+        function createInstancedMesh() {
+            if (instancedMesh) group.remove(instancedMesh);
+            const particleGeometry = new THREE.SphereGeometry(0.05, 10, 10); // Smaller particles
+            const particleMaterial = new THREE.MeshPhongMaterial({
+                color: particleColor,
+                shininess: 120,
+                emissive: 0x0000FF,
+                emissiveIntensity: 0.7
+            });
+            instancedMesh = new THREE.InstancedMesh(particleGeometry, particleMaterial, textureCoordinates.length);
+            dummy = new THREE.Object3D();
+            particles = [];
+            for (let i = 0; i < textureCoordinates.length; i++) {
+                const coord = textureCoordinates[i];
+                const p = new Particle([coord.x, coord.y]);
+                particles.push(p);
+                updateInstance(i);
+            }
+            group.add(instancedMesh);
+        }
+
+        function updateInstance(i) {
+            const p = particles[i];
+            dummy.position.set(p.x, p.y, p.z);
+            dummy.rotation.set(p.rotationX, p.rotationY, p.rotationZ);
+            dummy.scale.set(p.scale, p.scale, p.scale);
+            dummy.updateMatrix();
+            instancedMesh.setMatrixAt(i, dummy.matrix);
+            instancedMesh.instanceMatrix.needsUpdate = true;
+        }
+
+        // Initialize
+        sampleCoordinates();
+        createInstancedMesh();
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            animationTime += 0.05; // Faster animation speed
+            particles.forEach((p, i) => {
+                p.update();
+                updateInstance(i);
+            });
+            // Looping diagonal motion
+            const loopDuration = 4 * Math.PI; // Full cycle
+            const t = animationTime % loopDuration;
+            const amplitude = 5; // Distance of diagonal movement
+            group.position.x = Math.sin(t) * amplitude; // Diagonal x
+            group.position.y = Math.cos(t) * amplitude; // Diagonal y
+            group.position.z = Math.sin(t * 0.5) * amplitude; // Diagonal z
+            group.rotation.y = Math.sin(t) * 0.2; // Slight rotation for dynamism
+            group.rotation.x = Math.cos(t) * 0.2;
+            group.rotation.z = Math.sin(t * 0.5) * 0.2;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+<script>
+    // Disable right-click context menu
+    document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        return false;
+    }, { capture: true });
+
+    // Disable developer tools, copy/paste, print, and screenshot shortcuts
+    document.addEventListener("keydown", (event) => {
+        const forbiddenKeys = [
+            "F12", // Developer tools
+            "U",   // Ctrl+U (View source)
+            "S",   // Ctrl+S (Save page)
+            "P",   // Ctrl+P (Print)
+            "C",   // Ctrl+C (Copy)
+            "V",   // Ctrl+V (Paste)
+            "A",   // Ctrl+A (Select all)
+            "X",   // Ctrl+X (Cut)
+            "PrintScreen" // Screenshot key
+        ];
+
+        if (
+            forbiddenKeys.includes(event.key) ||
+            (event.ctrlKey && forbiddenKeys.includes(event.key.toUpperCase())) ||
+            (event.metaKey && forbiddenKeys.includes(event.key.toUpperCase())) || // Mac Cmd
+            (event.ctrlKey && event.shiftKey && ["I", "J", "C"].includes(event.key.toUpperCase()))
+        ) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (event.key === "PrintScreen") {
+                // Attempt to clear clipboard on PrintScreen (limited effectiveness)
+                try {
+                    navigator.clipboard.writeText("").catch(() => {});
+                } catch (err) {}
+            }
+            return false;
+        }
+    }, { capture: true, passive: false });
+
+    // Disable text selection
+    document.addEventListener("selectstart", (event) => {
+        event.preventDefault();
+        return false;
+    }, { capture: true });
+
+    // Apply CSS to prevent text selection across browsers
+    document.body.style.cssText += `
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    `;
+
+    // Disable copy, cut, paste
+    ["copy", "cut", "paste"].forEach(event => {
+        document.addEventListener(event, (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
+        }, { capture: true });
+    });
+
+    // Disable drag and drop
+    ["dragstart", "drop"].forEach(event => {
+        document.addEventListener(event, (event) => {
+            event.preventDefault();
+            return false;
+        }, { capture: true });
+    });
+
+    // Anti-screenshot: Dynamic watermark on canvas
+    function addWatermark() {
+        const canvas = document.createElement("canvas");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const ctx = canvas.getContext("2d");
+        ctx.globalAlpha = 0.2;
+        ctx.fillStyle = "red";
+        ctx.font = "20px Arial";
+        ctx.fillText("", 100, 100);
+        document.body.appendChild(canvas);
+        canvas.style.position = "fixed";
+        canvas.style.top = "0";
+        canvas.style.left = "0";
+        canvas.style.zIndex = "9998";
+        canvas.style.pointerEvents = "none";
+    }
+    window.addEventListener("load", addWatermark);
+    window.addEventListener("resize", addWatermark);
+
+    // Anti-screenshot: Blur content on focus loss to deter external tools
+    window.addEventListener("blur", () => {
+        document.body.style.filter = "blur(10px)";
+        setTimeout(() => {
+            document.body.style.filter = "none";
+        }, 2000); // Unblur after 2 seconds
+    });
+
+
+
+    // Protect images
+    document.querySelectorAll("img").forEach(img => {
+        img.setAttribute("draggable", "false");
+        img.style.pointerEvents = "none";
+    });
+
+    // Periodic console clear to hide traces
+    setInterval(() => {
+        console.clear();
+    }, 5000);
+
+    // Fallback devtools detection
+    let devtoolsOpen = false;
+    setInterval(() => {
+        if (
+            window.outerWidth - window.innerWidth > 160 ||
+            window.outerHeight - window.innerHeight > 160
+        ) {
+            if (!devtoolsOpen) {
+                devtoolsOpen = true;
+                alert("Developer Tools detected! Access denied.");
+                window.location.href = "about:blank";
+            }
+        } else {
+            devtoolsOpen = false;
+        }
+    }, 500);
+</script>
+</body>
+</html>

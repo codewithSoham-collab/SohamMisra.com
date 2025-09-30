@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy N.E.X.U.S – Neural Engineered Standard Unified System</title>
+  <link rel="stylesheet" href="buy-style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Purchase N.E.X.U.S - Advanced AI Assistant for PC and Mobile">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav class="buy-nav">
+      <div class="logo">N.E.X.U.S</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#pc-version" class="active">PC Version</a></li>
+        <li><a href="#mobile-version">Mobile Version</a></li>
+        <li><a href="#bundle-offer">Bundle Deal</a></li>
+      </ul>
+      <div class="mobile-menu-toggle">
+        <i class='bx bx-menu'></i>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="buy-main">
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h1>Choose Your N.E.X.U.S Experience</h1>
+      <p>Advanced AI Assistant tailored for your platform</p>
+    </section>
+
+    <!-- Bundle Offer -->
+    <section id="bundle-offer" class="buy-section featured">
+      <div class="bundle-badge">BEST VALUE</div>
+      <h2>Complete Bundle Package</h2>
+      <div class="buy-card bundle-card">
+        <div class="buy-icon">
+          <i class='bx bx-package'></i>
+        </div>
+        <div class="buy-details">
+          <h3><span class="original-price">$10.98</span> <span class="bundle-price">$7.99</span></h3>
+          <div class="savings">Save $2.99!</div>
+          <p>
+            Get both <b>PC/Windows</b> and <b>Mobile/Android</b> versions together! 
+            Complete ecosystem with <b>cross-platform sync</b>, <b>cloud backup</b>, 
+            and <b>premium support</b>.
+          </p>
+          <div class="features-list">
+            <div class="feature"><i class='bx bx-check'></i> Voice AI Assistant</div>
+            <div class="feature"><i class='bx bx-check'></i> System Management</div>
+            <div class="feature"><i class='bx bx-check'></i> Cross-Platform Sync</div>
+            <div class="feature"><i class='bx bx-check'></i> Premium Support</div>
+          </div>
+          <button class="btn buy-now bundle-btn" onclick="initiatePurchase('bundle')">Buy Bundle Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PC Version -->
+    <section id="pc-version" class="buy-section">
+      <h2>PC / Windows Version</h2>
+      <div class="buy-card">
+        <div class="buy-icon">
+          <i class='bx bxl-windows'></i>
+        </div>
+        <div class="buy-details">
+          <h3>$5.99</h3>
+          <div class="platform-badge">Windows 10/11</div>
+          <p>
+            Full-featured <b>PC version</b> with advanced capabilities. 
+            Includes <b>voice AI assistant</b>, <b>system management</b>, 
+            <b>productivity suite</b>, <b>game zone</b>, and <b>design studio</b>.
+          </p>
+          <div class="features-list">
+            <div class="feature"><i class='bx bx-check'></i> Voice Control</div>
+            <div class="feature"><i class='bx bx-check'></i> System Optimization</div>
+            <div class="feature"><i class='bx bx-check'></i> Productivity Tools</div>
+            <div class="feature"><i class='bx bx-check'></i> Gaming Features</div>
+          </div>
+          <button class="btn buy-now" onclick="initiatePurchase('pc')">Buy PC Version</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mobile Version -->
+    <section id="mobile-version" class="buy-section">
+      <h2>Mobile / Android Version</h2>
+      <div class="buy-card">
+        <div class="buy-icon">
+          <i class='bx bxl-android'></i>
+        </div>
+        <div class="buy-details">
+          <h3>$4.99</h3>
+          <div class="platform-badge">Android 8.0+</div>
+          <p>
+            Portable <b>mobile version</b> for Android devices. 
+            Features <b>AI assistant</b>, <b>productivity tools</b>, and <b>mobile optimization</b> 
+            for on-the-go productivity.
+          </p>
+          <div class="features-list">
+            <div class="feature"><i class='bx bx-check'></i> Mobile AI Assistant</div>
+            <div class="feature"><i class='bx bx-check'></i> Touch Optimization</div>
+            <div class="feature"><i class='bx bx-check'></i> Offline Mode</div>
+            <div class="feature"><i class='bx bx-check'></i> Battery Efficient</div>
+          </div>
+          <button class="btn buy-now" onclick="initiatePurchase('mobile')">Buy Mobile Version</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Construction Modal -->
+    <div id="construction-modal" class="construction-modal">
+      <div class="construction-content">
+        <div class="construction-icon">
+          <i class='bx bx-hard-hat'></i>
+        </div>
+        <h2>Under Construction</h2>
+        <p>This feature is currently being developed.<br>Please check back soon!</p>
+        <button class="construction-btn" onclick="closeConstructionModal()">Got it!</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 N.E.X.U.S | Developed by Soham Misra</p>
+  </footer>
+<script>
+    // Purchase and Payment Functions
+    function initiatePurchase(type) {
+        const modal = document.getElementById('construction-modal');
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeConstructionModal() {
+        const modal = document.getElementById('construction-modal');
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    
+    // Page initialization
+    document.addEventListener('DOMContentLoaded', function() {
+        // Close modal on outside click
+        document.getElementById('construction-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeConstructionModal();
+            }
+        });
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeConstructionModal();
+            }
+        });
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.buy-section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.8s ease-out';
+            observer.observe(section);
+        });
+    });
+    
+    // Disable right-click context menu
+    document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        return false;
+    }, { capture: true });
+
+    // Disable developer tools, copy/paste, print, and screenshot shortcuts
+    document.addEventListener("keydown", (event) => {
+        const forbiddenKeys = [
+            "F12", // Developer tools
+            "U",   // Ctrl+U (View source)
+            "S",   // Ctrl+S (Save page)
+            "P",   // Ctrl+P (Print)
+            "C",   // Ctrl+C (Copy)
+            "V",   // Ctrl+V (Paste)
+            "A",   // Ctrl+A (Select all)
+            "X",   // Ctrl+X (Cut)
+            "PrintScreen" // Screenshot key
+        ];
+
+        if (
+            forbiddenKeys.includes(event.key) ||
+            (event.ctrlKey && forbiddenKeys.includes(event.key.toUpperCase())) ||
+            (event.metaKey && forbiddenKeys.includes(event.key.toUpperCase())) || // Mac Cmd
+            (event.ctrlKey && event.shiftKey && ["I", "J", "C"].includes(event.key.toUpperCase()))
+        ) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (event.key === "PrintScreen") {
+                // Attempt to clear clipboard on PrintScreen (limited effectiveness)
+                try {
+                    navigator.clipboard.writeText("").catch(() => {});
+                } catch (err) {}
+            }
+            return false;
+        }
+    }, { capture: true, passive: false });
+
+    // Disable text selection
+    document.addEventListener("selectstart", (event) => {
+        event.preventDefault();
+        return false;
+    }, { capture: true });
+
+    // Apply CSS to prevent text selection across browsers
+    document.body.style.cssText += `
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    `;
+
+    // Disable copy, cut, paste
+    ["copy", "cut", "paste"].forEach(event => {
+        document.addEventListener(event, (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
+        }, { capture: true });
+    });
+
+    // Disable drag and drop
+    ["dragstart", "drop"].forEach(event => {
+        document.addEventListener(event, (event) => {
+            event.preventDefault();
+            return false;
+        }, { capture: true });
+    });
+
+    // Anti-screenshot: Dynamic watermark on canvas
+    function addWatermark() {
+        const canvas = document.createElement("canvas");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const ctx = canvas.getContext("2d");
+        ctx.globalAlpha = 0.2;
+        ctx.fillStyle = "red";
+        ctx.font = "20px Arial";
+        ctx.fillText("", 100, 100);
+        document.body.appendChild(canvas);
+        canvas.style.position = "fixed";
+        canvas.style.top = "0";
+        canvas.style.left = "0";
+        canvas.style.zIndex = "9998";
+        canvas.style.pointerEvents = "none";
+    }
+    window.addEventListener("load", addWatermark);
+    window.addEventListener("resize", addWatermark);
+
+    // Anti-screenshot: Blur content on focus loss to deter external tools
+    window.addEventListener("blur", () => {
+        document.body.style.filter = "blur(10px)";
+        setTimeout(() => {
+            document.body.style.filter = "none";
+        }, 2000); // Unblur after 2 seconds
+    });
+
+
+
+    // Protect images
+    document.querySelectorAll("img").forEach(img => {
+        img.setAttribute("draggable", "false");
+        img.style.pointerEvents = "none";
+    });
+
+    // Periodic console clear to hide traces
+    setInterval(() => {
+        console.clear();
+    }, 5000);
+
+    // Fallback devtools detection
+    let devtoolsOpen = false;
+    setInterval(() => {
+        if (
+            window.outerWidth - window.innerWidth > 160 ||
+            window.outerHeight - window.innerHeight > 160
+        ) {
+            if (!devtoolsOpen) {
+                devtoolsOpen = true;
+                alert("Developer Tools detected! Access denied.");
+                window.location.href = "about:blank";
+            }
+        } else {
+            devtoolsOpen = false;
+        }
+    }, 500);
+</script>
+</body>
+</html>

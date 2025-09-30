@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Animation App</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-cloud-sun"></i>
+                <span>WeatherApp</span>
+            </div>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="unit-toggle" id="unitToggle">°C</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Search for a city..." autocomplete="off">
+                    <button class="search-btn" id="searchBtn">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="suggestions" id="suggestions"></div>
+            </div>
+        </section>
+
+        <!-- Weather Display -->
+        <section class="weather-section">
+            <div class="weather-container">
+                <!-- Main Weather Card -->
+                <div class="weather-card" id="weatherCard">
+                    <div class="weather-header">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="locationName">Loading...</span>
+                        </div>
+                        <div class="date-time" id="dateTime"></div>
+                    </div>
+                    
+                    <div class="weather-main">
+                        <div class="temperature-section">
+                            <div class="temperature" id="temperature">--°</div>
+                            <div class="weather-desc" id="weatherDesc">Loading...</div>
+                            <div class="feels-like">Feels like <span id="feelsLike">--°</span></div>
+                        </div>
+                        
+                        <div class="weather-icon-section">
+                            <div class="weather-icon" id="weatherIcon">
+                                <i class="fas fa-sun"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <i class="fas fa-tint"></i>
+                            <span>Humidity</span>
+                            <span id="humidity">--%</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-wind"></i>
+                            <span>Wind</span>
+                            <span id="windSpeed">-- km/h</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-eye"></i>
+                            <span>Visibility</span>
+                            <span id="visibility">-- km</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-thermometer-half"></i>
+                            <span>Pressure</span>
+                            <span id="pressure">-- hPa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Animation Canvas -->
+                <div class="animation-container">
+                    <canvas id="weatherCanvas" class="weather-canvas"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forecast Section -->
+        <section class="forecast-section">
+            <h2 class="section-title">7-Day Forecast</h2>
+            <div class="forecast-container" id="forecastContainer">
+                <!-- Forecast cards will be dynamically generated -->
+            </div>
+        </section>
+
+        <!-- Hourly Forecast -->
+        <section class="hourly-section">
+            <h2 class="section-title">24-Hour Forecast</h2>
+            <div class="hourly-container" id="hourlyContainer">
+                <!-- Hourly cards will be dynamically generated -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading weather data...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/weather-api.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/app.js"></script>
+<script>
+    // Disable right-click context menu
+    document.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+        return false;
+    }, { capture: true });
+
+    // Disable developer tools, copy/paste, print, and screenshot shortcuts
+    document.addEventListener("keydown", (event) => {
+        const forbiddenKeys = [
+            "F12", // Developer tools
+            "U",   // Ctrl+U (View source)
+            "S",   // Ctrl+S (Save page)
+            "P",   // Ctrl+P (Print)
+            "C",   // Ctrl+C (Copy)
+            "V",   // Ctrl+V (Paste)
+            "A",   // Ctrl+A (Select all)
+            "X",   // Ctrl+X (Cut)
+            "PrintScreen" // Screenshot key
+        ];
+
+        if (
+            forbiddenKeys.includes(event.key) ||
+            (event.ctrlKey && forbiddenKeys.includes(event.key.toUpperCase())) ||
+            (event.metaKey && forbiddenKeys.includes(event.key.toUpperCase())) || // Mac Cmd
+            (event.ctrlKey && event.shiftKey && ["I", "J", "C"].includes(event.key.toUpperCase()))
+        ) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (event.key === "PrintScreen") {
+                // Attempt to clear clipboard on PrintScreen (limited effectiveness)
+                try {
+                    navigator.clipboard.writeText("").catch(() => {});
+                } catch (err) {}
+            }
+            return false;
+        }
+    }, { capture: true, passive: false });
+
+    // Disable text selection
+    document.addEventListener("selectstart", (event) => {
+        event.preventDefault();
+        return false;
+    }, { capture: true });
+
+    // Apply CSS to prevent text selection across browsers
+    document.body.style.cssText += `
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    `;
+
+    // Disable copy, cut, paste
+    ["copy", "cut", "paste"].forEach(event => {
+        document.addEventListener(event, (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
+        }, { capture: true });
+    });
+
+    // Disable drag and drop
+    ["dragstart", "drop"].forEach(event => {
+        document.addEventListener(event, (event) => {
+            event.preventDefault();
+            return false;
+        }, { capture: true });
+    });
+
+    // Anti-screenshot: Dynamic watermark on canvas
+    function addWatermark() {
+        const canvas = document.createElement("canvas");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const ctx = canvas.getContext("2d");
+        ctx.globalAlpha = 0.2;
+        ctx.fillStyle = "red";
+        ctx.font = "20px Arial";
+        ctx.fillText("CONFIDENTIAL - DO NOT SCREENSHOT", 100, 100);
+        document.body.appendChild(canvas);
+        canvas.style.position = "fixed";
+        canvas.style.top = "0";
+        canvas.style.left = "0";
+        canvas.style.zIndex = "9998";
+        canvas.style.pointerEvents = "none";
+    }
+    window.addEventListener("load", addWatermark);
+    window.addEventListener("resize", addWatermark);
+
+    // Anti-screenshot: Blur content on focus loss to deter external tools
+    window.addEventListener("blur", () => {
+        document.body.style.filter = "blur(10px)";
+        setTimeout(() => {
+            document.body.style.filter = "none";
+        }, 2000); // Unblur after 2 seconds
+    });
+
+
+
+    // Protect images
+    document.querySelectorAll("img").forEach(img => {
+        img.setAttribute("draggable", "false");
+        img.style.pointerEvents = "none";
+    });
+
+    // Periodic console clear to hide traces
+    setInterval(() => {
+        console.clear();
+    }, 5000);
+
+    // Fallback devtools detection
+    let devtoolsOpen = false;
+    setInterval(() => {
+        if (
+            window.outerWidth - window.innerWidth > 160 ||
+            window.outerHeight - window.innerHeight > 160
+        ) {
+            if (!devtoolsOpen) {
+                devtoolsOpen = true;
+                alert("Developer Tools detected! Access denied.");
+                window.location.href = "about:blank";
+            }
+        } else {
+            devtoolsOpen = false;
+        }
+    }, 500);
+</script>
+</body>
+</html>
