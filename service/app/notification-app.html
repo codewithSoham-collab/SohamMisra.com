@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Manager Pro - Soham Misra</title>
+    <link rel="stylesheet" href="notification-app.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-container">
+            <div class="notification-loader">
+                <i class="fas fa-bell"></i>
+                <div class="notification-pulse"></div>
+            </div>
+            <h2 class="loader-text">SOHAM MISRA</h2>
+            <p class="loader-subtitle">Notification Manager Pro</p>
+        </div>
+    </div>
+
+    <!-- Main App Interface -->
+    <div id="app-container" style="display: none;">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="app-logo">
+                    <i class="fas fa-bell"></i>
+                    <span>NotifyPro</span>
+                </div>
+                <div class="header-controls">
+                    <button class="control-btn" id="settingsBtn">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <button class="control-btn" id="profileBtn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard -->
+        <main class="dashboard">
+            <!-- Stats Cards -->
+            <section class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalNotifications">247</h3>
+                        <p>Total Today</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="filteredNotifications">89</h3>
+                        <p>Filtered</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="scheduledNotifications">12</h3>
+                        <p>Scheduled</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notification Categories -->
+            <section class="categories-section">
+                <h2>Notification Categories</h2>
+                <div class="categories-grid">
+                    <div class="category-card active" data-category="all">
+                        <i class="fas fa-inbox"></i>
+                        <span>All</span>
+                        <div class="category-count">247</div>
+                    </div>
+                    <div class="category-card" data-category="social">
+                        <i class="fas fa-users"></i>
+                        <span>Social</span>
+                        <div class="category-count">89</div>
+                    </div>
+                    <div class="category-card" data-category="work">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Work</span>
+                        <div class="category-count">45</div>
+                    </div>
+                    <div class="category-card" data-category="entertainment">
+                        <i class="fas fa-play"></i>
+                        <span>Entertainment</span>
+                        <div class="category-count">67</div>
+                    </div>
+                    <div class="category-card" data-category="news">
+                        <i class="fas fa-newspaper"></i>
+                        <span>News</span>
+                        <div class="category-count">23</div>
+                    </div>
+                    <div class="category-card" data-category="shopping">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Shopping</span>
+                        <div class="category-count">18</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Live Notifications -->
+            <section class="notifications-section">
+                <div class="section-header">
+                    <h2>Live Notifications</h2>
+                    <div class="notification-controls">
+                        <button class="control-btn" id="pauseBtn">
+                            <i class="fas fa-pause"></i>
+                        </button>
+                        <button class="control-btn" id="clearBtn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="notifications-list" id="notificationsList">
+                    <!-- Notifications will be dynamically added here -->
+                </div>
+            </section>
+
+            <!-- Smart Rules -->
+            <section class="rules-section">
+                <h2>Smart Rules</h2>
+                <div class="rules-container">
+                    <div class="rule-card">
+                        <div class="rule-header">
+                            <i class="fas fa-moon"></i>
+                            <span>Do Not Disturb</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <p>Active from 10:00 PM to 7:00 AM</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-header">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Work Mode</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <p>Only work-related notifications during work hours</p>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-header">
+                            <i class="fas fa-volume-mute"></i>
+                            <span>Silent Mode</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <p>Mute all notifications except calls and alarms</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Floating Action Button -->
+        <button class="fab" id="addRuleBtn">
+            <i class="fas fa-plus"></i>
+        </button>
+
+        <!-- Settings Modal -->
+        <div id="settingsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Settings</h2>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="setting-group">
+                        <h3>Notification Preferences</h3>
+                        <div class="setting-item">
+                            <span>Sound</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <span>Vibration</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <span>LED Light</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="setting-group">
+                        <h3>Privacy</h3>
+                        <div class="setting-item">
+                            <span>Show on Lock Screen</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <span>Hide Sensitive Content</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="notification-app.js"></script>
+</body>
+</html>

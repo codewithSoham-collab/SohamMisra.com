@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KFC Clone - Finger Lickin' Good</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <svg viewBox="0 0 100 40" class="kfc-logo">
+                    <rect width="100" height="40" fill="#d62300"/>
+                    <text x="50" y="25" text-anchor="middle" fill="white" font-size="16" font-weight="bold">KFC</text>
+                </svg>
+            </div>
+            <nav class="nav-menu">
+                <a href="#menu" class="active">Menu</a>
+                <a href="#deals">Deals & Offers</a>
+                <a href="#rewards">Rewards</a>
+                <a href="#locations">Locations</a>
+                <a href="#catering">Catering</a>
+            </nav>
+            <div class="nav-right">
+                <div class="location-finder">
+                    <span class="location-icon">📍</span>
+                    <span>Find KFC</span>
+                </div>
+                <button class="order-btn">Start Order</button>
+                <div class="cart-icon">
+                    <span>🛒</span>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">NEW</div>
+                <h1 class="hero-title">Nashville Hot Chicken</h1>
+                <p class="hero-subtitle">Our hottest chicken yet! Hand-breaded and seasoned with our signature Nashville Hot sauce.</p>
+                <div class="hero-buttons">
+                    <button class="cta-btn primary">Order Now</button>
+                    <button class="cta-btn secondary">Learn More</button>
+                </div>
+                <div class="hero-price">
+                    <span class="price-label">Starting at</span>
+                    <span class="price">$8.99</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300' fill='%23d62300'%3E%3Crect width='400' height='300'/%3E%3Ctext x='200' y='150' text-anchor='middle' fill='white' font-size='40'%3E🍗%3C/text%3E%3C/svg%3E" alt="Nashville Hot Chicken" class="hero-img">
+            </div>
+        </section>
+
+        <section class="menu-categories">
+            <div class="category-tabs">
+                <button class="tab-btn active" data-category="chicken">Chicken</button>
+                <button class="tab-btn" data-category="burgers">Burgers & Wraps</button>
+                <button class="tab-btn" data-category="sides">Sides</button>
+                <button class="tab-btn" data-category="buckets">Buckets & Sharing</button>
+                <button class="tab-btn" data-category="desserts">Desserts</button>
+            </div>
+        </section>
+
+        <section class="featured-menu">
+            <h2>Most Popular</h2>
+            <div class="menu-grid">
+                <div class="menu-item" data-category="chicken">
+                    <div class="item-badge">BESTSELLER</div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 250 200' fill='%23d62300'%3E%3Crect width='250' height='200'/%3E%3Ctext x='125' y='100' text-anchor='middle' fill='white' font-size='60'%3E🍗%3C/text%3E%3C/svg%3E" alt="Original Recipe" class="item-image">
+                    <div class="item-content">
+                        <h3>Original Recipe Chicken</h3>
+                        <p>Our world-famous Original Recipe chicken, made with 11 herbs and spices</p>
+                        <div class="item-details">
+                            <div class="nutrition">
+                                <span>🔥 320 cal</span>
+                                <span>⏱️ 15 min</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$4.99</span>
+                                <span class="price-unit">per piece</span>
+                            </div>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <span class="quantity">1</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to Basket</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="burgers">
+                    <div class="item-badge hot">HOT</div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 250 200' fill='%23d62300'%3E%3Crect width='250' height='200'/%3E%3Ctext x='125' y='100' text-anchor='middle' fill='white' font-size='50'%3E🍔%3C/text%3E%3C/svg%3E" alt="Zinger Burger" class="item-image">
+                    <div class="item-content">
+                        <h3>Zinger Burger</h3>
+                        <p>Spicy chicken fillet with fresh lettuce and mayo in a sesame seed bun</p>
+                        <div class="item-details">
+                            <div class="nutrition">
+                                <span>🔥 540 cal</span>
+                                <span>⏱️ 12 min</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$6.99</span>
+                            </div>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <span class="quantity">1</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to Basket</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="sides">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 250 200' fill='%23d62300'%3E%3Crect width='250' height='200'/%3E%3Ctext x='125' y='100' text-anchor='middle' fill='white' font-size='50'%3E🍟%3C/text%3E%3C/svg%3E" alt="Regular Fries" class="item-image">
+                    <div class="item-content">
+                        <h3>Regular Fries</h3>
+                        <p>Crispy golden fries, lightly seasoned with our signature blend</p>
+                        <div class="item-details">
+                            <div class="nutrition">
+                                <span>🔥 280 cal</span>
+                                <span>⏱️ 5 min</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="price">$2.99</span>
+                            </div>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <span class="quantity">1</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to Basket</button>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="buckets">
+                    <div class="item-badge family">FAMILY SIZE</div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 250 200' fill='%23d62300'%3E%3Crect width='250' height='200'/%3E%3Ctext x='125' y='100' text-anchor='middle' fill='white' font-size='40'%3E🪣%3C/text%3E%3C/svg%3E" alt="Family Feast" class="item-image">
+                    <div class="item-content">
+                        <h3>Family Feast</h3>
+                        <p>6 pieces of chicken, 2 large sides, 4 biscuits. Feeds 3-4 people</p>
+                        <div class="item-details">
+                            <div class="nutrition">
+                                <span>👨‍👩‍👧‍👦 Serves 4</span>
+                                <span>⏱️ 20 min</span>
+                            </div>
+                            <div class="price-section">
+                                <span class="original-price">$28.99</span>
+                                <span class="price">$24.99</span>
+                            </div>
+                        </div>
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <span class="quantity">1</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart">Add to Basket</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="deals-section">
+            <div class="deals-header">
+                <h2>Exclusive Deals & Offers</h2>
+                <p>Limited time offers you don't want to miss</p>
+            </div>
+            <div class="deals-container">
+                <div class="deal-card featured">
+                    <div class="deal-timer">
+                        <span class="timer-label">Ends in:</span>
+                        <div class="timer">
+                            <span class="time-unit">02</span>:
+                            <span class="time-unit">14</span>:
+                            <span class="time-unit">35</span>
+                        </div>
+                    </div>
+                    <div class="deal-content">
+                        <div class="deal-badge flash">FLASH SALE</div>
+                        <h3>Buy 1 Get 1 Free</h3>
+                        <p>Original Recipe Chicken - Limited time only!</p>
+                        <div class="deal-savings">Save up to $12.99</div>
+                        <button class="claim-deal primary">Claim Now</button>
+                    </div>
+                </div>
+                
+                <div class="deal-card">
+                    <div class="deal-content">
+                        <div class="deal-badge student">STUDENT DEAL</div>
+                        <h3>20% Off Student Meals</h3>
+                        <p>Show your student ID and get 20% off any meal</p>
+                        <div class="deal-code">Code: STUDENT20</div>
+                        <button class="claim-deal">Get Discount</button>
+                    </div>
+                </div>
+                
+                <div class="deal-card">
+                    <div class="deal-content">
+                        <div class="deal-badge app">APP EXCLUSIVE</div>
+                        <h3>Free Delivery</h3>
+                        <p>Download our app and get free delivery on orders over $15</p>
+                        <div class="app-buttons">
+                            <button class="app-btn ios">📱 iOS</button>
+                            <button class="app-btn android">🤖 Android</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-section">
+                    <h4>KFC Food</h4>
+                    <ul>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="#">Nutrition & Allergen</a></li>
+                        <li><a href="#">Secret Recipe</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Feedback</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>About KFC</h4>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">📺</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <p>&copy; 2024 KFC Corporation. All Rights Reserved.</p>
+                    <div class="legal-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms & Conditions</a>
+                        <a href="#">Accessibility</a>
+                    </div>
+                </div>
+                <a href="../index.html" class="back-btn">← Back to Hub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

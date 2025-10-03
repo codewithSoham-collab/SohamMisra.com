@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soham Misra</title>
-  <link rel="website icon" type="jpg" href="pic2.jpg">
+  <link rel="website icon" type="jpg" href="Photo.png">
   <link rel="stylesheet" media="screen and (max-width: 767px)" href="mobile.css">
   <link rel="stylesheet" media="screen and (min-width: 768px)" href="desktop.css">
 
@@ -21,12 +21,28 @@
   <script>
     AOS.init({ duration: 800, once: true, offset: 100 });
   </script>
+<<<<<<< HEAD
 <!-- Open Graph Meta Tags -->
 <meta property="og:title" content="Soham Misra" />
 <meta property="og:description" content="Elevate your productivity with NEXUS, the ultimate AI-powered desktop companion. Experience voice commands, system control, and smart tools today!" />
 <meta property="og:image" content="https://sohammisra.netlify.app/Photo.png" />
 <meta property="og:url" content="https://sohammisra.netlify.app/" />
 <meta property="og:type" content="website" />
+=======
+  <meta property="og:title" content="Soham Misra" />
+  <meta property="og:description"
+    content="Elevate your productivity with NEXUS, the ultimate AI-powered desktop companion. Experience voice commands, system control, and smart tools today!" />
+  <meta property="og:image" content="https://sohammisra.netlify.app/Photo.png" />
+  <meta property="og:url" content="https://sohammisra.netlify.app/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Soham Misra" />
+  <meta name="twitter:description"
+    content="Elevate your productivity with NEXUS, the ultimate AI-powered desktop companion." />
+  <meta name="twitter:image" content="https://sohammisra.netlify.app/Photo.png" />
+>>>>>>> 68a451c (Updated portfolio with latest changes)
 
 <!-- Twitter Card Meta Tags -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -325,7 +341,7 @@
       // Close chat
       closeChat.addEventListener('click', () => {
         chatContainer.classList.remove('chat-open');
-        setTimeout(() => { 
+        setTimeout(() => {
           chatContainer.style.display = 'none';
         }, 300);
       });
@@ -856,13 +872,15 @@
             <h2 class="c">App Development</h2>
             <p>Experienced in designing and building user-friendly apps that combine functionality with
               intuitive interfaces.</p>
-            <a href="#contact" class="read">Learn More From Me</a>
+              <a href="service/app/index.html" class="read">View Some</a>
+              <a href="#contact" class="read">Learn More From Me</a>
           </div>
 
           <div>
             <i class='bx bx-globe' style='color:#0ef; font-size:40px;'></i>
             <h2 class="c">Web Development</h2>
             <p>Skilled at creating responsive, modern websites that deliver seamless user experiences.</p>
+            <a href="service/website/index.html" class="read">View Some</a>
             <a href="#contact" class="read">Learn More From Me</a>
           </div>
 
@@ -871,6 +889,7 @@
             <h2 class="c">Arduino Projects</h2>
             <p>Passionate about hardware innovation, developing interactive Arduino-based projects that
               blend software with real-world applications.</p>
+            <a href="service/arduino/index.html" class="read">View Some</a>
             <a href="#contact" class="read">Learn More From Me</a>
           </div>
 
@@ -979,6 +998,43 @@
       </div>
   </section>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  
+  <style>
+    .read {
+      display: inline-block !important;
+      padding: 12px 28px !important;
+      background-color: #0ef !important;
+      border-radius: 40px !important;
+      font-size: 16px !important;
+      color: #081b29 !important;
+      letter-spacing: 1px !important;
+      text-decoration: none !important;
+      font-weight: 600 !important;
+      opacity: 1 !important;
+      animation: none !important;
+      box-shadow: 0 0 5px #0ef, 0 0 25px #0ef !important;
+      transition: all 0.3s ease !important;
+      margin: 5px 10px !important;
+      display: block !important;
+      margin-bottom: 10px !important;
+    }
+    
+    .read:hover {
+      box-shadow: 0 0 5px cyan, 0 0 25px cyan, 0 0 50px cyan, 0 0 100px cyan, 0 0 200px cyan !important;
+      transform: translateY(-2px) !important;
+    }
+    
+    .services-list div .read:first-of-type {
+      margin-bottom: 15px !important;
+    }
+    
+    @media (max-width: 768px) {
+      .read {
+        font-size: 14px !important;
+        padding: 10px 20px !important;
+      }
+    }
+  </style>
 
   <section class="po" id="po" data-animate aria-label="Portfolio Section">
     <div class="main-text" id="project">
@@ -1138,7 +1194,7 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,500&display=swap');
 
-  
+
 
     .po {
       min-height: 100vh;
@@ -1632,7 +1688,7 @@
           <a href="https://www.facebook.com/profile.php?id=100086087766581"><i class='bx bxl-facebook-circle'></i></a>
           <a href="https://wa.me/918016847169" target="_blank"><i class='bx bxl-whatsapp'></i></a>
           <a href="https://www.instagram.com/sohammisra_official/?next=%2F&hl=en"><i class='bx bxl-instagram'></i></a>
-
+          <a href="https://sohammisra.netlify.app" target="_blank"><i class='bx bx-globe'></i></a>
         </div>
       </div>
 
@@ -1644,7 +1700,11 @@
           <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
           <input type="text" id="subject" name="subject" placeholder="Enter Your Subject" required>
           <textarea id="message" name="message" placeholder="Enter Your Message" required></textarea>
-          <input type="submit" value="Submit" class="send" id="submitBtn">
+          <input type="email" id="emailQuery" name="emailQuery" placeholder="Additional Email Query (Optional)">
+          <button type="submit" class="send arrow-btn" id="submitBtn">
+            <span>Submit</span>
+            <i class='bx bx-right-arrow-alt'></i>
+          </button>
         </form>
         <div id="formMessage" class="form-message"></div>
       </div>
@@ -1667,6 +1727,396 @@
           color: #f5c6cb;
           border: 1px solid #721c24;
         }
+
+        /* Arrow Button Styles */
+        .arrow-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          background: linear-gradient(135deg, #0ef, #00d4ff);
+          color: #081b29;
+          border: none;
+          padding: 14px 28px;
+          border-radius: 30px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+          box-shadow: 0 6px 20px rgba(0, 238, 255, 0.4);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          font-size: 0.95rem;
+        }
+        
+        .arrow-btn::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+          transition: left 0.5s ease;
+        }
+        
+        .arrow-btn:hover::before {
+          left: 100%;
+        }
+
+        .arrow-btn:hover {
+          transform: translateY(-3px) scale(1.02);
+          box-shadow: 0 10px 30px rgba(0, 238, 255, 0.6);
+          background: linear-gradient(135deg, #00d4ff, #0ef);
+        }
+
+        .arrow-btn i {
+          transition: transform 0.3s ease;
+        }
+
+        .arrow-btn:hover i {
+          transform: translateX(5px);
+        }
+
+        /* QR Section Standalone Styles */
+        .qr-section-standalone {
+          padding: 60px 20px;
+          background: url('background.png') no-repeat center center;
+          background-size: cover;
+          background-attachment: fixed;
+          text-align: center;
+          position: relative;
+        }
+        
+        .qr-section-standalone::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          
+          pointer-events: none;
+        }
+
+        .qr-content {
+          position: relative;
+          z-index: 2;
+        }
+        
+        .qr-content h3 {
+          font-size: 2.2rem;
+          color: #fff;
+          margin-bottom: 30px;
+          text-shadow: 0 0 10px rgba(0, 238, 255, 0.5);
+        }
+
+        .qr-content h3 span {
+          color: #0ef;
+        }
+
+        .qr-container {
+          max-width: 400px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 2;
+        }
+
+        .qr-upload-area {
+          background: rgba(255, 255, 255, 0.08);
+          padding: 35px;
+          border-radius: 18px;
+          border: 3px dashed rgba(0, 238, 255, 0.4);
+          transition: all 0.3s ease;
+          cursor: pointer;
+          position: relative;
+          min-height: 220px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+          backdrop-filter: blur(5px);
+        }
+
+        .qr-upload-area:hover {
+          border-color: #0ef;
+          transform: translateY(-3px);
+          background: rgba(0, 238, 255, 0.05);
+          box-shadow: 0 12px 35px rgba(0, 238, 255, 0.2);
+        }
+
+        .qr-upload-area.dragover {
+          border-color: #0ef;
+          background: rgba(0, 238, 255, 0.1);
+        }
+
+        .upload-placeholder {
+          text-align: center;
+        }
+
+        .upload-placeholder i {
+          font-size: 3rem;
+          color: #0ef;
+          margin-bottom: 15px;
+        }
+
+        .upload-placeholder p {
+          color: #fff;
+          font-size: 1.1rem;
+          margin-bottom: 5px;
+        }
+
+        .upload-placeholder span {
+          color: #aaa;
+          font-size: 0.9rem;
+        }
+
+        #qrImage {
+          max-width: 100%;
+          max-height: 200px;
+          border-radius: 10px;
+          cursor: pointer;
+        }
+
+        .qr-container > p {
+          margin: 20px 0 10px;
+          color: #e0e0e0;
+          font-size: 1rem;
+        }
+
+        /* Rating Section Standalone Styles */
+        .rating-section-standalone {
+          padding: 60px 20px;
+          background: url('background.png') no-repeat center center;
+          background-size: cover;
+          background-attachment: fixed;
+          text-align: center;
+          position: relative;
+        }
+        
+        .rating-section-standalone::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+         
+          pointer-events: none;
+        }
+
+        .rating-container {
+          max-width: 600px;
+          margin: 0 auto;
+          padding: 0 20px;
+          position: relative;
+          z-index: 2;
+        }
+        
+        .rating-container h3 {
+          font-size: 2.2rem;
+          margin-bottom: 10px;
+          color: #fff;
+          text-shadow: 0 0 10px rgba(0, 238, 255, 0.5);
+        }
+
+        .rating-container h3 span {
+          color: #0ef;
+        }
+
+
+
+        .rating-container > p {
+          color: #e0e0e0;
+          margin-bottom: 30px;
+        }
+
+        .rating-stars {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          margin-bottom: 30px;
+        }
+
+        .rating-stars i {
+          font-size: 2.5rem;
+          color: #444;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          padding: 15px;
+          margin: 0 8px;
+          border-radius: 50%;
+          position: relative;
+          background: rgba(255, 255, 255, 0.05);
+          border: 2px solid rgba(0, 238, 255, 0.2);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .rating-stars i:hover,
+        .rating-stars i.active {
+          color: #ffd700;
+          transform: scale(1.2);
+          text-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
+          border-color: #ffd700;
+          background: rgba(255, 215, 0, 0.1);
+          box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .rating-stars i:active {
+          transform: scale(1.1);
+        }
+
+        .rating-stars i::before {
+          position: relative;
+          z-index: 2;
+        }
+
+        .rating-stars i::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 0;
+          height: 0;
+          background: rgba(255, 215, 0, 0.2);
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          transition: all 0.3s ease;
+          z-index: 1;
+        }
+
+        .rating-stars i:hover::after,
+        .rating-stars i.active::after {
+          width: 60px;
+          height: 60px;
+        }
+
+        .rating-feedback {
+          margin-bottom: 40px;
+        }
+
+        .rating-feedback textarea {
+          width: 100%;
+          max-width: 400px;
+          height: 120px;
+          background: rgba(255, 255, 255, 0.08);
+          border: 2px solid rgba(0, 238, 255, 0.3);
+          border-radius: 12px;
+          padding: 18px;
+          color: #fff;
+          resize: vertical;
+          margin-bottom: 25px;
+          font-size: 1rem;
+          line-height: 1.5;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .rating-feedback textarea:focus {
+          border-color: #0ef;
+          background: rgba(255, 255, 255, 0.12);
+          box-shadow: 0 0 20px rgba(0, 238, 255, 0.3);
+          outline: none;
+        }
+
+        .rating-feedback textarea::placeholder {
+          color: #aaa;
+        }
+
+        .rating-display {
+          background: rgba(255, 255, 255, 0.08);
+          padding: 25px;
+          border-radius: 18px;
+          border: 2px solid rgba(0, 238, 255, 0.3);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+          backdrop-filter: blur(10px);
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .rating-display::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(0, 238, 255, 0.1), transparent);
+          animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+          0% { left: -100%; }
+          100% { left: 100%; }
+        }
+
+        .average-rating {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 15px;
+          flex-wrap: wrap;
+        }
+
+        .rating-number {
+          font-size: 2rem;
+          font-weight: bold;
+          color: #0ef;
+        }
+
+        .rating-stars-display {
+          display: flex;
+          gap: 5px;
+        }
+
+        .rating-stars-display i {
+          color: #ffd700;
+          font-size: 1.2rem;
+        }
+
+        .rating-count {
+          color: #aaa;
+          font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+          .qr-content h3,
+          .rating-container h3 {
+            font-size: 1.8rem;
+          }
+          
+          .qr-upload-area {
+            padding: 20px;
+            min-height: 150px;
+          }
+          
+          .upload-placeholder i {
+            font-size: 2.5rem;
+          }
+          
+          .rating-stars i {
+            font-size: 2rem;
+            padding: 8px;
+            margin: 0 3px;
+          }
+          
+          .rating-stars i::after {
+            width: 0;
+            height: 0;
+          }
+          
+          .rating-stars i:hover::after,
+          .rating-stars i.active::after {
+            width: 50px;
+            height: 50px;
+          }
+          
+          .average-rating {
+            flex-direction: column;
+            gap: 10px;
+          }
+        }
       </style>
       <script>
         const form = document.getElementById('contactForm');
@@ -1674,16 +2124,18 @@
         const scriptUrl = form.getAttribute('data-script-url');
 
         form.addEventListener('submit', async (e) => {
-          e.preventDefault(); // Prevent default form submission
-          document.getElementById('submitBtn').disabled = true;
+          e.preventDefault();
+          const submitBtn = document.getElementById('submitBtn');
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span>Sending...</span><i class="bx bx-loader-alt bx-spin"></i>';
           formMessage.textContent = '';
           formMessage.classList.remove('error', 'success');
-          formMessage.style.display = 'none'; // Hide initially
+          formMessage.style.display = 'none';
 
           try {
             const formData = new FormData(form);
             const response = await fetch(scriptUrl, {
-              method: 'POST', // Ensure POST method
+              method: 'POST',
               body: formData
             });
 
@@ -1702,9 +2154,722 @@
             formMessage.classList.add('error');
             formMessage.style.display = 'block';
           } finally {
-            document.getElementById('submitBtn').disabled = false;
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>Submit</span><i class="bx bx-right-arrow-alt"></i>';
           }
         });
+
+        // QR Code Upload Functionality
+        const qrUploadArea = document.getElementById('qrUploadArea');
+        const qrFileInput = document.getElementById('qrFileInput');
+        const qrImage = document.getElementById('qrImage');
+        const uploadPlaceholder = document.getElementById('uploadPlaceholder');
+        const connectInstagramBtn = document.getElementById('connectInstagram');
+
+        // Click to upload
+        qrUploadArea.addEventListener('click', () => {
+          qrFileInput.click();
+        });
+
+        // File input change
+        qrFileInput.addEventListener('change', handleFileSelect);
+
+        // Drag and drop
+        qrUploadArea.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          qrUploadArea.classList.add('dragover');
+        });
+
+        qrUploadArea.addEventListener('dragleave', () => {
+          qrUploadArea.classList.remove('dragover');
+        });
+
+        qrUploadArea.addEventListener('drop', (e) => {
+          e.preventDefault();
+          qrUploadArea.classList.remove('dragover');
+          const files = e.dataTransfer.files;
+          if (files.length > 0) {
+            handleFile(files[0]);
+          }
+        });
+
+        function handleFileSelect(e) {
+          const file = e.target.files[0];
+          if (file) {
+            handleFile(file);
+          }
+        }
+
+        function handleFile(file) {
+          if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+              qrImage.src = e.target.result;
+              qrImage.style.display = 'block';
+              uploadPlaceholder.style.display = 'none';
+              
+              // Store in localStorage for persistence
+              localStorage.setItem('qrCodeImage', e.target.result);
+            };
+            reader.readAsDataURL(file);
+          } else {
+            alert('Please upload an image file (PNG, JPG, JPEG)');
+          }
+        }
+
+        // Load saved QR code on page load
+        window.addEventListener('load', () => {
+          const savedQR = localStorage.getItem('qrCodeImage');
+          if (savedQR) {
+            qrImage.src = savedQR;
+            qrImage.style.display = 'block';
+            uploadPlaceholder.style.display = 'none';
+          } else {
+            // Default QR code is already set in HTML
+            qrImage.style.display = 'block';
+            uploadPlaceholder.style.display = 'none';
+          }
+        });
+
+        // Enhanced QR functionality for mobile & PC
+        function openInstagram() {
+          const instagramUrl = 'https://www.instagram.com/sohammisra_official/?next=%2F&hl=en';
+          
+          // Show connecting message
+          showMessage('Connecting to Instagram... 📱', 'info');
+          
+          // Detect mobile and try to open Instagram app first
+          if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            // Try Instagram app first, fallback to web
+            const appUrl = 'instagram://user?username=sohammisra_official';
+            const fallbackUrl = instagramUrl;
+            
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = appUrl;
+            document.body.appendChild(iframe);
+            
+            setTimeout(() => {
+              document.body.removeChild(iframe);
+              window.open(fallbackUrl, '_blank');
+            }, 1000);
+          } else {
+            window.open(instagramUrl, '_blank');
+          }
+        }
+
+        // QR Image click with enhanced feedback
+        qrImage.addEventListener('click', (e) => {
+          e.preventDefault();
+          qrImage.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            qrImage.style.transform = 'scale(1)';
+            openInstagram();
+          }, 150);
+        });
+
+        // Touch events for mobile
+        qrImage.addEventListener('touchstart', (e) => {
+          e.preventDefault();
+          qrImage.style.transform = 'scale(0.95)';
+        });
+
+        qrImage.addEventListener('touchend', (e) => {
+          e.preventDefault();
+          qrImage.style.transform = 'scale(1)';
+          openInstagram();
+        });
+
+        // Connect Instagram button with loading state
+        connectInstagramBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          connectInstagramBtn.disabled = true;
+          connectInstagramBtn.innerHTML = '<span>Connecting...</span><i class="bx bx-loader-alt bx-spin"></i>';
+          
+          setTimeout(() => {
+            openInstagram();
+            connectInstagramBtn.disabled = false;
+            connectInstagramBtn.innerHTML = '<span>Connect Instagram</span><i class="bx bx-right-arrow-alt"></i>';
+          }, 800);
+        });
+
+        // Add hover effects for QR image
+        qrImage.style.transition = 'transform 0.2s ease';
+        qrImage.addEventListener('mouseenter', () => {
+          if (window.innerWidth > 768) {
+            qrImage.style.transform = 'scale(1.05)';
+          }
+        });
+        
+        qrImage.addEventListener('mouseleave', () => {
+          if (window.innerWidth > 768) {
+            qrImage.style.transform = 'scale(1)';
+          }
+        });
+
+        // Enhanced Rating System for Mobile & PC
+        let currentRating = 0;
+        const stars = document.querySelectorAll('.rating-stars i');
+        const submitRatingBtn = document.getElementById('submitRating');
+        const ratingComment = document.getElementById('ratingComment');
+        const ratingDisplay = document.querySelector('.rating-display');
+        let isMobile = window.innerWidth <= 768;
+        
+        // Auto-save comment as user types
+        ratingComment.addEventListener('input', () => {
+          localStorage.setItem('ratingComment', ratingComment.value);
+        });
+
+        // Update mobile detection on resize
+        window.addEventListener('resize', () => {
+          isMobile = window.innerWidth <= 768;
+        });
+
+        stars.forEach((star, index) => {
+          // Click/Touch events with permanent selection
+          star.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentRating = index + 1;
+            
+            // Remove all previous selections
+            stars.forEach(s => {
+              s.classList.remove('permanent-active', 'permanent-selected', 'active');
+            });
+            
+            // Add permanent selection to clicked stars
+            for (let i = 0; i <= index; i++) {
+              stars[i].classList.add('permanent-selected');
+            }
+            
+            showRatingFeedback();
+            
+            // Enhanced click feedback
+            star.style.animation = 'pulse 0.3s ease';
+            setTimeout(() => {
+              star.style.animation = '';
+            }, 300);
+            
+            // Show selection confirmation
+            showSelectionConfirmation(currentRating);
+            
+            // Save selection to localStorage
+            localStorage.setItem('selectedRating', currentRating);
+          });
+          
+          // Touch events for mobile
+          star.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            currentRating = index + 1;
+            
+            // Remove all previous selections
+            stars.forEach(s => {
+              s.classList.remove('permanent-active', 'permanent-selected', 'active');
+            });
+            
+            // Add permanent selection to touched stars
+            for (let i = 0; i <= index; i++) {
+              stars[i].classList.add('permanent-selected');
+            }
+            
+            showRatingFeedback();
+            
+            // Save selection to localStorage
+            localStorage.setItem('selectedRating', currentRating);
+          });
+          
+          // Hover effects for desktop only (don't interfere with permanent selection)
+          if (!isMobile) {
+            star.addEventListener('mouseenter', () => {
+              if (currentRating === 0) {
+                highlightStars(index + 1);
+              }
+            });
+          }
+        });
+
+        // Mouse leave for desktop (preserve permanent selection)
+        document.querySelector('.rating-stars').addEventListener('mouseleave', () => {
+          if (!isMobile && currentRating === 0) {
+            stars.forEach(star => star.classList.remove('active'));
+          }
+        });
+
+        function highlightStars(rating) {
+          stars.forEach((star, index) => {
+            star.classList.toggle('active', index < rating);
+          });
+        }
+
+        function updateStars() {
+          // Don't update if we have a permanent selection
+          if (currentRating > 0) {
+            return;
+          }
+          
+          stars.forEach((star, index) => {
+            star.classList.toggle('active', index < currentRating);
+          });
+        }
+
+        function showRatingFeedback() {
+          const feedbackText = ['😞 Poor', '😐 Fair', '🙂 Good', '😊 Very Good', '🤩 Excellent'];
+          const existingFeedback = document.querySelector('.rating-feedback-text');
+          if (existingFeedback) existingFeedback.remove();
+          
+          const feedback = document.createElement('div');
+          feedback.className = 'rating-feedback-text';
+          feedback.style.cssText = `
+            color: #0ef;
+            font-weight: 700;
+            margin-top: 15px;
+            font-size: 1.2rem;
+            animation: fadeIn 0.4s ease;
+            text-align: center;
+            padding: 10px 20px;
+            background: rgba(0, 238, 255, 0.1);
+            border-radius: 25px;
+            border: 1px solid rgba(0, 238, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 238, 255, 0.2);
+          `;
+          feedback.textContent = feedbackText[currentRating - 1];
+          document.querySelector('.rating-stars').parentNode.insertBefore(feedback, document.querySelector('.rating-feedback'));
+        }
+        
+        function showSelectionConfirmation(rating) {
+          const confirmation = document.createElement('div');
+          confirmation.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: linear-gradient(135deg, #4caf50, #45a049);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            z-index: 10000;
+            animation: popConfirm 0.6s ease forwards;
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+          `;
+          confirmation.textContent = `✓ ${rating} Star${rating > 1 ? 's' : ''} Selected`;
+          
+          document.body.appendChild(confirmation);
+          
+          setTimeout(() => {
+            confirmation.style.animation = 'fadeOut 0.3s ease forwards';
+            setTimeout(() => confirmation.remove(), 300);
+          }, 1500);
+        }
+
+        // Fake rating system with realistic effects
+        submitRatingBtn.addEventListener('click', async () => {
+          if (currentRating === 0) {
+            showMessage('Please select a rating first! ⭐', 'warning');
+            animateStars();
+            return;
+          }
+          
+          // Loading state with typing animation
+          submitRatingBtn.disabled = true;
+          await typeText(submitRatingBtn, 'Submitting...', '<i class="bx bx-loader-alt bx-spin"></i>');
+          
+          // Show fake submission progress
+          await showFakeSubmissionProgress();
+          
+          // Fake server response simulation
+          await simulateServerResponse();
+          
+          // Update fake average rating display
+          await updateFakeAverageRating();
+          
+          // Success animation
+          await typeText(submitRatingBtn, 'Submitted!', '✅');
+          
+          // Show comprehensive success notification
+          showSubmittedNotification();
+          
+          // Additional confirmation message
+          setTimeout(() => {
+            showMessage('✅ Rating Successfully Submitted! Thank you for your valuable feedback.', 'success');
+          }, 1000);
+          
+          // Save comment and keep stars selected
+          localStorage.setItem('ratingComment', ratingComment.value);
+          
+          // Keep the rating feedback visible
+          const feedbackText = document.querySelector('.rating-feedback-text');
+          if (feedbackText) {
+            feedbackText.style.color = '#4caf50';
+            feedbackText.textContent = '✅ ' + feedbackText.textContent + ' - Submitted!';
+          }
+          
+          // Add submitted badge to rating section
+          addSubmittedBadge();
+          
+          // Reset button after delay
+          setTimeout(() => {
+            submitRatingBtn.disabled = false;
+            submitRatingBtn.innerHTML = '<span>Submit Rating</span><i class="bx bx-right-arrow-alt"></i>';
+          }, 2000);
+        });
+
+        // Typing animation function
+        async function typeText(element, text, icon = '') {
+          const span = element.querySelector('span');
+          span.textContent = '';
+          
+          for (let i = 0; i < text.length; i++) {
+            span.textContent += text[i];
+            await new Promise(resolve => setTimeout(resolve, 50));
+          }
+          
+          if (icon) {
+            element.innerHTML = `<span>${text}</span>${icon}`;
+          }
+        }
+
+        // Fake submission progress animation
+        async function showFakeSubmissionProgress() {
+          const progressSteps = [
+            'Connecting to server...',
+            'Validating rating...',
+            'Processing feedback...',
+            'Updating database...',
+            'Finalizing submission...'
+          ];
+          
+          for (const step of progressSteps) {
+            await typeText(submitRatingBtn, step, '<i class="bx bx-loader-alt bx-spin"></i>');
+            await new Promise(resolve => setTimeout(resolve, 600));
+          }
+        }
+
+        // Simulate server response
+        async function simulateServerResponse() {
+          await typeText(submitRatingBtn, 'Server responding...', '<i class="bx bx-wifi bx-fade-left"></i>');
+          await new Promise(resolve => setTimeout(resolve, 800));
+          
+          await typeText(submitRatingBtn, 'Verifying data...', '<i class="bx bx-check-shield bx-spin"></i>');
+          await new Promise(resolve => setTimeout(resolve, 600));
+        }
+
+        // Fake average rating update with realistic animation
+        async function updateFakeAverageRating() {
+          const ratingNumber = document.querySelector('.rating-number');
+          const ratingCount = document.querySelector('.rating-count');
+          
+          // Get current values
+          const currentAvg = parseFloat(ratingNumber.textContent);
+          const currentCount = parseInt(ratingCount.textContent.match(/\d+/)[0]);
+          
+          // Calculate fake new average (slightly influenced by user rating)
+          const newCount = currentCount + 1;
+          const fakeNewAvg = ((currentAvg * currentCount) + currentRating) / newCount;
+          const displayAvg = Math.min(4.9, Math.max(4.5, fakeNewAvg)); // Keep it realistic
+          
+          // Animate the update
+          ratingDisplay.style.transform = 'scale(1.1)';
+          ratingDisplay.style.background = 'rgba(0, 238, 255, 0.1)';
+          ratingDisplay.style.boxShadow = '0 0 20px rgba(0, 238, 255, 0.3)';
+          
+          // Type the new average
+          ratingNumber.textContent = '';
+          const avgText = displayAvg.toFixed(1);
+          for (let i = 0; i < avgText.length; i++) {
+            ratingNumber.textContent += avgText[i];
+            await new Promise(resolve => setTimeout(resolve, 150));
+          }
+          
+          // Type the count
+          ratingCount.textContent = '';
+          const countText = `(${newCount} reviews)`;
+          for (let i = 0; i < countText.length; i++) {
+            ratingCount.textContent += countText[i];
+            await new Promise(resolve => setTimeout(resolve, 40));
+          }
+          
+          // Sparkle effect
+          createSparkleEffect();
+          
+          setTimeout(() => {
+            ratingDisplay.style.transform = 'scale(1)';
+            ratingDisplay.style.background = 'rgba(255, 255, 255, 0.05)';
+            ratingDisplay.style.boxShadow = 'none';
+          }, 800);
+        }
+
+        // Animate stars when no rating selected
+        function animateStars() {
+          stars.forEach((star, index) => {
+            setTimeout(() => {
+              star.style.animation = 'bounce 0.6s ease';
+              setTimeout(() => {
+                star.style.animation = '';
+              }, 600);
+            }, index * 100);
+          });
+        }
+
+        // Enhanced submitted notification
+        function showSubmittedNotification() {
+          const notification = document.createElement('div');
+          notification.className = 'submitted-notification';
+          notification.innerHTML = `
+            <div class="notification-header">
+              <i class='bx bx-check-circle'></i>
+              <h4>Rating Submitted Successfully!</h4>
+            </div>
+            <div class="notification-body">
+              <p><strong>Your ${currentRating}-star rating</strong> has been recorded</p>
+              <p>📊 Database updated • 🔄 Analytics refreshed</p>
+              <div class="notification-progress">
+                <div class="progress-bar"></div>
+              </div>
+              <p class="notification-id">Submission ID: #${Date.now().toString().slice(-6)}</p>
+            </div>
+          `;
+          
+          notification.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: linear-gradient(135deg, #4caf50, #45a049);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            font-weight: 600;
+            z-index: 10001;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            animation: notificationPop 0.6s ease forwards;
+            max-width: 90vw;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.2);
+          `;
+          
+          document.body.appendChild(notification);
+          
+          // Auto remove after 4 seconds
+          setTimeout(() => {
+            notification.style.animation = 'notificationFadeOut 0.5s ease forwards';
+            setTimeout(() => notification.remove(), 500);
+          }, 4000);
+        }
+
+        // Create sparkle effect
+        function createSparkleEffect() {
+          for (let i = 0; i < 8; i++) {
+            setTimeout(() => {
+              const sparkle = document.createElement('div');
+              sparkle.innerHTML = '✨';
+              sparkle.style.cssText = `
+                position: absolute;
+                font-size: 1.5rem;
+                pointer-events: none;
+                z-index: 1000;
+                animation: sparkle 1s ease-out forwards;
+              `;
+              
+              const rect = ratingDisplay.getBoundingClientRect();
+              sparkle.style.left = (rect.left + Math.random() * rect.width) + 'px';
+              sparkle.style.top = (rect.top + Math.random() * rect.height) + 'px';
+              
+              document.body.appendChild(sparkle);
+              
+              setTimeout(() => sparkle.remove(), 1000);
+            }, i * 100);
+          }
+        }
+
+        // Add submitted badge
+        function addSubmittedBadge() {
+          const existingBadge = document.querySelector('.submitted-badge');
+          if (existingBadge) existingBadge.remove();
+          
+          const badge = document.createElement('div');
+          badge.className = 'submitted-badge';
+          badge.innerHTML = '✅ Submitted';
+          badge.style.cssText = `
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: linear-gradient(135deg, #4caf50, #45a049);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            animation: badgePop 0.5s ease;
+            box-shadow: 0 2px 10px rgba(76, 175, 80, 0.4);
+          `;
+          
+          const ratingContainer = document.querySelector('.rating-container');
+          ratingContainer.style.position = 'relative';
+          ratingContainer.appendChild(badge);
+        }
+
+        // Enhanced message system
+        // Initialize fake rating display and restore saved rating
+        window.addEventListener('load', () => {
+          const initialAvg = 4.8;
+          const initialCount = 127;
+          
+          document.querySelector('.rating-number').textContent = initialAvg;
+          document.querySelector('.rating-count').textContent = '(' + initialCount + ' reviews)';
+          
+          // Restore saved rating selection
+          const savedRating = localStorage.getItem('selectedRating');
+          const savedComment = localStorage.getItem('ratingComment');
+          
+          if (savedRating) {
+            currentRating = parseInt(savedRating);
+            
+            // Apply permanent selection
+            stars.forEach((star, index) => {
+              if (index < currentRating) {
+                star.classList.add('permanent-selected');
+              }
+            });
+            
+            showRatingFeedback();
+          }
+          
+          if (savedComment) {
+            ratingComment.value = savedComment;
+          }
+        });
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          @keyframes slideDown {
+            from { opacity: 0; transform: translate(-50%, -20px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+          }
+          @keyframes slideUp {
+            from { opacity: 1; transform: translate(-50%, 0); }
+            to { opacity: 0; transform: translate(-50%, -20px); }
+          }
+          @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+          }
+          @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+          }
+          @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+          }
+          .rating-stars i {
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+          }
+          .rating-stars i.permanent-active {
+            color: #ffd700 !important;
+            animation: glow 2s infinite;
+            transform: scale(1.1) !important;
+          }
+          
+          .rating-stars i.permanent-selected {
+            color: #ffd700 !important;
+            transform: scale(1.15) !important;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 1) !important;
+            border-color: #ffd700 !important;
+            background: rgba(255, 215, 0, 0.15) !important;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.6) !important;
+          }
+          .arrow-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+          }
+          .rating-display {
+            transition: all 0.5s ease;
+          }
+          @keyframes sparkle {
+            0% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+            100% { opacity: 0; transform: scale(0) rotate(360deg); }
+          }
+          @keyframes dataFlow {
+            0% { transform: translateX(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
+          }
+          @keyframes notificationPop {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+          }
+          @keyframes notificationFadeOut {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
+          }
+          @keyframes progressFill {
+            0% { width: 0%; }
+            100% { width: 100%; }
+          }
+          .submitted-notification .notification-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+          }
+          .submitted-notification .notification-header i {
+            font-size: 2rem;
+            color: #fff;
+          }
+          .submitted-notification .notification-header h4 {
+            margin: 0;
+            font-size: 1.3rem;
+          }
+          .submitted-notification .notification-body p {
+            margin: 8px 0;
+            font-size: 0.95rem;
+          }
+          .submitted-notification .notification-progress {
+            background: rgba(255,255,255,0.2);
+            height: 4px;
+            border-radius: 2px;
+            margin: 15px 0;
+            overflow: hidden;
+          }
+          .submitted-notification .progress-bar {
+            height: 100%;
+            background: rgba(255,255,255,0.8);
+            animation: progressFill 2s ease-in-out;
+          }
+          .submitted-notification .notification-id {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-top: 10px;
+          }
+          @keyframes badgePop {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+          @keyframes popConfirm {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+          }
+          @keyframes fadeOut {
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+          }
+        `;
+        document.head.appendChild(style);
+
+
       </script>
       <!-- https://docs.google.com/spreadsheets/d/1z6DGcRZHcw2-mVBEhz_dYMCxlWgkyYixgj6udybWjFE/edit?gid=0#gid=0 -->
       <!-- https://sheetdb.io/api/v1/51r9akqyqhuzv -->
@@ -1712,6 +2877,65 @@
 
 
   </section>
+
+  <!-- QR Code Section -->
+  <div class="qr-section-standalone">
+    <div class="qr-content">
+      <h3>Quick <span>Connect</span></h3>
+      <div class="qr-container">
+        <div class="qr-upload-area" id="qrUploadArea">
+          <img id="qrImage" src="qrcode_258009317_6aa3d58aa4b2d7d83e4d3b04a045cbee.png" alt="Instagram QR Code" style="display: block;">
+          <div class="upload-placeholder" id="uploadPlaceholder" style="display: none;">
+            <i class='bx bx-cloud-upload'></i>
+            <p>Upload QR Code PNG</p>
+            <span>Click to browse or drag & drop</span>
+          </div>
+          <input type="file" id="qrFileInput" accept=".png,.jpg,.jpeg" style="display: none;">
+        </div>
+        <p>Scan to connect on Instagram</p>
+        <button id="connectInstagram" class="arrow-btn" style="margin-top: 15px;">
+          <span>Connect Instagram</span>
+          <i class='bx bx-right-arrow-alt'></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rating Section -->
+  <div class="rating-section-standalone">
+    <div class="rating-container">
+      <h3>Rate My <span>Work</span></h3>
+      <p>Your feedback helps me improve and deliver better services</p>
+      <div class="rating-stars">
+        <i class='bx bx-star' data-rating="1"></i>
+        <i class='bx bx-star' data-rating="2"></i>
+        <i class='bx bx-star' data-rating="3"></i>
+        <i class='bx bx-star' data-rating="4"></i>
+        <i class='bx bx-star' data-rating="5"></i>
+      </div>
+      <div class="rating-feedback">
+        <textarea id="ratingComment" placeholder="Share your thoughts (optional)"></textarea>
+        <button id="submitRating" class="arrow-btn">
+          <span>Submit Rating</span>
+          <i class='bx bx-right-arrow-alt'></i>
+        </button>
+      </div>
+      <div class="rating-display">
+        <div class="average-rating">
+          <span class="rating-number">4.8</span>
+          <div class="rating-stars-display">
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+          </div>
+          <span class="rating-count">(127 reviews)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- HTML -->
   <div class="last-text">
     <p>Misra Group Of Industries</p>

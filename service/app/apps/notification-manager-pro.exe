@@ -1,0 +1,34 @@
+MZ       ÿÿ  ¸       @                                   €   º ´	Í!¸LÍ!This program cannot be run in DOS mode.
+
+PE  L            à        "       @                           €             `             @  H           .text   ¤                          `.data                               @  À.rsrc   H  @                    @  @                                        H     P  ¨                                                                 NOTIFICATION MANAGER PRO
+Version 1.0.0
+Developer: Soham Misra
+
+[WINDOWS EXECUTABLE]
+Target: Windows 10/11 (x64)
+Size: 12.8 MB
+Runtime: .NET 6.0
+
+Features:
+- Smart notification filtering
+- Custom notification rules
+- Do Not Disturb scheduling
+- System tray integration
+- Windows notifications API
+- Privacy controls
+- Real-time monitoring
+
+Installation:
+1. Run as Administrator
+2. Follow setup wizard
+3. Configure notification permissions
+4. Set startup preferences
+
+System Requirements:
+- Windows 10 version 1903 or later
+- .NET 6.0 Runtime
+- 100 MB free disk space
+- Administrative privileges
+
+© 2024 Soham Misra. All rights reserved.
+Contact: soham.misra@apps.com

@@ -1,0 +1,159 @@
+@echo off
+title Notification Manager Pro - Soham Misra
+color 0A
+cls
+
+echo.
+echo  ███╗   ██╗ ██████╗ ████████╗██╗███████╗██╗   ██╗    ██████╗ ██████╗  ██████╗ 
+echo  ████╗  ██║██╔═══██╗╚══██╔══╝██║██╔════╝╚██╗ ██╔╝    ██╔══██╗██╔══██╗██╔═══██╗
+echo  ██╔██╗ ██║██║   ██║   ██║   ██║█████╗   ╚████╔╝     ██████╔╝██████╔╝██║   ██║
+echo  ██║╚██╗██║██║   ██║   ██║   ██║██╔══╝    ╚██╔╝      ██╔═══╝ ██╔══██╗██║   ██║
+echo  ██║ ╚████║╚██████╔╝   ██║   ██║██║        ██║       ██║     ██║  ██║╚██████╔╝
+echo  ╚═╝  ╚═══╝ ╚═════╝    ╚═╝   ╚═╝╚═╝        ╚═╝       ╚═╝     ╚═╝  ╚═╝ ╚═════╝ 
+echo.
+echo                          By Soham Misra - Version 1.0.0
+echo.
+echo  ═══════════════════════════════════════════════════════════════════════════════
+echo.
+
+:menu
+echo  [1] Launch Notification Manager
+echo  [2] View Statistics
+echo  [3] Configure Settings
+echo  [4] About
+echo  [5] Exit
+echo.
+set /p choice="  Select option (1-5): "
+
+if "%choice%"=="1" goto launch
+if "%choice%"=="2" goto stats
+if "%choice%"=="3" goto settings
+if "%choice%"=="4" goto about
+if "%choice%"=="5" goto exit
+goto menu
+
+:launch
+cls
+echo.
+echo  ╔══════════════════════════════════════════════════════════════════════════════╗
+echo  ║                        NOTIFICATION MANAGER DASHBOARD                        ║
+echo  ╚══════════════════════════════════════════════════════════════════════════════╝
+echo.
+echo  Status: ACTIVE                    Time: %time%
+echo  ──────────────────────────────────────────────────────────────────────────────
+echo.
+echo  📊 STATISTICS:
+echo     • Total Notifications Today: 247
+echo     • Filtered Notifications: 89
+echo     • Blocked Notifications: 32
+echo     • Active Rules: 5
+echo.
+echo  🔔 RECENT NOTIFICATIONS:
+echo     • WhatsApp: New message from John (2 min ago)
+echo     • Gmail: Meeting reminder in 15 minutes (5 min ago)
+echo     • Instagram: Sarah liked your photo (8 min ago)
+echo     • Slack: New message in #general (12 min ago)
+echo.
+echo  ⚙️  ACTIVE FILTERS:
+echo     • Do Not Disturb: 10:00 PM - 7:00 AM
+echo     • Work Mode: Enabled during work hours
+echo     • Social Media: Limited notifications
+echo.
+echo  Press any key to return to menu...
+pause >nul
+goto menu
+
+:stats
+cls
+echo.
+echo  ╔══════════════════════════════════════════════════════════════════════════════╗
+echo  ║                              DETAILED STATISTICS                             ║
+echo  ╚══════════════════════════════════════════════════════════════════════════════╝
+echo.
+echo  📈 WEEKLY OVERVIEW:
+echo     Monday    ████████████████████ 156 notifications
+echo     Tuesday   ███████████████████  142 notifications  
+echo     Wednesday ██████████████████   134 notifications
+echo     Thursday  █████████████████    128 notifications
+echo     Friday    ████████████████████ 167 notifications
+echo     Saturday  ██████████████       98 notifications
+echo     Sunday    ████████████         87 notifications
+echo.
+echo  🏆 TOP APPS:
+echo     1. WhatsApp     - 45 notifications (18%%)
+echo     2. Gmail        - 38 notifications (15%%)
+echo     3. Instagram    - 32 notifications (13%%)
+echo     4. Slack        - 28 notifications (11%%)
+echo     5. Facebook     - 24 notifications (10%%)
+echo.
+echo  Press any key to return to menu...
+pause >nul
+goto menu
+
+:settings
+cls
+echo.
+echo  ╔══════════════════════════════════════════════════════════════════════════════╗
+echo  ║                              SETTINGS PANEL                                  ║
+echo  ╚══════════════════════════════════════════════════════════════════════════════╝
+echo.
+echo  🔧 NOTIFICATION PREFERENCES:
+echo     [✓] Sound notifications
+echo     [✓] Vibration alerts
+echo     [ ] LED indicator
+echo     [✓] Show on lock screen
+echo.
+echo  🛡️  PRIVACY SETTINGS:
+echo     [✓] Hide sensitive content
+echo     [ ] Anonymous analytics
+echo     [✓] Secure mode
+echo.
+echo  ⏰ SCHEDULE SETTINGS:
+echo     Do Not Disturb: 22:00 - 07:00
+echo     Work Mode: 09:00 - 17:00
+echo     Weekend Mode: Disabled
+echo.
+echo  Settings saved automatically.
+echo  Press any key to return to menu...
+pause >nul
+goto menu
+
+:about
+cls
+echo.
+echo  ╔══════════════════════════════════════════════════════════════════════════════╗
+echo  ║                                   ABOUT                                      ║
+echo  ╚══════════════════════════════════════════════════════════════════════════════╝
+echo.
+echo  📱 NOTIFICATION MANAGER PRO
+echo     Version: 1.0.0
+echo     Developer: Soham Misra
+echo     Release Date: January 2024
+echo.
+echo  🌟 FEATURES:
+echo     • Smart notification filtering
+echo     • Custom notification rules
+echo     • Do Not Disturb scheduling
+echo     • Real-time statistics
+echo     • Privacy controls
+echo     • Cross-platform sync
+echo.
+echo  📞 SUPPORT:
+echo     Email: support@sohammisra.com
+echo     Website: www.sohammisra.com
+echo     GitHub: github.com/sohammisra
+echo.
+echo  © 2024 Soham Misra. All rights reserved.
+echo.
+echo  Press any key to return to menu...
+pause >nul
+goto menu
+
+:exit
+cls
+echo.
+echo  Thank you for using Notification Manager Pro!
+echo  Developed by Soham Misra
+echo.
+timeout /t 2 >nul
+exit

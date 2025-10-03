@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Clone - Video Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-left">
+            <button class="menu-btn">☰</button>
+            <div class="logo">
+                <span class="youtube-text">YouTube</span>
+            </div>
+        </div>
+        <div class="nav-center">
+            <div class="search-container">
+                <input type="text" placeholder="Search" class="search-input">
+                <button class="search-btn">🔍</button>
+            </div>
+        </div>
+        <div class="nav-right">
+            <button class="create-btn">📹</button>
+            <button class="notifications-btn">🔔</button>
+            <div class="profile-btn">👤</div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="#home" class="nav-item active">🏠 Home</a>
+                <a href="#trending" class="nav-item">🔥 Trending</a>
+                <a href="#subscriptions" class="nav-item">📺 Subscriptions</a>
+                <hr>
+                <a href="#library" class="nav-item">📚 Library</a>
+                <a href="#history" class="nav-item">🕒 History</a>
+                <a href="#watch-later" class="nav-item">⏰ Watch Later</a>
+                <a href="#liked" class="nav-item">👍 Liked Videos</a>
+                <hr>
+                <h3>Subscriptions</h3>
+                <a href="#channel1" class="channel-item">🎮 Gaming Channel</a>
+                <a href="#channel2" class="channel-item">🎵 Music Channel</a>
+                <a href="#channel3" class="channel-item">📚 Education Hub</a>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <section class="video-grid">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180' fill='%23ff0000'%3E%3Crect width='320' height='180'/%3E%3Ctext x='160' y='90' text-anchor='middle' fill='white' font-size='30'%3E🎮%3C/text%3E%3C/svg%3E" alt="Gaming Highlights">
+                        <div class="video-duration">10:45</div>
+                        <div class="play-overlay">
+                            <div class="play-button">▶</div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <div class="channel-avatar">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36' fill='%23ff0000'%3E%3Ccircle cx='18' cy='18' r='18'/%3E%3Ctext x='18' y='22' text-anchor='middle' fill='white' font-size='16'%3EG%3C/text%3E%3C/svg%3E" alt="Gaming Pro">
+                        </div>
+                        <div class="video-details">
+                            <h3 class="video-title">Amazing Gaming Highlights - Best Moments Compilation</h3>
+                            <p class="channel-name">Gaming Pro ✓</p>
+                            <p class="video-stats">1.2M views • 2 days ago</p>
+                        </div>
+                        <div class="video-menu">
+                            <button class="menu-btn">⋮</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="thumbnail-placeholder">🎵</div>
+                        <div class="video-duration">3:42</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="channel-avatar">🎤</div>
+                        <div class="video-details">
+                            <h3 class="video-title">Top 10 Songs of the Week</h3>
+                            <p class="channel-name">Music World</p>
+                            <p class="video-stats">856K views • 1 day ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="thumbnail-placeholder">📚</div>
+                        <div class="video-duration">15:20</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="channel-avatar">🎓</div>
+                        <div class="video-details">
+                            <h3 class="video-title">Learn Programming in 15 Minutes</h3>
+                            <p class="channel-name">Code Academy</p>
+                            <p class="video-stats">2.1M views • 3 days ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="thumbnail-placeholder">🍳</div>
+                        <div class="video-duration">8:15</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="channel-avatar">👨‍🍳</div>
+                        <div class="video-details">
+                            <h3 class="video-title">Easy Cooking Recipe</h3>
+                            <p class="channel-name">Chef's Kitchen</p>
+                            <p class="video-stats">543K views • 5 hours ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="thumbnail-placeholder">🏃‍♂️</div>
+                        <div class="video-duration">12:30</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="channel-avatar">💪</div>
+                        <div class="video-details">
+                            <h3 class="video-title">10 Minute Home Workout</h3>
+                            <p class="channel-name">Fitness Plus</p>
+                            <p class="video-stats">789K views • 1 week ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="thumbnail-placeholder">🌍</div>
+                        <div class="video-duration">20:45</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="channel-avatar">🎥</div>
+                        <div class="video-details">
+                            <h3 class="video-title">Amazing Travel Documentary</h3>
+                            <p class="channel-name">Travel Explorer</p>
+                            <p class="video-stats">1.8M views • 4 days ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="thumbnail-placeholder">🎨</div>
+                        <div class="video-duration">25:10</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="channel-avatar">🖌️</div>
+                        <div class="video-details">
+                            <h3 class="video-title">Digital Art Tutorial</h3>
+                            <p class="channel-name">Art Studio</p>
+                            <p class="video-stats">432K views • 2 days ago</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="thumbnail-placeholder">🚗</div>
+                        <div class="video-duration">18:22</div>
+                    </div>
+                    <div class="video-info">
+                        <div class="channel-avatar">🏎️</div>
+                        <div class="video-details">
+                            <h3 class="video-title">Car Review: Latest Model</h3>
+                            <p class="channel-name">Auto Reviews</p>
+                            <p class="video-stats">967K views • 6 days ago</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 YouTube Clone. All rights reserved.</p>
+            <a href="../index.html" class="back-btn">← Back to Hub</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

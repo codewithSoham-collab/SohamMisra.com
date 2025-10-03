@@ -1,0 +1,23 @@
+Payload/UltimateMediaPlayer.app/Info.plist
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDisplayName</key>
+    <string>Ultimate Media Player</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.sohammisra.mediaplayer</string>
+    <key>CFBundleVersion</key>
+    <string>1.0</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0.0</string>
+</dict>
+</plist>
+
+[IOS APP BUNDLE - ULTIMATE MEDIA PLAYER]
+Developer: Soham Misra
+Platform: iOS 14.0+
+Size: 42.1 MB
+Features: HD Quality, All Formats, Streaming
+
+© 2024 Soham Misra. All rights reserved.

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone - Online Shopping</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="logo">
+                    <svg viewBox="0 0 120 30" class="amazon-logo">
+                        <path d="M28.07 30c-7.8-5.74-19.1-8.8-28.87-8.8-.4 0-.8 0-1.2.03C6.3 25.3 16.7 30 28.07 30z" fill="#ff9900"/>
+                        <path d="M0 21.23c9.77 0 21.07 3.06 28.87 8.8C16.7 30 6.3 25.3-1 21.23c.4-.03.8-.03 1.2-.03z" fill="#232f3e"/>
+                        <text x="35" y="20" fill="#232f3e" font-size="18" font-weight="bold">amazon</text>
+                    </svg>
+                </div>
+                <div class="deliver-to">
+                    <span class="deliver-text">Deliver to</span>
+                    <div class="location">
+                        <span class="location-icon">📍</span>
+                        <span class="location-text">New York 10001</span>
+                    </div>
+                </div>
+            </div>
+            <div class="search-bar">
+                <select class="category-select">
+                    <option>All Departments</option>
+                    <option>Electronics</option>
+                    <option>Books</option>
+                    <option>Clothing, Shoes & Jewelry</option>
+                    <option>Home & Kitchen</option>
+                    <option>Sports & Outdoors</option>
+                </select>
+                <input type="text" placeholder="Search Amazon" class="search-input">
+                <button class="search-btn">🔍</button>
+            </div>
+            <div class="nav-right">
+                <div class="language-selector">
+                    <span class="flag">🇺🇸</span>
+                    <span class="lang">EN</span>
+                </div>
+                <div class="account-menu">
+                    <span class="greeting">Hello, Sign in</span>
+                    <div class="account-lists">
+                        <strong>Account & Lists</strong>
+                        <span class="dropdown-arrow">▼</span>
+                    </div>
+                </div>
+                <div class="returns-orders">
+                    <span class="returns-text">Returns</span>
+                    <strong>& Orders</strong>
+                </div>
+                <div class="cart">
+                    <div class="cart-icon">
+                        <span class="cart-symbol">🛒</span>
+                        <span class="cart-count">0</span>
+                    </div>
+                    <span class="cart-text">Cart</span>
+                </div>
+            </div>
+        </div>
+        <nav class="sub-nav">
+            <div class="sub-nav-left">
+                <button class="menu-btn">
+                    <span class="hamburger">☰</span>
+                    <span>All</span>
+                </button>
+                <a href="#deals">Today's Deals</a>
+                <a href="#customer-service">Customer Service</a>
+                <a href="#registry">Registry</a>
+                <a href="#gift-cards">Gift Cards</a>
+                <a href="#sell">Sell</a>
+            </div>
+            <div class="sub-nav-right">
+                <a href="#" class="prime-link">Shop deals in Electronics</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-carousel">
+            <div class="carousel-container">
+                <div class="carousel-slide active">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 400' fill='%23232f3e'%3E%3Crect width='1200' height='400'/%3E%3Ctext x='600' y='200' text-anchor='middle' fill='%23ff9900' font-size='40'%3EHoliday Deals%3C/text%3E%3C/svg%3E" alt="Holiday Deals">
+                    <div class="slide-content">
+                        <h2>Holiday deals for everyone on your list</h2>
+                        <p>Shop gifts starting at $5</p>
+                        <button class="shop-deals-btn">Shop now</button>
+                    </div>
+                </div>
+                <button class="carousel-btn prev">‹</button>
+                <button class="carousel-btn next">›</button>
+            </div>
+        </section>
+
+        <section class="category-cards">
+            <div class="cards-grid">
+                <div class="category-card large">
+                    <h3>Gaming accessories</h3>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' fill='%23232f3e'%3E%3Crect width='300' height='200'/%3E%3Ctext x='150' y='100' text-anchor='middle' fill='white' font-size='40'%3E🎮%3C/text%3E%3C/svg%3E" alt="Gaming">
+                    <a href="#" class="card-link">Shop now</a>
+                </div>
+                <div class="category-card">
+                    <h3>Electronics</h3>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' fill='%23232f3e'%3E%3Crect width='300' height='200'/%3E%3Ctext x='150' y='100' text-anchor='middle' fill='white' font-size='40'%3E📱%3C/text%3E%3C/svg%3E" alt="Electronics">
+                    <a href="#" class="card-link">See more</a>
+                </div>
+                <div class="category-card">
+                    <h3>Fashion trends you like</h3>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' fill='%23232f3e'%3E%3Crect width='300' height='200'/%3E%3Ctext x='150' y='100' text-anchor='middle' fill='white' font-size='40'%3E👕%3C/text%3E%3C/svg%3E" alt="Fashion">
+                    <a href="#" class="card-link">Explore now</a>
+                </div>
+                <div class="category-card">
+                    <h3>Home & Kitchen</h3>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200' fill='%23232f3e'%3E%3Crect width='300' height='200'/%3E%3Ctext x='150' y='100' text-anchor='middle' fill='white' font-size='40'%3E🏠%3C/text%3E%3C/svg%3E" alt="Home">
+                    <a href="#" class="card-link">Shop now</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-products">
+            <h2>Featured Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">📱</div>
+                    <h3>Smartphone Pro</h3>
+                    <div class="rating">⭐⭐⭐⭐⭐ (1,234)</div>
+                    <div class="price">$699.99</div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">💻</div>
+                    <h3>Gaming Laptop</h3>
+                    <div class="rating">⭐⭐⭐⭐⭐ (856)</div>
+                    <div class="price">$1,299.99</div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">🎧</div>
+                    <h3>Wireless Headphones</h3>
+                    <div class="rating">⭐⭐⭐⭐⭐ (2,156)</div>
+                    <div class="price">$199.99</div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">📖</div>
+                    <h3>Best Seller Book</h3>
+                    <div class="rating">⭐⭐⭐⭐⭐ (3,421)</div>
+                    <div class="price">$14.99</div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">👕</div>
+                    <h3>Premium T-Shirt</h3>
+                    <div class="rating">⭐⭐⭐⭐⭐ (987)</div>
+                    <div class="price">$24.99</div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">⌚</div>
+                    <h3>Smart Watch</h3>
+                    <div class="rating">⭐⭐⭐⭐⭐ (1,567)</div>
+                    <div class="price">$299.99</div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="deals-section">
+            <h2>Today's Deals</h2>
+            <div class="deals-grid">
+                <div class="deal-card">
+                    <div class="deal-badge">50% OFF</div>
+                    <div class="deal-image">🎮</div>
+                    <h3>Gaming Console</h3>
+                    <div class="deal-price">
+                        <span class="original-price">$499.99</span>
+                        <span class="sale-price">$249.99</span>
+                    </div>
+                    <button class="deal-btn">Get Deal</button>
+                </div>
+                
+                <div class="deal-card">
+                    <div class="deal-badge">30% OFF</div>
+                    <div class="deal-image">📺</div>
+                    <h3>4K Smart TV</h3>
+                    <div class="deal-price">
+                        <span class="original-price">$799.99</span>
+                        <span class="sale-price">$559.99</span>
+                    </div>
+                    <button class="deal-btn">Get Deal</button>
+                </div>
+                
+                <div class="deal-card">
+                    <div class="deal-badge">25% OFF</div>
+                    <div class="deal-image">🏠</div>
+                    <h3>Home Decor Set</h3>
+                    <div class="deal-price">
+                        <span class="original-price">$199.99</span>
+                        <span class="sale-price">$149.99</span>
+                    </div>
+                    <button class="deal-btn">Get Deal</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Amazon Clone. All rights reserved.</p>
+            <a href="../index.html" class="back-btn">← Back to Hub</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

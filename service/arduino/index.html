@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Arduino Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Arduino Projects Hub</h1>
+            <nav class="nav">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#about" class="nav-link">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h2 class="hero-title">Top 10 Arduino Projects</h2>
+                <p class="hero-subtitle">Explore amazing Arduino projects with code and circuit diagrams</p>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    
+                    <div class="project-card" data-project="1">
+                        <div class="project-image">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>LED Blink Controller</h3>
+                            <p>Basic LED control with customizable blink patterns</p>
+                            <div class="project-tags">
+                                <span class="tag">Beginner</span>
+                                <span class="tag">LED</span>
+                            </div>
+                            <div class="project-actions">
+                                <button class="btn-view" onclick="viewProject(1)">View Details</button>
+                                <button class="btn-download" onclick="downloadProject(1)">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-project="2">
+                        <div class="project-image">
+                            <i class="fas fa-thermometer-half"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Temperature Monitor</h3>
+                            <p>Real-time temperature monitoring with LCD display</p>
+                            <div class="project-tags">
+                                <span class="tag">Intermediate</span>
+                                <span class="tag">Sensor</span>
+                            </div>
+                            <div class="project-actions">
+                                <button class="btn-view" onclick="viewProject(2)">View Details</button>
+                                <button class="btn-download" onclick="downloadProject(2)">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-project="3">
+                        <div class="project-image">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Servo Motor Control</h3>
+                            <p>Precise servo motor control with potentiometer</p>
+                            <div class="project-tags">
+                                <span class="tag">Intermediate</span>
+                                <span class="tag">Motor</span>
+                            </div>
+                            <div class="project-actions">
+                                <button class="btn-view" onclick="viewProject(3)">View Details</button>
+                                <button class="btn-download" onclick="downloadProject(3)">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-project="4">
+                        <div class="project-image">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Ultrasonic Security</h3>
+                            <p>Motion detection system with buzzer alert</p>
+                            <div class="project-tags">
+                                <span class="tag">Advanced</span>
+                                <span class="tag">Security</span>
+                            </div>
+                            <div class="project-actions">
+                                <button class="btn-view" onclick="viewProject(4)">View Details</button>
+                                <button class="btn-download" onclick="downloadProject(4)">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-project="5">
+                        <div class="project-image">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Music Player</h3>
+                            <p>Simple music player with buzzer melodies</p>
+                            <div class="project-tags">
+                                <span class="tag">Intermediate</span>
+                                <span class="tag">Audio</span>
+                            </div>
+                            <div class="project-actions">
+                                <button class="btn-view" onclick="viewProject(5)">View Details</button>
+                                <button class="btn-download" onclick="downloadProject(5)">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-project="6">
+                        <div class="project-image">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>RC Car Controller</h3>
+                            <p>Remote controlled car with motor drivers</p>
+                            <div class="project-tags">
+                                <span class="tag">Advanced</span>
+                                <span class="tag">Vehicle</span>
+                            </div>
+                            <div class="project-actions">
+                                <button class="btn-view" onclick="viewProject(6)">View Details</button>
+                                <button class="btn-download" onclick="downloadProject(6)">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-project="7">
+                        <div class="project-image">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Digital Clock</h3>
+                            <p>Real-time clock with 7-segment display</p>
+                            <div class="project-tags">
+                                <span class="tag">Intermediate</span>
+                                <span class="tag">Display</span>
+                            </div>
+                            <div class="project-actions">
+                                <button class="btn-view" onclick="viewProject(7)">View Details</button>
+                                <button class="btn-download" onclick="downloadProject(7)">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-project="8">
+                        <div class="project-image">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>IoT Weather Station</h3>
+                            <p>WiFi-enabled weather monitoring system</p>
+                            <div class="project-tags">
+                                <span class="tag">Expert</span>
+                                <span class="tag">IoT</span>
+                            </div>
+                            <div class="project-actions">
+                                <button class="btn-view" onclick="viewProject(8)">View Details</button>
+                                <button class="btn-download" onclick="downloadProject(8)">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-project="9">
+                        <div class="project-image">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Game Controller</h3>
+                            <p>Custom game controller with buttons and joystick</p>
+                            <div class="project-tags">
+                                <span class="tag">Advanced</span>
+                                <span class="tag">Gaming</span>
+                            </div>
+                            <div class="project-actions">
+                                <button class="btn-view" onclick="viewProject(9)">View Details</button>
+                                <button class="btn-download" onclick="downloadProject(9)">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-project="10">
+                        <div class="project-image">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3>Smart Home Hub</h3>
+                            <p>Complete home automation control system</p>
+                            <div class="project-tags">
+                                <span class="tag">Expert</span>
+                                <span class="tag">Automation</span>
+                            </div>
+                            <div class="project-actions">
+                                <button class="btn-view" onclick="viewProject(10)">View Details</button>
+                                <button class="btn-download" onclick="downloadProject(10)">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

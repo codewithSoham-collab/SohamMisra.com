@@ -1,0 +1,528 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header {
+    background: rgba(0, 238, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 238, 255, 0.2);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 20px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #00eeff;
+    text-shadow: 0 0 20px rgba(0, 238, 255, 0.5);
+}
+
+.nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00eeff, #0099cc);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #00eeff;
+    transform: translateY(-2px);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    padding: 120px 0 80px;
+    text-align: center;
+    background: radial-gradient(circle at center, rgba(0, 238, 255, 0.1) 0%, transparent 70%);
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #00eeff, #0099cc, #66ccff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #cccccc;
+    margin-bottom: 2rem;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 20px rgba(0, 238, 255, 0.5); }
+    to { text-shadow: 0 0 30px rgba(0, 238, 255, 0.8); }
+}
+
+/* Projects Section */
+.projects {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #00eeff;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, #00eeff, #0099cc);
+    border-radius: 2px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: linear-gradient(145deg, rgba(0, 238, 255, 0.05), rgba(0, 153, 204, 0.05));
+    border: 1px solid rgba(0, 238, 255, 0.2);
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 238, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.project-card:hover::before {
+    left: 100%;
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 238, 255, 0.3);
+    border-color: #00eeff;
+}
+
+.project-image {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.project-image i {
+    font-size: 3rem;
+    color: #00eeff;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-image i {
+    transform: scale(1.2) rotate(5deg);
+    text-shadow: 0 0 20px rgba(0, 238, 255, 0.8);
+}
+
+.project-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.project-card:hover .project-content h3 {
+    color: #00eeff;
+}
+
+.project-content p {
+    color: #cccccc;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.project-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: rgba(0, 238, 255, 0.2);
+    color: #00eeff;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(0, 238, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .tag {
+    background: rgba(0, 238, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.project-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn-view, .btn-download {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-view {
+    background: linear-gradient(45deg, #00eeff, #0099cc);
+    color: #000000;
+    flex: 1;
+}
+
+.btn-download {
+    background: rgba(0, 238, 255, 0.1);
+    color: #00eeff;
+    border: 1px solid rgba(0, 238, 255, 0.3);
+    min-width: 120px;
+}
+
+.btn-view:hover, .btn-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 238, 255, 0.4);
+}
+
+.btn-download:hover {
+    background: rgba(0, 238, 255, 0.2);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: linear-gradient(145deg, #1a1a2e, #16213e);
+    margin: 5% auto;
+    padding: 2rem;
+    border: 1px solid rgba(0, 238, 255, 0.3);
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close {
+    color: #00eeff;
+    float: right;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close:hover {
+    transform: rotate(90deg);
+    text-shadow: 0 0 10px rgba(0, 238, 255, 0.8);
+}
+
+.modal h2 {
+    color: #00eeff;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.modal h3 {
+    color: #ffffff;
+    margin: 1.5rem 0 0.5rem;
+    font-size: 1.3rem;
+}
+
+.modal p, .modal li {
+    color: #cccccc;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.modal ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.code-block {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 238, 255, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-family: 'Courier New', monospace;
+    color: #00eeff;
+    overflow-x: auto;
+    position: relative;
+}
+
+.code-block::before {
+    content: 'Arduino Code';
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: #1a1a2e;
+    padding: 0 10px;
+    font-size: 0.8rem;
+    color: #00eeff;
+}
+
+.circuit-diagram {
+    background: rgba(0, 238, 255, 0.05);
+    border: 1px solid rgba(0, 238, 255, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.download-section {
+    background: rgba(0, 238, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.download-btn {
+    background: linear-gradient(45deg, #00eeff, #0099cc);
+    color: #000000;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    margin: 0.5rem;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 238, 255, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header .container {
+        padding: 0.8rem 3%;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .nav {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+    
+    .hero {
+        padding: 100px 3% 60px;
+    }
+    
+    .hero-title {
+        font-size: clamp(2rem, 8vw, 2.5rem);
+        line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+        font-size: clamp(1rem, 4vw, 1.2rem);
+    }
+    
+    .projects {
+        padding: 60px 3%;
+    }
+    
+    .section-title {
+        font-size: clamp(2rem, 7vw, 2.5rem);
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .project-card {
+        padding: 1.5rem;
+        margin: 0 auto;
+        max-width: 400px;
+    }
+    
+    .project-actions {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .btn-view, .btn-download {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        width: 100%;
+    }
+    
+    .project-tags {
+        justify-content: center;
+    }
+    
+    .tag {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.7rem;
+    }
+    
+    .modal-content {
+        margin: 5% auto;
+        padding: 1.5rem;
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    .code-block {
+        font-size: 0.8rem;
+        padding: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header .container {
+        padding: 0.8rem 5%;
+    }
+    
+    .hero {
+        padding: 80px 5% 50px;
+    }
+    
+    .hero-title {
+        font-size: clamp(1.8rem, 7vw, 2rem);
+    }
+    
+    .section-title {
+        font-size: clamp(1.8rem, 6vw, 2rem);
+    }
+    
+    .projects {
+        padding: 50px 5%;
+    }
+    
+    .project-card {
+        padding: 1.2rem;
+    }
+    
+    .project-image i {
+        font-size: 2.5rem;
+    }
+    
+    .project-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .modal-content {
+        margin: 2% auto;
+        padding: 1rem;
+        width: 98%;
+    }
+    
+    .modal h2 {
+        font-size: 1.5rem;
+    }
+    
+    .close {
+        font-size: 1.5rem;
+        top: 10px;
+        right: 15px;
+    }
+}

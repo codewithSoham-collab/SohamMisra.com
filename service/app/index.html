@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soham Misra - App Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-container">
+            <div class="loader"></div>
+            <h2 class="loader-text">SOHAM MISRA</h2>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" style="display: none;">
+        <!-- Header -->
+        <header class="header">
+            <nav class="navbar">
+                <div class="nav-brand">
+                    <img src="https://img.icons8.com/fluency/48/smartphone.png" alt="SM Apps" style="margin-right: 10px;" />
+                    <span>SM Apps</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#apps" class="nav-link">Apps</a></li>
+                    <li><a href="#features" class="nav-link">Features</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Premium Apps by <span class="highlight">Soham Misra</span></h1>
+                <p class="hero-subtitle">Download powerful, feature-rich applications for all your devices</p>
+                <div class="hero-buttons">
+                    <a href="#apps" class="btn btn-primary">Explore Apps</a>
+                    <a href="#features" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-animation">
+                <div class="floating-phone">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Apps Section -->
+        <section id="apps" class="apps-section">
+            <div class="container">
+                <h2 class="section-title">Our Applications</h2>
+                <div class="apps-grid">
+                    <!-- Notification Manager App -->
+                    <div class="app-card" data-app="notification">
+                        <div class="app-icon">
+                            <img src="https://img.icons8.com/fluency/96/bell.png" alt="Notification Manager" />
+                        </div>
+                        <h3>Notification Manager Pro</h3>
+                        <p>Advanced notification management with smart filtering, scheduling, and custom rules.</p>
+                        <div class="app-features">
+                            <span class="feature-tag">Smart Filtering</span>
+                            <span class="feature-tag">Custom Rules</span>
+                            <span class="feature-tag">Scheduling</span>
+                        </div>
+                        <div class="download-buttons">
+                            <button class="download-btn android" onclick="downloadApp('notification', 'android')">
+                                <i class="fab fa-android"></i> Android
+                            </button>
+                            <button class="download-btn ios" onclick="downloadApp('notification', 'ios')">
+                                <i class="fab fa-apple"></i> iOS
+                            </button>
+                            <button class="download-btn windows" onclick="downloadApp('notification', 'windows')">
+                                <i class="fab fa-windows"></i> Windows
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Task Manager App -->
+                    <div class="app-card" data-app="task">
+                        <div class="app-icon">
+                            <img src="https://img.icons8.com/fluency/96/task.png" alt="Task Manager" />
+                        </div>
+                        <h3>Smart Task Manager</h3>
+                        <p>Intelligent task management with AI-powered prioritization and team collaboration.</p>
+                        <div class="app-features">
+                            <span class="feature-tag">AI Priority</span>
+                            <span class="feature-tag">Team Sync</span>
+                            <span class="feature-tag">Analytics</span>
+                        </div>
+                        <div class="download-buttons">
+                            <button class="download-btn android" onclick="downloadApp('task', 'android')">
+                                <i class="fab fa-android"></i> Android
+                            </button>
+                            <button class="download-btn ios" onclick="downloadApp('task', 'ios')">
+                                <i class="fab fa-apple"></i> iOS
+                            </button>
+                            <button class="download-btn windows" onclick="downloadApp('task', 'windows')">
+                                <i class="fab fa-windows"></i> Windows
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Media Player App -->
+                    <div class="app-card" data-app="media">
+                        <div class="app-icon">
+                            <img src="https://img.icons8.com/fluency/96/play-button-circled.png" alt="Media Player" />
+                        </div>
+                        <h3>Ultimate Media Player</h3>
+                        <p>High-quality media player with advanced codecs, playlist management, and streaming.</p>
+                        <div class="app-features">
+                            <span class="feature-tag">HD Quality</span>
+                            <span class="feature-tag">All Formats</span>
+                            <span class="feature-tag">Streaming</span>
+                        </div>
+                        <div class="download-buttons">
+                            <button class="download-btn android" onclick="downloadApp('media', 'android')">
+                                <i class="fab fa-android"></i> Android
+                            </button>
+                            <button class="download-btn ios" onclick="downloadApp('media', 'ios')">
+                                <i class="fab fa-apple"></i> iOS
+                            </button>
+                            <button class="download-btn windows" onclick="downloadApp('media', 'windows')">
+                                <i class="fab fa-windows"></i> Windows
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="section-title">Why Choose Our Apps?</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Secure & Private</h3>
+                        <p>End-to-end encryption and privacy-first design</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>High Performance</h3>
+                        <p>Optimized for speed and efficiency</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-sync"></i>
+                        </div>
+                        <h3>Cross-Platform</h3>
+                        <p>Works seamlessly across all devices</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>24/7 Support</h3>
+                        <p>Round-the-clock customer assistance</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <h3>Soham Misra Apps</h3>
+                        <p>Creating innovative solutions for modern life</p>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#apps">Apps</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Soham Misra. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Download Modal -->
+    <div id="downloadModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <i class="fas fa-download"></i>
+                <h2>Download Started</h2>
+            </div>
+            <div class="modal-body">
+                <p id="downloadMessage">Your download will begin shortly...</p>
+                <div class="download-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <span class="progress-text">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Clone - Music for Everyone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="spotify-text">Spotify</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#home" class="nav-item active">🏠 Home</a>
+                <a href="#search" class="nav-item">🔍 Search</a>
+                <a href="#library" class="nav-item">📚 Your Library</a>
+            </nav>
+            <div class="playlist-section">
+                <h3>Playlists</h3>
+                <div class="playlist-item">❤️ Liked Songs</div>
+                <div class="playlist-item">🎵 My Playlist #1</div>
+                <div class="playlist-item">🎸 Rock Classics</div>
+                <div class="playlist-item">🎹 Chill Vibes</div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="nav-buttons">
+                    <button class="nav-btn">←</button>
+                    <button class="nav-btn">→</button>
+                </div>
+                <div class="user-menu">
+                    <div class="profile-btn">👤 Profile</div>
+                </div>
+            </header>
+
+            <section class="hero-section">
+                <h1 class="greeting">Good evening</h1>
+                <div class="quick-picks">
+                    <div class="quick-pick-item">
+                        <div class="album-art liked">❤️</div>
+                        <span>Liked Songs</span>
+                        <button class="play-overlay">▶</button>
+                    </div>
+                    <div class="quick-pick-item">
+                        <div class="album-art discover">🎵</div>
+                        <span>Discover Weekly</span>
+                        <button class="play-overlay">▶</button>
+                    </div>
+                    <div class="quick-pick-item">
+                        <div class="album-art hot">🔥</div>
+                        <span>Today's Top Hits</span>
+                        <button class="play-overlay">▶</button>
+                    </div>
+                    <div class="quick-pick-item">
+                        <div class="album-art release">🎶</div>
+                        <span>Release Radar</span>
+                        <button class="play-overlay">▶</button>
+                    </div>
+                    <div class="quick-pick-item">
+                        <div class="album-art daily">🌅</div>
+                        <span>Daily Mix 1</span>
+                        <button class="play-overlay">▶</button>
+                    </div>
+                    <div class="quick-pick-item">
+                        <div class="album-art repeat">🔁</div>
+                        <span>On Repeat</span>
+                        <button class="play-overlay">▶</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Made for you</h2>
+                <div class="playlist-grid">
+                    <div class="playlist-card">
+                        <div class="playlist-cover">🎸</div>
+                        <h3>Rock Mix</h3>
+                        <p>Your favorite rock songs</p>
+                        <button class="play-btn">▶</button>
+                    </div>
+                    <div class="playlist-card">
+                        <div class="playlist-cover">🎹</div>
+                        <h3>Chill Mix</h3>
+                        <p>Relax and unwind</p>
+                        <button class="play-btn">▶</button>
+                    </div>
+                    <div class="playlist-card">
+                        <div class="playlist-cover">🎤</div>
+                        <h3>Pop Mix</h3>
+                        <p>Today's biggest hits</p>
+                        <button class="play-btn">▶</button>
+                    </div>
+                    <div class="playlist-card">
+                        <div class="playlist-cover">🎺</div>
+                        <h3>Jazz Mix</h3>
+                        <p>Smooth jazz classics</p>
+                        <button class="play-btn">▶</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Recently played</h2>
+                <div class="playlist-grid">
+                    <div class="playlist-card">
+                        <div class="playlist-cover">🌟</div>
+                        <h3>Today's Top Hits</h3>
+                        <p>The most played songs</p>
+                        <button class="play-btn">▶</button>
+                    </div>
+                    <div class="playlist-card">
+                        <div class="playlist-cover">🎵</div>
+                        <h3>Indie Mix</h3>
+                        <p>Alternative indie music</p>
+                        <button class="play-btn">▶</button>
+                    </div>
+                    <div class="playlist-card">
+                        <div class="playlist-cover">🔊</div>
+                        <h3>Electronic Mix</h3>
+                        <p>Electronic dance music</p>
+                        <button class="play-btn">▶</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="player-bar">
+            <div class="now-playing">
+                <div class="track-info">
+                    <div class="album-cover">🎵</div>
+                    <div class="track-details">
+                        <div class="track-name">Song Title</div>
+                        <div class="artist-name">Artist Name</div>
+                    </div>
+                </div>
+                <button class="like-btn">♡</button>
+            </div>
+
+            <div class="player-controls">
+                <div class="control-buttons">
+                    <button class="control-btn">🔀</button>
+                    <button class="control-btn">⏮</button>
+                    <button class="control-btn play-pause">▶</button>
+                    <button class="control-btn">⏭</button>
+                    <button class="control-btn">🔁</button>
+                </div>
+                <div class="progress-bar">
+                    <span class="time">0:00</span>
+                    <div class="progress">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <span class="time">3:45</span>
+                </div>
+            </div>
+
+            <div class="volume-controls">
+                <button class="volume-btn">🔊</button>
+                <div class="volume-bar">
+                    <div class="volume-fill"></div>
+                </div>
+                <a href="../index.html" class="back-link">← Hub</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
