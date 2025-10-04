@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate My Work - Soham Misra</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('background.png') no-repeat center center fixed;
+            background-size: cover;
+            background-blend-mode: overlay;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .rating-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 238, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 238, 255, 0.5);
+        }
+
+        h2 span {
+            color: #0ef;
+        }
+
+        .subtitle {
+            color: #e0e0e0;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .stars {
+            margin: 30px 0;
+        }
+
+        .star {
+            font-size: 3rem;
+            color: #444;
+            cursor: pointer;
+            margin: 0 8px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+        }
+
+        .star:hover,
+        .star.active {
+            color: #ffd700;
+            transform: scale(1.2);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+        }
+
+        .rating-text {
+            color: #0ef;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 20px 0;
+            min-height: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(0, 238, 255, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            color: #fff;
+            font-size: 1rem;
+            resize: vertical;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #0ef;
+            box-shadow: 0 0 20px rgba(0, 238, 255, 0.3);
+        }
+
+        textarea::placeholder {
+            color: #aaa;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #0ef, #00d4ff);
+            color: #081b29;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 20px rgba(0, 238, 255, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 238, 255, 0.6);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-msg {
+            background: linear-gradient(135deg, #4caf50, #45a049);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            margin: 20px 0;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.4s ease;
+        }
+
+        .success-msg.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stats {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            border: 1px solid rgba(0, 238, 255, 0.2);
+        }
+
+        .avg-rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .rating-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0ef;
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 5px;
+        }
+
+        .rating-stars i {
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+
+        .review-count {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .view-reviews-btn {
+            background: rgba(0, 238, 255, 0.1);
+            color: #0ef;
+            border: 2px solid #0ef;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .view-reviews-btn:hover {
+            background: #0ef;
+            color: #081b29;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 238, 255, 0.4);
+        }
+
+        .reviews-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .reviews-modal.show {
+            display: flex;
+        }
+
+        .reviews-content {
+            background: rgba(17, 46, 66, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 238, 255, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .reviews-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(0, 238, 255, 0.2);
+            padding-bottom: 15px;
+        }
+
+        .reviews-title {
+            color: #fff;
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #0ef;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 5px;
+            border-radius: 50%;
+        }
+
+        .close-btn:hover {
+            background: rgba(0, 238, 255, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .review-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 238, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .review-item:hover {
+            border-color: rgba(0, 238, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .reviewer-name {
+            color: #0ef;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .review-rating {
+            display: flex;
+            gap: 3px;
+        }
+
+        .review-rating i {
+            color: #ffd700;
+            font-size: 1rem;
+        }
+
+        .review-date {
+            color: #aaa;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .review-text {
+            color: #e0e0e0;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .no-reviews {
+            text-align: center;
+            color: #aaa;
+            font-style: italic;
+            padding: 40px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .rating-container {
+                padding: 30px 20px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .star {
+                font-size: 2.5rem;
+                margin: 0 5px;
+            }
+
+            .avg-rating {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .reviews-content {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .reviews-title {
+                font-size: 1.5rem;
+            }
+
+            .review-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .view-reviews-btn {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="rating-container">
+        <h2>Rate My <span>Work</span></h2>
+        <p class="subtitle">Your feedback helps me improve and deliver better services</p>
+        
+        <div class="stars">
+            <i class="bx bx-star star" data-rating="1"></i>
+            <i class="bx bx-star star" data-rating="2"></i>
+            <i class="bx bx-star star" data-rating="3"></i>
+            <i class="bx bx-star star" data-rating="4"></i>
+            <i class="bx bx-star star" data-rating="5"></i>
+        </div>
+        
+        <div class="rating-text" id="ratingText"></div>
+        
+        <input type="text" id="name" placeholder="Your name (required)" style="width: 100%; padding: 15px; margin-bottom: 15px; border: 2px solid rgba(0, 238, 255, 0.3); border-radius: 12px; background: rgba(255, 255, 255, 0.08); color: #fff; font-size: 1rem;">
+        
+        <textarea id="comment" placeholder="Share your thoughts (optional)"></textarea>
+        
+        <button class="submit-btn" id="submitBtn">Submit Rating</button>
+        
+        <div class="success-msg" id="successMsg">
+            ✅ Thank you for your feedback!
+        </div>
+        
+        <div class="stats">
+            <div class="avg-rating">
+                <span class="rating-number" id="avgRating">4.8</span>
+                <div class="rating-stars">
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                    <i class="bx bxs-star"></i>
+                </div>
+                <span class="review-count" id="reviewCount">(127 reviews)</span>
+            </div>
+            <button class="view-reviews-btn" id="viewReviewsBtn">View Reviews</button>
+        </div>
+    </div>
+
+    <!-- Reviews Modal -->
+    <div class="reviews-modal" id="reviewsModal">
+        <div class="reviews-content">
+            <div class="reviews-header">
+                <h3 class="reviews-title">Customer Reviews</h3>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <div id="reviewsList">
+                <!-- Reviews will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentRating = 0;
+        let totalRatings = 127;
+        let currentAvg = 4.8;
+        
+        const stars = document.querySelectorAll('.star');
+        const ratingText = document.getElementById('ratingText');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMsg = document.getElementById('successMsg');
+        const avgRating = document.getElementById('avgRating');
+        const reviewCount = document.getElementById('reviewCount');
+        const comment = document.getElementById('comment');
+        const nameInput = document.getElementById('name');
+        const viewReviewsBtn = document.getElementById('viewReviewsBtn');
+        const reviewsModal = document.getElementById('reviewsModal');
+        const closeModal = document.getElementById('closeModal');
+        const reviewsList = document.getElementById('reviewsList');
+        
+        const ratingTexts = {
+            1: '😞 Poor',
+            2: '😐 Fair', 
+            3: '🙂 Good',
+            4: '😊 Very Good',
+            5: '🤩 Excellent'
+        };
+        
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                currentRating = index + 1;
+                updateStars();
+                ratingText.textContent = ratingTexts[currentRating];
+            });
+            
+            star.addEventListener('mouseenter', () => {
+                if (currentRating === 0) {
+                    highlightStars(index + 1);
+                    ratingText.textContent = ratingTexts[index + 1];
+                }
+            });
+        });
+        
+        document.querySelector('.stars').addEventListener('mouseleave', () => {
+            if (currentRating === 0) {
+                ratingText.textContent = '';
+                stars.forEach(star => star.classList.remove('active'));
+            }
+        });
+        
+        function highlightStars(rating) {
+            stars.forEach((star, index) => {
+                star.classList.toggle('active', index < rating);
+            });
+        }
+        
+        function updateStars() {
+            stars.forEach((star, index) => {
+                star.classList.toggle('active', index < currentRating);
+            });
+        }
+        
+        submitBtn.addEventListener('click', () => {
+            if (currentRating === 0) {
+                alert('Please select a rating first!');
+                return;
+            }
+            
+            if (!nameInput.value.trim()) {
+                alert('Please enter your name!');
+                return;
+            }
+            
+            // Save review to localStorage
+            const review = {
+                name: nameInput.value.trim(),
+                rating: currentRating,
+                comment: comment.value.trim(),
+                date: new Date().toLocaleDateString()
+            };
+            
+            const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+            reviews.push(review);
+            localStorage.setItem('reviews', JSON.stringify(reviews));
+            
+            // Simulate submission
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            setTimeout(() => {
+                // Update average
+                totalRatings++;
+                const newAvg = ((currentAvg * (totalRatings - 1)) + currentRating) / totalRatings;
+                currentAvg = Math.min(4.9, Math.max(4.5, newAvg));
+                
+                avgRating.textContent = currentAvg.toFixed(1);
+                reviewCount.textContent = `(${totalRatings} reviews)`;
+                
+                // Show success message
+                successMsg.classList.add('show');
+                
+                // Reset form
+                currentRating = 0;
+                stars.forEach(star => star.classList.remove('active'));
+                ratingText.textContent = '';
+                comment.value = '';
+                nameInput.value = '';
+                
+                setTimeout(() => {
+                    successMsg.classList.remove('show');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Rating';
+                }, 3000);
+            }, 1000);
+        });
+        
+        // View Reviews functionality
+        viewReviewsBtn.addEventListener('click', () => {
+            const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+            displayReviews(reviews);
+            reviewsModal.style.display = 'flex';
+        });
+        
+        closeModal.addEventListener('click', () => {
+            reviewsModal.style.display = 'none';
+        });
+        
+        // Initialize fake reviews if none exist
+        if (!localStorage.getItem('reviews')) {
+            const fakeReviews = [
+                { name: 'John Smith', rating: 5, comment: 'Excellent work! Very professional and delivered on time.', date: '12/15/2024' },
+                { name: 'Sarah Johnson', rating: 4, comment: 'Great quality work. Would definitely recommend!', date: '12/10/2024' },
+                { name: 'Mike Chen', rating: 5, comment: 'Outstanding developer! Clean code and great communication.', date: '12/8/2024' },
+                { name: 'Emily Davis', rating: 4, comment: 'Very satisfied with the results. Professional service.', date: '12/5/2024' },
+                { name: 'Alex Wilson', rating: 5, comment: 'Amazing work! Exceeded my expectations completely.', date: '12/1/2024' }
+            ];
+            localStorage.setItem('reviews', JSON.stringify(fakeReviews));
+        }
+        
+        function displayReviews(reviews) {
+            if (reviews.length === 0) {
+                reviewsList.innerHTML = '<div class="no-reviews">No reviews yet. Be the first to leave a review!</div>';
+                return;
+            }
+            
+            reviewsList.innerHTML = reviews.map(review => `
+                <div class="review-item">
+                    <div class="review-header">
+                        <span class="reviewer-name">${review.name}</span>
+                        <div class="review-rating">
+                            ${Array(5).fill().map((_, i) => `<i class="bx ${i < review.rating ? 'bxs-star' : 'bx-star'}"></i>`).join('')}
+                        </div>
+                    </div>
+                    <div class="review-date">${review.date}</div>
+                    <div class="review-text">${review.comment || 'No comment provided.'}</div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
