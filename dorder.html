@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct Order - Apps & Arduino Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: url('background.png') center center fixed;
+            background-size: cover;
+            position: relative;
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.85), rgba(0, 150, 199, 0.75));
+            z-index: -1;
+            animation: backgroundShift 10s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { background: linear-gradient(135deg, rgba(0, 188, 212, 0.85), rgba(0, 150, 199, 0.75)); }
+            50% { background: linear-gradient(135deg, rgba(0, 150, 199, 0.75), rgba(0, 188, 212, 0.85)); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0;
+            animation: fadeInDown 1.5s ease-out;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            animation: lineGlow 2s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 2px 2px 4px rgba(0,0,0,0.7);
+            margin-bottom: 15px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 2px 2px 4px rgba(0,0,0,0.7); }
+            50% { text-shadow: 0 0 30px rgba(0, 255, 255, 0.8), 2px 2px 4px rgba(0,0,0,0.7); }
+        }
+
+        @keyframes lineGlow {
+            0%, 100% { opacity: 0.5; width: 100px; }
+            50% { opacity: 1; width: 150px; }
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .product-card {
+            background: rgba(0, 188, 212, 0.15);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(0, 255, 255, 0.4);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(0, 255, 255, 0.4), 0 0 30px rgba(0, 255, 255, 0.2);
+            border-color: rgba(0, 255, 255, 1);
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+            animation: shimmer 1.5s ease-in-out;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .product-title {
+            font-size: 1.6em;
+            margin-bottom: 18px;
+            color: #00ffff;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .product-title {
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+        }
+
+        .product-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .price {
+            font-size: 2em;
+            font-weight: bold;
+            color: #00e5ff;
+            margin-bottom: 25px;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+            animation: priceGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes priceGlow {
+            0%, 100% { text-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(0, 229, 255, 0.8); }
+        }
+
+        @keyframes unavailablePulse {
+            0%, 100% { text-shadow: 0 0 10px rgba(255, 107, 107, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(255, 107, 107, 0.8); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .order-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea {
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            transition: all 0.4s ease;
+            font-size: 1em;
+            backdrop-filter: blur(5px);
+        }
+
+        select {
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            transition: all 0.4s ease;
+            font-size: 1em;
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%2300ffff" d="M6 8L0 2h12z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 12px;
+        }
+
+        select option {
+            background: rgba(0, 50, 60, 0.95);
+            color: white;
+            padding: 10px;
+            border: none;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #00ffff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6), inset 0 0 10px rgba(0, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.12);
+            transform: scale(1.02);
+        }
+
+        input:hover, textarea:hover, select:hover {
+            border-color: rgba(0, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .file-upload-area {
+            border: 2px dashed rgba(0, 255, 255, 0.4);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .file-upload-area:hover {
+            border-color: rgba(0, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.08);
+            transform: scale(1.02);
+        }
+
+        .file-upload-area.dragover {
+            border-color: #00ffff;
+            background: rgba(0, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .file-upload-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .file-upload-subtext {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9em;
+        }
+
+        .file-list {
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .file-item {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 5px;
+            padding: 8px 12px;
+            margin: 5px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9em;
+        }
+
+        .file-remove {
+            background: rgba(255, 0, 0, 0.2);
+            border: 1px solid rgba(255, 0, 0, 0.5);
+            color: #ff6b6b;
+            border-radius: 3px;
+            padding: 2px 6px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: all 0.3s ease;
+        }
+
+        .file-remove:hover {
+            background: rgba(255, 0, 0, 0.4);
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .order-btn {
+            background: linear-gradient(45deg, #00bcd4, #00e5ff);
+            color: white;
+            border: 2px solid rgba(0, 255, 255, 0.5);
+            padding: 18px 35px;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .order-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .order-btn:hover {
+            background: linear-gradient(45deg, #00e5ff, #00bcd4);
+            transform: scale(1.08);
+            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3);
+            border-color: rgba(0, 255, 255, 1);
+        }
+
+        .order-btn:hover::before {
+            left: 100%;
+        }
+
+        .order-btn:active {
+            transform: scale(1.02);
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.2), rgba(0, 255, 255, 0.05));
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            animation: float 8s ease-in-out infinite;
+            backdrop-filter: blur(2px);
+        }
+
+        .circle1 { width: 100px; height: 100px; top: 15%; left: 8%; animation-delay: 0s; }
+        .circle2 { width: 150px; height: 150px; top: 55%; right: 10%; animation-delay: 2.5s; }
+        .circle3 { width: 80px; height: 80px; bottom: 15%; left: 15%; animation-delay: 5s; }
+        .circle4 { width: 120px; height: 120px; top: 30%; right: 25%; animation-delay: 1.5s; }
+        .circle5 { width: 70px; height: 70px; bottom: 40%; right: 5%; animation-delay: 3.5s; }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            25% { 
+                transform: translateY(-15px) rotate(90deg) scale(1.1);
+                opacity: 0.8;
+            }
+            50% { 
+                transform: translateY(-30px) rotate(180deg) scale(0.9);
+                opacity: 1;
+            }
+            75% { 
+                transform: translateY(-15px) rotate(270deg) scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); }
+        }
+
+        @media (max-width: 1024px) {
+            .products-grid { 
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 25px;
+            }
+            .container { padding: 15px; }
+        }
+
+        @media (max-width: 768px) {
+            .products-grid { 
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            h1 { 
+                font-size: 2.5em;
+                letter-spacing: 1px;
+            }
+            .subtitle { font-size: 1.1em; }
+            header { padding: 40px 0; }
+            .product-card { 
+                padding: 25px;
+                margin: 0 10px;
+            }
+            .floating-circle {
+                display: none;
+            }
+        }
+
+        /* Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .popup-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.95), rgba(0, 150, 199, 0.95));
+            border: 2px solid rgba(0, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            backdrop-filter: blur(15px);
+            transform: scale(0.5) rotate(180deg);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .popup-overlay.show .popup-content {
+            transform: scale(1) rotate(0deg);
+        }
+
+        .popup-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            animation: popupBounce 1s ease-in-out infinite;
+        }
+
+        .popup-title {
+            font-size: 1.8em;
+            color: #00ffff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .popup-message {
+            color: white;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .popup-close {
+            background: linear-gradient(45deg, #00bcd4, #00e5ff);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .popup-close:hover {
+            background: linear-gradient(45deg, #00e5ff, #00bcd4);
+            transform: scale(1.05);
+        }
+
+        @keyframes popupBounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2em; }
+            .subtitle { font-size: 1em; }
+            .product-card { 
+                padding: 20px;
+                margin: 0 5px;
+            }
+            .price { font-size: 1.6em; }
+            .order-btn { 
+                padding: 15px 25px;
+                font-size: 1em;
+            }
+            .file-upload-area {
+                padding: 20px;
+            }
+            .file-upload-text {
+                font-size: 0.9em;
+            }
+            .file-upload-subtext {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle circle1"></div>
+        <div class="floating-circle circle2"></div>
+        <div class="floating-circle circle3"></div>
+        <div class="floating-circle circle4"></div>
+        <div class="floating-circle circle5"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Direct Order Hub</h1>
+            <p class="subtitle">Premium Apps & Arduino Projects - Order Directly</p>
+        </header>
+
+        <div class="products-grid">
+            <!-- Mobile Apps Section -->
+            <div class="product-card" style="position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(255, 107, 107, 0.1), rgba(255, 0, 0, 0.05)); z-index: 1; pointer-events: none;"></div>
+                <div style="position: relative; z-index: 2; opacity: 0.7;">
+                    <h2 class="product-title" style="color: #ff6b6b;">📱 Custom Mobile Apps</h2>
+                    <p class="product-description">Professional mobile applications for iOS and Android with modern UI/UX design and full functionality.</p>
+                    <div class="price" style="color: #ff6b6b; font-size: 1.8em; text-shadow: 0 0 10px rgba(255, 107, 107, 0.5); animation: unavailablePulse 2s ease-in-out infinite;">❌ Service Not Available</div>
+                    <div style="background: rgba(255, 107, 107, 0.1); border: 2px solid rgba(255, 107, 107, 0.3); border-radius: 15px; padding: 25px; margin: 20px 0; text-align: center; backdrop-filter: blur(5px);">
+                        <div style="font-size: 3em; margin-bottom: 15px; animation: bounce 2s ease-in-out infinite;">🙅‍♂️</div>
+                        <div style="color: #ff6b6b; font-size: 1.2em; font-weight: bold; margin-bottom: 10px;">Mobile App Development Temporarily Unavailable</div>
+                        <div style="color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 15px;">
+                            📵 We're currently focusing on web applications and Arduino projects<br>
+                            🔄 Mobile app services will resume soon<br>
+                            📧 Contact us for updates and future availability
+                        </div>
+                        <div style="background: rgba(0, 255, 255, 0.1); border: 1px solid rgba(0, 255, 255, 0.3); border-radius: 8px; padding: 12px; margin-top: 15px;">
+                            <div style="color: #00ffff; font-size: 0.9em;">
+                                💡 <strong>Alternative:</strong> Consider our Web Applications for mobile-responsive solutions!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Apps Section -->
+            <div class="product-card">
+                <h2 class="product-title">🌐 Web Applications</h2>
+                <p class="product-description">Responsive web applications with modern frameworks, database integration, and cloud deployment.</p>
+                <div class="price">₹1,000 - ₹5,000</div>
+                <form class="order-form">
+                    <select required>
+                        <option value="">🌐 Select Web App Type</option>
+                        <option value="basic-website">📝 Basic Website - ₹1,000-₹2,000</option>
+                        <option value="advanced-website">🚀 Advanced Website - ₹5,000</option>
+                        <option value="portfolio">🎨 Portfolio Website - ₹1,500</option>
+                        <option value="blog">📝 Blog Platform - ₹2,000</option>
+                        <option value="ecommerce-web">🛍️ E-commerce Website - ₹4,000</option>
+                        <option value="booking">📅 Booking System - ₹3,000</option>
+                        <option value="others">🔮 Others - Custom Requirements</option>
+                    </select>
+                    <select required>
+                        <option value="">Select Hosting Option</option>
+                        <option value="hosting-only">🌐 Website Hosting Only - ₹500</option>
+                        <option value="custom-domain">🌍 Custom Domain - Customer's Cost</option>
+                        <option value="subdomain">🔗 Subdomain on Custom Domain - ₹600 (Hosting + ₹100)</option>
+                    </select>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <textarea placeholder="Describe your web app requirements..." rows="3" required></textarea>
+
+                    <button type="submit" class="order-btn pulse">Order Now</button>
+                </form>
+            </div>
+
+            <!-- Arduino IoT Projects -->
+            <div class="product-card">
+                <h2 class="product-title">🔧 Arduino IoT Projects</h2>
+                <p class="product-description">Smart home automation, sensors, and IoT devices with diagrams and complete code included.</p>
+                <div class="price">Under ₹200 - ₹2,000</div>
+                <form class="order-form">
+                    <select required>
+                        <option value="">🔧 Select Arduino Project</option>
+                        <option value="basic-led">💡 Basic LED Control - Under ₹200 (with diagram & code)</option>
+                        <option value="basic-sensor">🌡️ Basic Sensor Projects - Under ₹200 (with diagram & code)</option>
+                        <option value="weather-station">🌤️ Weather Station - ₹500 (common project)</option>
+                        <option value="plant-monitor">🌱 Plant Monitor - ₹500 (common project)</option>
+                        <option value="home-automation">🏠 Home Automation - ₹1,500-₹2,000 (advanced)</option>
+                        <option value="security-system">🔒 Security System - ₹1,500-₹2,000 (advanced)</option>
+                        <option value="iot-dashboard">📱 IoT Dashboard - ₹1,500-₹2,000 (advanced)</option>
+                        <option value="smart-garage">🚗 Smart Garage - ₹1,500-₹2,000 (advanced)</option>
+                        <option value="others">🔮 Others - Custom Requirements</option>
+                    </select>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <textarea placeholder="Describe your Arduino project needs..." rows="3" required></textarea>
+
+                    <button type="submit" class="order-btn pulse">Order Now</button>
+                </form>
+            </div>
+
+            <!-- Arduino Robotics -->
+            <div class="product-card">
+                <h2 class="product-title">🤖 Arduino Robotics</h2>
+                <p class="product-description">Custom robots, drones, and automated systems with complete diagrams and code included.</p>
+                <div class="price">Under ₹200 - ₹2,000</div>
+                <form class="order-form">
+                    <select required>
+                        <option value="">🤖 Select Robotics Project</option>
+                        <option value="basic-servo">🦾 Basic Servo Control - Under ₹200 (with diagram & code)</option>
+                        <option value="basic-motor">⚙️ Basic Motor Control - Under ₹200 (with diagram & code)</option>
+                        <option value="line-follower">🛤️ Line Following Robot - ₹500 (common project)</option>
+                        <option value="obstacle-avoider">🚧 Obstacle Avoiding Robot - ₹500 (common project)</option>
+                        <option value="robotic-arm">🦾 Robotic Arm - ₹1,500-₹2,000 (advanced)</option>
+                        <option value="drone">🚁 Custom Drone - ₹1,500-₹2,000 (advanced)</option>
+                        <option value="pet-robot">🐕 Pet Robot - ₹1,500-₹2,000 (advanced)</option>
+                        <option value="cleaning-robot">🧹 Cleaning Robot - ₹1,500-₹2,000 (advanced)</option>
+                        <option value="others">🔮 Others - Custom Requirements</option>
+                    </select>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <textarea placeholder="Describe your robotics project..." rows="3" required></textarea>
+
+                    <button type="submit" class="order-btn pulse">Order Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Popup -->
+    <div id="orderPopup" class="popup-overlay">
+        <div class="popup-content">
+            <div class="popup-icon">✅</div>
+            <h2 class="popup-title">Order Confirmed!</h2>
+            <p class="popup-message">
+                🎉 Your order has been successfully submitted!<br>
+                📱 Redirecting to WhatsApp for confirmation...<br>
+                💬 We'll contact you shortly with details.
+            </p>
+            <button class="popup-close" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Form submission handling
+        document.querySelectorAll('.order-form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Get service type from card title
+                const serviceType = this.closest('.product-card').querySelector('.product-title').textContent;
+                
+                // Get form inputs properly
+                const inputs = this.querySelectorAll('input[type="text"], input[type="email"]');
+                const selects = this.querySelectorAll('select');
+                const textarea = this.querySelector('textarea');
+                
+                // Create WhatsApp message
+                let message = `🎯 *NEW ORDER REQUEST*\n\n`;
+                message += `📋 *Service:* ${serviceType}\n`;
+                message += `👤 *Name:* ${inputs[0]?.value || 'Not provided'}\n`;
+                message += `📧 *Email:* ${inputs[1]?.value || 'Not provided'}\n`;
+                
+                if (selects[0] && selects[0].value) {
+                    const selectedOption = selects[0].options[selects[0].selectedIndex].text;
+                    message += `📝 *Project Type:* ${selectedOption}\n`;
+                }
+                if (selects[1] && selects[1].value) {
+                    const selectedOption = selects[1].options[selects[1].selectedIndex].text;
+                    message += `🌐 *Hosting Option:* ${selectedOption}\n`;
+                }
+                
+                if (textarea && textarea.value) {
+                    message += `\n📋 *Requirements:*\n${textarea.value}\n`;
+                }
+                
+                message += `\n⏰ *Order Time:* ${new Date().toLocaleString()}\n`;
+                message += `\n💬 Please confirm this order and provide further details.`;
+                
+                // Show popup
+                showOrderConfirmation();
+                
+                // Send to WhatsApp
+                setTimeout(() => {
+                    const whatsappUrl = `https://wa.me/918016847169?text=${encodeURIComponent(message)}`;
+                    window.open(whatsappUrl, '_blank');
+                }, 1000);
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    this.reset();
+                }, 3000);
+            });
+        });
+        
+        // Show order confirmation popup
+        function showOrderConfirmation() {
+            const popup = document.getElementById('orderPopup');
+            popup.classList.add('show');
+        }
+        
+        // Close popup
+        function closePopup() {
+            const popup = document.getElementById('orderPopup');
+            popup.classList.remove('show');
+        }
+        
+
+
+        // Add more floating elements dynamically
+        function createFloatingElement() {
+            const element = document.createElement('div');
+            element.className = 'floating-circle';
+            element.style.width = Math.random() * 100 + 50 + 'px';
+            element.style.height = element.style.width;
+            element.style.left = Math.random() * 100 + '%';
+            element.style.top = Math.random() * 100 + '%';
+            element.style.animationDelay = Math.random() * 6 + 's';
+            document.querySelector('.floating-elements').appendChild(element);
+            
+            // Remove element after animation
+            setTimeout(() => element.remove(), 12000);
+        }
+
+        // Create floating elements periodically
+        setInterval(createFloatingElement, 3000);
+
+
+
+        // Add scroll animations
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    card.style.animationPlayState = 'running';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
