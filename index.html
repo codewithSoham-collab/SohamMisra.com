@@ -14,25 +14,6 @@
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="portfolio-enhanced.css">
 
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 800, once: true, offset: 100 });
-  </script>
-<meta property="og:title" content="Soham Misra" />
-  <meta property="og:description" content="Elevate your productivity with NEXUS, the ultimate AI-powered desktop companion. Experience voice commands, system control, and smart tools today!" />
-  <meta property="og:image" content="https://sohammisra.netlify.app/Photo.png" />
-  <meta property="og:url" content="https://sohammisra.netlify.app/" />
-  <meta property="og:type" content="website" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Soham Misra" />
-  <meta name="twitter:description" content="Elevate your productivity with NEXUS, the ultimate AI-powered desktop companion." />
-  <meta name="twitter:image" content="https://sohammisra.netlify.app/Photo.png" />
-=======
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -53,7 +34,290 @@
     <meta name="twitter:description"
         content="Elevate your productivity with NEXUS, the ultimate AI-powered desktop companion." />
     <meta name="twitter:image" content="https://sohammisra.netlify.app/Photo.png" />
->>>>>>> ffd3d55 (Updated portfolio with latest changes)
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 100 });
+    </script>
+
+
+    <meta property="og:title" content="Soham Misra" />
+    <meta property="og:description"
+        content="Elevate your productivity with NEXUS, the ultimate AI-powered desktop companion. Experience voice commands, system control, and smart tools today!" />
+    <meta property="og:image" content="https://sohammisra.netlify.app/Photo.png" />
+    <meta property="og:url" content="https://sohammisra.netlify.app/" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Soham Misra" />
+    <meta name="twitter:description"
+        content="Elevate your productivity with NEXUS, the ultimate AI-powered desktop companion." />
+    <meta name="twitter:image" content="https://sohammisra.netlify.app/Photo.png" />
+
+    <!-- GSAP and Snap.svg for animated button -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/CustomEase.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/DrawSVGPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.5.1/snap.svg-min.js"></script>
+    
+    <style>
+        /* Animated Button Base Styles */
+        .animated-btn {
+            position: relative;
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            color: #081b29 !important;
+            background: linear-gradient(135deg, #0ef, #00d4ff) !important;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 4px 15px rgba(0, 238, 255, 0.4), 0 0 20px rgba(0, 238, 255, 0.2) !important;
+            transform: translateY(0);
+            margin: 5px;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        /* Navbar Auth Button Fix */
+        .auth-btn.animated-btn {
+            padding: 8px 20px !important;
+            font-size: 14px !important;
+            margin: 0 0 0 20px !important;
+            animation: none !important;
+            position: relative !important;
+            top: 0 !important;
+            right: 0 !important;
+            float: none !important;
+            display: inline-flex !important;
+            align-self: center !important;
+        }
+
+        .animated-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .animated-btn:hover::before {
+            left: 100%;
+        }
+
+        .animated-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 238, 255, 0.6), 0 0 40px rgba(0, 238, 255, 0.4) !important;
+            background: linear-gradient(135deg, #00d4ff, #0ef) !important;
+        }
+
+        .auth-btn.animated-btn:hover {
+            transform: translateY(-2px) scale(1.01);
+        }
+
+        .animated-btn:active {
+            transform: translateY(-1px) scale(0.98);
+            transition: all 0.1s ease;
+        }
+
+        /* Pulse Animation */
+        .animated-btn.pulse {
+            animation: btnPulse 2s infinite;
+        }
+
+        @keyframes btnPulse {
+            0% { box-shadow: 0 4px 15px rgba(0, 238, 255, 0.4), 0 0 20px rgba(0, 238, 255, 0.2); }
+            50% { box-shadow: 0 8px 25px rgba(0, 238, 255, 0.8), 0 0 40px rgba(0, 238, 255, 0.6); }
+            100% { box-shadow: 0 4px 15px rgba(0, 238, 255, 0.4), 0 0 20px rgba(0, 238, 255, 0.2); }
+        }
+
+        /* Ripple Effect */
+        .animated-btn .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: rippleEffect 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Order Button Styles */
+        .order-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 28px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            color: #081b29;
+            background: linear-gradient(135deg, #0ef, #00d4ff);
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 4px 15px rgba(0, 238, 255, 0.4), 0 0 20px rgba(0, 238, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: slideTop 1s ease forwards;
+            animation-delay: 7.5s;
+            margin: 10px;
+        }
+
+        .order-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .order-button:hover::before {
+            left: 100%;
+        }
+
+        .order-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 238, 255, 0.6), 0 0 40px rgba(0, 238, 255, 0.4);
+            background: linear-gradient(135deg, #00d4ff, #0ef);
+        }
+
+        .rocket-svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+        }
+
+        .rocket-body {
+            fill: none;
+            stroke: #081b29;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .rocket-flame {
+            fill: #ffeb3b;
+            opacity: 0;
+        }
+
+        .rocket-trail {
+            fill: none;
+            stroke: #081b29;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            opacity: 0;
+        }
+
+        .fly-animation .rocket-body {
+            animation: fly-rocket 1.2s ease-out forwards;
+        }
+
+        .fly-animation .rocket-flame {
+            opacity: 1;
+            animation: flame-flicker 0.2s ease-in-out infinite alternate;
+        }
+
+        .fly-animation .rocket-trail {
+            opacity: 1;
+            animation: trail-grow 1.2s ease-out forwards;
+        }
+
+        @keyframes fly-rocket {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+            50% { transform: translate(-20px, -50px) rotate(-45deg); opacity: 1; }
+            100% { transform: translate(-40px, -100px) rotate(-45deg); opacity: 0; }
+        }
+
+        @keyframes flame-flicker {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
+
+        @keyframes trail-grow {
+            0% { stroke-dasharray: 0 50; opacity: 0; }
+            50% { stroke-dasharray: 20 50; opacity: 0.7; }
+            100% { stroke-dasharray: 30 50; opacity: 0; }
+        }
+        
+        /* Download Button Styles */
+        .download-wrapper {
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            opacity: 0;
+            animation: slideTop 1s ease forwards;
+            animation-delay: 7.5s;
+            
+        }
+        
+        .download-wrapper:hover {
+            transform: translateY(-2px);
+        }
+        
+        .strokeW {
+            animation: strokeW .6s forwards;
+        }
+        
+        @keyframes strokeW {
+            to {
+                stroke-width: 1.16;
+            }
+        }
+        
+        .status {
+            margin-top: 10px;
+            color: #00cffc;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .status.show {
+            opacity: 1;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .download-wrapper svg {
+                width: 180px;
+                height: 90px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .download-wrapper svg {
+                width: 160px;
+                height: 80px;
+            }
+        }
+    </style>
+
 
 
 
@@ -70,9 +334,9 @@
                 system control, and smart tools today!
             </p>
             <div class="popup-buttons">
-                <a href="nexus.html" class="popup-button buy" target="_blank" rel="noopener noreferrer">Buy
+                <a href="nexus.html" class="popup-button buy animated-btn" target="_blank" rel="noopener noreferrer">Buy
                     Now</a>
-                <button class="popup-button not-now">Not Now</button>
+                <button class="popup-button not-now animated-btn">Not Now</button>
             </div>
         </div>
     </div>
@@ -586,7 +850,7 @@
             <a href="#sk" style="--i:4">Skills</a>
             <a href="#po" style="--i:5">Portfolio</a>
             <a href="#contact" style="--i:6">Contact</a>
-            <button id="authBtn" class="auth-btn">Login</button>
+            <button id="authBtn" class="auth-btn animated-btn">Login</button>
         </nav>
     </header>
     <div id="loginModal" class="login-modal">
@@ -645,13 +909,13 @@
                             </label>
                             <a href="#" class="forgot-link" id="forgotLink">Forgot Password?</a>
                         </div>
-                        <button type="submit" class="login-btn" disabled>Sign In</button>
+                        <button type="submit" class="login-btn animated-btn" disabled>Sign In</button>
                     </form>
                     <div class="divider">
                         <span>or continue with</span>
                     </div>
                     <div class="social-login">
-                        <button type="button" class="social-btn google-btn" id="googleBtn">
+                        <button type="button" class="social-btn google-btn animated-btn" id="googleBtn">
                             <svg width="20" height="20" viewBox="0 0 24 24">
                                 <path fill="#4285F4"
                                     d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -664,7 +928,7 @@
                             </svg>
                             Google
                         </button>
-                        <button type="button" class="social-btn github-btn" id="githubBtn">
+                        <button type="button" class="social-btn github-btn animated-btn" id="githubBtn">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
@@ -728,7 +992,7 @@
                             </div>
                             <span class="error-msg" id="signupPasswordError"></span>
                         </div>
-                        <button type="submit" class="login-btn" disabled>Create Account</button>
+                        <button type="submit" class="login-btn animated-btn" disabled>Create Account</button>
                     </form>
                     <div class="auth-switch">
                         <p>Already have an account? <a href="#" id="showLogin">Sign in</a></p>
@@ -768,7 +1032,7 @@
                             </div>
                             <span class="error-msg" id="forgotEmailError"></span>
                         </div>
-                        <button type="submit" class="login-btn" disabled>Send Reset Link</button>
+                        <button type="submit" class="login-btn animated-btn" disabled>Send Reset Link</button>
                     </form>
                     <div class="auth-switch">
                         <p>Remember your password? <a href="#" id="backToLogin">Sign in</a></p>
@@ -822,10 +1086,17 @@
                 <a href="https://www.instagram.com/sohammisra_official/?next=%2F&hl=en" style="--i:10"><i
                         class='bx bxl-instagram'></i></a>
             </div>
-            <a href="#" class="btn-box" id="hi">HI</a>
-            <a href="#about" class="btn-box">More About Me</a>
-            <a href="dorder.html" class="btn-box">Order</a>
-            
+            <a href="#" class="btn-box animated-btn pulse" id="hi">HI</a>
+            <a href="#about" class="btn-box animated-btn">More About Me</a>
+            <a href="dorder.html" class="order-button" target="_blank" onclick="triggerRocketAnimation(event)">
+                <svg class="rocket-svg" viewBox="0 0 32 32">
+                    <path class="rocket-body" d="M16 8L20 14H12L16 8ZM16 14L22 20H10L16 14ZM16 20L18 24H14L16 20Z"/>
+                    <path class="rocket-flame" d="M16 24C17 24 18 25 18 26C18 27 17 28 16 28C15 28 14 27 14 26C14 25 15 24 16 24Z"/>
+                    <path class="rocket-trail" d="M16 20L14 26"/>
+                </svg>
+                Place Order
+            </a>
+
         </div>
         <div class="frame">
             <div class="glow-frame">
@@ -874,11 +1145,29 @@
                 persistence, adaptability, and innovation at my core, I aim to create impactful projects that push
                 boundaries and enhance everyday human experiences through technology.</p>
 
-            <a href="#contact" class="btn-box">Contact Me</a>
-            <a href="Soham_Misra_CV.docx" class="btn-box" download>
-            
-                Download CV
-            </a>
+            <div style="display: flex; gap: 0px; align-items: center; flex-wrap: wrap;">
+                <a href="#contact" class="btn-box animated-btn">Contact Me</a>
+                
+                <!-- Animated Download Button -->
+                <div class="download-wrapper" id="downloadBtn">
+                <svg viewBox='0 0 100 50' width='200' height='100' fill='none'>
+                    <circle cx='20' cy='35' r='8.5' fill='#00cffc' class='mainCircle'></circle>
+                    <circle cx='20' cy='35' r='8.05' stroke='#00cffc' stroke-width='.9' fill='url(#gradient)' class='mainCircleFill'></circle>
+                    <rect x='17.5' y='32.5' width='5' height='5' stroke='none' fill='#00cffc' class='rect'></rect>
+                    <path d='M20,39 l3.5,-3.5 l0,0 M20,39 l-3.5,-3.5 l0,0 M20,39 l0,-7.5' stroke='#fff' stroke-linecap='round' stroke-width='.8' class='arrow'></path>
+                    <text x='55' y='36.5' fill='#fff' text-anchor='middle' font-size='5.5' font-family='Roboto' letter-spacing='.2' class='text'>Download CV</text>
+                    <path d='M50,25 h30 a10,10 0 0,1 10,10 a10,10 0 0,1 -10,10 s-30,0 -60,0 a10,10 0 0,1 -10,-10 a10,10 0 0,1 10,-10 h30' stroke='#00cffc' stroke-width='.7' fill='transparent' class='btn'></path>
+                    <circle cx='20' cy='35' r='7.9' fill='transparent' fill-opacity='0' stroke='transparent' stroke-width='1.6' stroke-opacity='0' class='subCircle'></circle>
+                    <circle cx='50' cy='26' r='0' fill='#fff' class='dot'></circle>
+                    <linearGradient id='gradient' x1='0%' y1='0%' x2='0%' y2='100%'>
+                        <stop offset='98%' class='gradient' stop-color='transparent'/>
+                        <stop offset='98%' class='gradient' stop-color='#00afd3'/>
+                    </linearGradient>
+                </svg>
+                <div class="status" id="statusMessage" style="display: none;">Downloading Soham_Misra_CV.docx...</div>
+            </div>
+            </div>
+       
         </div>
     </section>
 
@@ -887,23 +1176,23 @@
         <div class="services" id="services">
             <div class="container">
                 <h1 class="sub-title">My <span>Services</span></h1>
-                
+
                 <div class="services-list">
                     <div>
                         <i class='bx bx-code-alt' style='color:#0ef; font-size:40px;'></i>
                         <h2 class="c">App Development</h2>
                         <p>Experienced in designing and building user-friendly apps that combine functionality with
                             intuitive interfaces.</p>
-                        <a href="service/app/index.html" class="read">View Some</a>
-                        <a href="#contact" class="read">Learn More From Me</a>
+                        <a href="service/app/index.html" class="read animated-btn">View Some</a>
+                        <a href="#contact" class="read animated-btn">Learn More From Me</a>
                     </div>
 
                     <div>
                         <i class='bx bx-globe' style='color:#0ef; font-size:40px;'></i>
                         <h2 class="c">Web Development</h2>
                         <p>Skilled at creating responsive, modern websites that deliver seamless user experiences.</p>
-                        <a href="service/website/index.html" class="read">View Some</a>
-                        <a href="#contact" class="read">Learn More From Me</a>
+                        <a href="service/website/index.html" class="read animated-btn">View Some</a>
+                        <a href="#contact" class="read animated-btn">Learn More From Me</a>
                     </div>
 
                     <div>
@@ -911,14 +1200,15 @@
                         <h2 class="c">Arduino Projects</h2>
                         <p>Passionate about hardware innovation, developing interactive Arduino-based projects that
                             blend software with real-world applications.</p>
-                        <a href="service/arduino/index.html" class="read">View Some</a>
-                        <a href="#contact" class="read">Learn More From Me</a>
+                        <a href="service/arduino/index.html" class="read animated-btn">View Some</a>
+                        <a href="#contact" class="read animated-btn">Learn More From Me</a>
+
                     </div>
 
                 </div>
             </div>
         </div>
-        
+
     </section>
 
 
@@ -1740,7 +2030,7 @@
                     <textarea id="message" name="message" placeholder="Enter Your Message" required></textarea>
                     <input type="email" id="emailQuery" name="emailQuery"
                         placeholder="Additional Email Query (Optional)">
-                    <button type="submit" class="send arrow-btn" id="submitBtn">
+                    <button type="submit" class="send arrow-btn animated-btn" id="submitBtn">
                         <span>Submit</span>
                         <i class='bx bx-right-arrow-alt'></i>
                     </button>
@@ -1816,6 +2106,58 @@
 
                 .arrow-btn:hover i {
                     transform: translateX(5px);
+                }
+
+                /* Direct Order Section Styles */
+                .direct-order-section {
+                    padding: 80px 20px;
+                    background: url('background.png') no-repeat center center;
+                    background-size: cover;
+                    background-attachment: fixed;
+                    text-align: center;
+                    position: relative;
+                    min-height: 40vh;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+
+
+                .direct-order-content {
+                    position: relative;
+                    z-index: 2;
+                }
+
+                .direct-order-content h1 {
+                    font-size: 3.2rem;
+                    color: #fff;
+                    font-weight: 800;
+                    text-shadow: 0 0 20px rgba(0, 238, 255, 0.7);
+                    animation: glow 3s ease-in-out infinite alternate;
+                    margin: 0;
+                }
+
+                .direct-order-content h1 span {
+                    color: #0ef;
+                    text-shadow: 0 0 30px rgba(0, 238, 255, 0.9);
+                }
+
+                @media (max-width: 768px) {
+                    .direct-order-section {
+                        padding: 60px 20px;
+                        min-height: 30vh;
+                    }
+
+                    .direct-order-content h1 {
+                        font-size: 2.6rem;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .direct-order-content h1 {
+                        font-size: 2rem;
+                    }
                 }
 
                 /* QR Section Standalone Styles */
@@ -1926,7 +2268,54 @@
 
 
 
+                /* Combined Order & Connect Section Styles */
+                .order-connect-section {
+                    padding: 60px 20px;
+                    background: url('background.png') no-repeat center center;
+                    background-size: cover;
+                    background-attachment: fixed;
+                    text-align: center;
+                    position: relative;
+                }
+
+                .order-connect-content {
+                    position: relative;
+                    z-index: 2;
+                }
+
+                .direct-order-part {
+                    margin-bottom: 60px;
+                }
+
+                .direct-order-part h1 {
+                    font-size: 3.2rem;
+                    color: #fff;
+                    font-weight: 800;
+                    text-shadow: 0 0 20px rgba(0, 238, 255, 0.7);
+                    animation: glow 3s ease-in-out infinite alternate;
+                    margin: 0;
+                }
+
+                .direct-order-part h1 span {
+                    color: #0ef;
+                    text-shadow: 0 0 30px rgba(0, 238, 255, 0.9);
+                }
+
+                .quick-connect-part h3 {
+                    font-size: 2.2rem;
+                    color: #fff;
+                    margin-bottom: 30px;
+                    text-shadow: 0 0 10px rgba(0, 238, 255, 0.5);
+                }
+
+                .quick-connect-part h3 span {
+                    color: #0ef;
+                }
+
                 @media (max-width: 768px) {
+                    .direct-order-part h1 {
+                        font-size: 2.6rem;
+                    }
 
                     .qr-content h3,
                     .qr-upload-area {
@@ -1936,6 +2325,12 @@
 
                     .upload-placeholder i {
                         font-size: 2.5rem;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .direct-order-part h1 {
+                        font-size: 2rem;
                     }
                 }
             </style>
@@ -2236,29 +2631,38 @@
 
     </section>
 
-    <!-- QR Code Section -->
-    <div class="qr-section-standalone">
-        <div class="qr-content">
-            <h3>Quick <span>Connect</span></h3>
-            <div class="qr-container">
-                <div class="qr-upload-area" id="qrUploadArea">
-                    <img id="qrImage" src="qrcode_258009317_6aa3d58aa4b2d7d83e4d3b04a045cbee.png"
-                        alt="Instagram QR Code" style="display: block;">
-                    <div class="upload-placeholder" id="uploadPlaceholder" style="display: none;">
-                        <i class='bx bx-cloud-upload'></i>
-                        <p>Upload QR Code PNG</p>
-                        <span>Click to browse or drag & drop</span>
-                    </div>
-                    <input type="file" id="qrFileInput" accept=".png,.jpg,.jpeg" style="display: none;">
-                </div>
-                <p>Scan to connect on Instagram</p>
-                <button id="connectInstagram" class="arrow-btn" style="margin-top: 15px;">
-                    <span>Connect Instagram</span>
+    <!-- Combined Order & Connect Section -->
+    <section class="order-connect-section">
+        <div class="order-connect-content">
+            <div class="direct-order-part">
+                <h1>Direct <span>Order</span></h1>
+                <a href="dorder.html" class="arrow-btn animated-btn pulse" style="margin-top: 20px; width: auto; display: inline-flex;">
+                    <span>Order</span>
                     <i class='bx bx-right-arrow-alt'></i>
-                </button>
+                </a>
+            </div>
+            <div class="quick-connect-part">
+                <h3>Quick <span>Connect</span></h3>
+                <div class="qr-container">
+                    <div class="qr-upload-area" id="qrUploadArea">
+                        <img id="qrImage" src="qrcode_258009317_6aa3d58aa4b2d7d83e4d3b04a045cbee.png"
+                            alt="Instagram QR Code" style="display: block;">
+                        <div class="upload-placeholder" id="uploadPlaceholder" style="display: none;">
+                            <i class='bx bx-cloud-upload'></i>
+                            <p>Upload QR Code PNG</p>
+                            <span>Click to browse or drag & drop</span>
+                        </div>
+                        <input type="file" id="qrFileInput" accept=".png,.jpg,.jpeg" style="display: none;">
+                    </div>
+                    <p>Scan to connect on Instagram</p>
+                    <button id="connectInstagram" class="arrow-btn animated-btn" style="margin-top: 15px;">
+                        <span>Connect Instagram</span>
+                        <i class='bx bx-right-arrow-alt'></i>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
 
 
@@ -2267,9 +2671,9 @@
         <div class="rating-container">
             <h3>Rate My <span>Work</span></h3>
             <a href="Rating.html">
-                <button id="submitRating" class="arrow-btn">
-                <span>Submit Rating</span>
-                <i class='bx bx-right-arrow-alt'></i>
+                <button id="submitRating" class="arrow-btn animated-btn pulse">
+                    <span>Submit Rating</span>
+                    <i class='bx bx-right-arrow-alt'></i>
                 </button>
             </a>
 
@@ -2639,6 +3043,135 @@
 
     </script>
 
+    <script>
+        // Download Button Animation Script
+        setTimeout(() => {
+            let tl, downloading = false, points = [], 
+                btn = document.querySelector('.download-wrapper .btn'),
+                dot = document.querySelector('.download-wrapper .dot'),
+                text = document.querySelector('.download-wrapper .text'),
+                mainCirc = document.querySelector('.download-wrapper .mainCircle'),
+                subCirc = document.querySelector('.download-wrapper .subCircle'),
+                mainCircFill = document.querySelector('.download-wrapper .mainCircleFill'),
+                arrow = document.querySelector('.download-wrapper .arrow'),
+                rect = document.querySelector('.download-wrapper .rect'),
+                downloadBtn = document.getElementById('downloadBtn'),
+                statusMessage = document.getElementById('statusMessage');
+
+            // Initialize
+            if (rect && typeof gsap !== 'undefined') {
+                gsap.set(rect, {transformOrigin: '50% 50%', rotation: 45});
+            }
+
+            // Add click event
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', function() {
+                    if (downloading) return;
+                    
+                    // Show downloading status
+                    if (statusMessage) {
+                        statusMessage.textContent = "Downloading Soham_Misra_CV.docx...";
+                        statusMessage.classList.add('show');
+                    }
+                    
+                    // Start animation
+                    animation();
+                    
+                    // Trigger actual download after animation completes
+                    setTimeout(function() {
+                        // Create a temporary link for download
+                        const link = document.createElement('a');
+                        link.href = 'Soham_Misra_CV.docx';
+                        link.download = 'Soham_Misra_CV.docx';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        // Update status message
+                        if (statusMessage) {
+                            statusMessage.textContent = "Download complete!";
+                            setTimeout(function() {
+                                statusMessage.classList.remove('show');
+                            }, 2000);
+                        }
+                    }, 2000);
+                });
+            }
+
+            function animation() {
+                if (downloading || !btn || typeof gsap === 'undefined') return;
+                downloading = !downloading;
+                let downloadTime = Math.random() * .5 + .7;
+                tl = gsap.timeline();
+                tl.play()
+                .to(arrow, {duration: .35, y: 2.5, ease: "power2.inOut"}, 'click')
+                .to(text, {duration: .3, svgOrigin: '55% 35%', scale: .77, ease: "power2.inOut"}, 'click+=.05')
+                .set(subCirc, {fillOpacity: 1, strokeOpacity: 1}, 'squeeze-=.3')
+                .to(subCirc, {duration: .35, fillOpacity: 0, ease: "power1.inOut"}, 'squeeze-=.3')
+                .to(subCirc, {duration: .45, attr:{r: 13}, strokeOpacity: 0, className: '+=strokeW', ease: "power0.easeNone"}, 'squeeze-=.3')
+                .to(btn, {duration: .7, attr:{d: 'M50,25 h0 a10,10 0 0,1 10,10 a10,10 0 0,1 -10,10 s0,0 0,0  a10,10 0 0,1 -10,-10 a10,10 0 0,1 10,-10 h0'}, ease: "sine.out"}, 'squeeze')
+                .to([mainCirc, mainCircFill, rect, arrow], {duration: .7, x: 30, ease: "sine.out"}, 'squeeze')
+                .to(rect, {duration: .7, fill: '#fff', rotation: 270, ease: "sine.out"}, 'squeeze')
+                .to(text, {duration: .3, autoAlpha: 0, y: 7, onComplete: changeText}, 'squeeze')
+                .to(arrow, {duration: .7, attr:{d: 'M20,39 l3.5,-3.5 l-3.5,-3.5 M20,39 l-3.5,-3.5 l3.5,-3.5 M20,39 l0,0'}, transformOrigin: '50% 50%', rotation: 225, ease: "sine.out"}, 'squeeze')
+                .to(dot, {duration: .4, attr:{r: 1.5}, ease: "back.out(7)"});
+                
+                tl.to(dot, {duration: downloadTime, attr:{r: 2.7}, ease: "power2.in"}, 'fill')
+                .to(dot, {duration: .44, fill: '#02fc86', y: -22, ease: "power1.out"}, 'stretch-=.01')
+                .to(dot, {duration: .27, transformOrigin: '50% 50%', scaleX: .5}, 'stretch+=.04')
+                .to(dot, {duration: .3, scaleY: .6}, 'stretch+=.31')
+                .to(dot, {duration: .44, scaleX: .4, y: 22, ease: "power2.in"}, 'stretch+=.45')
+                .to([mainCirc, subCirc, arrow, rect, mainCircFill], {duration: .33, opacity: 0, ease: "power2.out"}, 'stretch+=.2')
+                .to(btn, {duration: .4, attr:{d: 'M50,25 h20 a10,10 0 0,1 10,10 a10,10 0 0,1 -10,10 s-20,0 -40,0 a10,10 0 0,1 -10,-10 a10,10 0 0,1 10,-10 h20'}, ease: "power1.out"}, 'stretch+=.2')
+                .set(dot, {opacity: 0}, 'stretch+=.875')
+                .to(btn, {duration: .01, stroke: '#02fc86', ease: "power2.in"}, 'stretch+=.87')
+                .to(btn, {duration: .3, attr:{d: 'M50,25 h20 a10,10 0 0,1 10,10 a12,12 0 0,1 -10,10.5 s-20,6 -40,0 a12,12 0 0,1 -10,-10.5 a10,10 0 0,1 10,-10 h20'}, ease: "power2.inOut"}, 'stretch+=.869')
+                .to(text, {duration: .45, autoAlpha: 1, y: 0, ease: "back.out(2.5)"}, 'stretch+=.855');
+            }
+
+            function restart() {
+                setTimeout(() => {
+                    if (tl && typeof gsap !== 'undefined') {
+                        tl.seek(0).pause();
+                    }
+                    if (text) {
+                        text.textContent = 'download';
+                        if (typeof gsap !== 'undefined') {
+                            gsap.set(text, {x: 0});
+                        }
+                    }
+                    downloading = false;
+                }, 2000);
+            }
+
+            function changeText() {
+                if (text) {
+                    text.textContent = 'Downloaded';
+                    if (typeof gsap !== 'undefined') {
+                        gsap.set(text, {x: -5});
+                    }
+                    // Add click event for open functionality
+                    text.style.cursor = 'pointer';
+                    text.onclick = function() {
+                        window.open('Soham_Misra_CV.docx', '_blank');
+                    };
+                }
+            }
+        }, 1000);
+        
+        function triggerRocketAnimation(event) {
+            event.preventDefault();
+            const rocket = document.querySelector('.rocket-svg');
+            rocket.classList.remove('fly-animation');
+            void rocket.offsetWidth;
+            rocket.classList.add('fly-animation');
+            
+            setTimeout(() => {
+                window.location.href = 'dorder.html';
+            }, 1200);
+        }
+    </script>
+    
     <script>
         class LoginSystem {
             constructor() {
@@ -3231,6 +3764,38 @@
 
 
 
+
+
 </body>
 
 </html>
+    <script>
+        // Add ripple effect to animated buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedButtons = document.querySelectorAll('.animated-btn');
+            
+            animatedButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Don't add ripple to download button
+                    if (this.closest('.download-wrapper')) return;
+                    
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.classList.add('ripple');
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+    </script>

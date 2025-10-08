@@ -313,48 +313,6 @@
             display: none;
         }
 
-        .order-btn {
-            background: linear-gradient(45deg, #00bcd4, #00e5ff);
-            color: white;
-            border: 2px solid rgba(0, 255, 255, 0.5);
-            padding: 18px 35px;
-            border-radius: 30px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .order-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .order-btn:hover {
-            background: linear-gradient(45deg, #00e5ff, #00bcd4);
-            transform: scale(1.08);
-            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3);
-            border-color: rgba(0, 255, 255, 1);
-        }
-
-        .order-btn:hover::before {
-            left: 100%;
-        }
-
-        .order-btn:active {
-            transform: scale(1.02);
-        }
-
         .floating-elements {
             position: fixed;
             top: 0;
@@ -537,10 +495,6 @@
                 margin: 0 5px;
             }
             .price { font-size: 1.6em; }
-            .order-btn { 
-                padding: 15px 25px;
-                font-size: 1em;
-            }
             .file-upload-area {
                 padding: 20px;
             }
@@ -550,6 +504,270 @@
             .file-upload-subtext {
                 font-size: 0.8em;
             }
+        }
+
+        /* Truck Button Styles */
+        .truck-button {
+            --color: white;
+            --background: linear-gradient(45deg, rgba(0, 188, 212, 0.9), rgba(0, 229, 255, 0.9));
+            --tick: #00e676;
+            --base: rgba(0, 0, 0, 0.5);
+            --wheel: #00695c;
+            --wheel-inner: #00796b;
+            --wheel-dot: white;
+            --back: #00bcd4;
+            --back-inner: #0097c7;
+            --back-inner-shadow: #006994;
+            --front: #b2ebf2;
+            --front-shadow: #4dd0e1;
+            --front-light: #fff176;
+            --window: rgba(255, 255, 255, 0.9);
+            --window-shadow: rgba(0, 0, 0, 0.3);
+            --street: #004d40;
+            --street-fill: #001a1f;
+            --box: #fff59d;
+            --box-shadow: #fdd835;
+            padding: 12px 0;
+            width: 172px;
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            border: none;
+            outline: none;
+            color: var(--color);
+            background: var(--background);
+            border-radius: var(--br, 15px);
+            -webkit-appearance: none;
+            -webkit-tap-highlight-color: transparent;
+            transform-style: preserve-3d;
+            transform: rotateX(var(--rx, 0deg)) translateZ(0);
+            transition: transform .5s, border-radius .3s linear var(--br-d, 0s);
+        }
+
+        .truck-button:before,
+        .truck-button:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 6px;
+            display: block;
+            background: var(--b, var(--street));
+            transform-origin: 0 100%;
+            transform: rotateX(90deg) scaleX(var(--sy, 1));
+        }
+
+        .truck-button:after {
+            --sy: var(--progress, 0);
+            --b: var(--street-fill);
+        }
+
+        .truck-button .default,
+        .truck-button .success {
+            display: block;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 24px;
+            opacity: var(--o, 1);
+            transition: opacity .3s;
+        }
+
+        .truck-button .success {
+            --o: 0;
+            position: absolute;
+            top: 12px;
+            left: 0;
+            right: 0;
+        }
+
+        .truck-button .success svg {
+            width: 12px;
+            height: 10px;
+            display: inline-block;
+            vertical-align: top;
+            fill: none;
+            margin: 7px 0 0 12px;
+            stroke: var(--tick);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 16px;
+            stroke-dashoffset: var(--offset, 16px);
+            transition: stroke-dashoffset .4s ease .45s;
+        }
+
+        .truck-button .truck {
+            position: absolute;
+            width: 72px;
+            height: 28px;
+            transform: rotateX(90deg) translate3d(var(--truck-x, 4px), calc(var(--truck-y-n, -26) * 1px), 12px);
+        }
+
+        .truck-button .truck:before,
+        .truck-button .truck:after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: var(--l, 18px);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: inset 0 0 0 2px var(--wheel), inset 0 0 0 4px var(--wheel-inner);
+            background: var(--wheel-dot);
+            transform: translateY(calc(var(--truck-y) * -1px)) translateZ(0);
+        }
+
+        .truck-button .truck:after {
+            --l: 54px;
+        }
+
+        .truck-button .truck .wheel,
+        .truck-button .truck .wheel:before {
+            position: absolute;
+            bottom: var(--b, -6px);
+            left: var(--l, 6px);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--wheel);
+            transform: translateZ(0);
+        }
+
+        .truck-button .truck .wheel {
+            transform: translateY(calc(var(--truck-y) * -1px)) translateZ(0);
+        }
+
+        .truck-button .truck .wheel:before {
+            --l: 35px;
+            --b: 0;
+            content: '';
+        }
+
+        .truck-button .truck .front,
+        .truck-button .truck .back,
+        .truck-button .truck .box {
+            position: absolute;
+        }
+
+        .truck-button .truck .back {
+            left: 0;
+            bottom: 0;
+            z-index: 1;
+            width: 47px;
+            height: 28px;
+            border-radius: 1px 1px 0 0;
+            background: linear-gradient(68deg, var(--back-inner) 0%, var(--back-inner) 22%, var(--back-inner-shadow) 22.1%, var(--back-inner-shadow) 100%);
+        }
+
+        .truck-button .truck .back:before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            border-radius: 0 1px 0 0;
+            background: var(--back);
+        }
+
+        .truck-button .truck .back:after {
+            content: '';
+            position: absolute;
+            border-radius: 1px;
+            width: 73px;
+            height: 2px;
+            left: -1px;
+            bottom: -2px;
+            background: var(--base);
+        }
+
+        .truck-button .truck .front {
+            left: 47px;
+            bottom: -1px;
+            height: 22px;
+            width: 24px;
+            clip-path: polygon(55% 0, 72% 44%, 100% 58%, 100% 100%, 0 100%, 0 0);
+            background: linear-gradient(84deg, var(--front-shadow) 0%, var(--front-shadow) 10%, var(--front) 12%, var(--front) 100%);
+        }
+
+        .truck-button .truck .front:before {
+            content: '';
+            position: absolute;
+            width: 7px;
+            height: 8px;
+            left: 7px;
+            top: 2px;
+            clip-path: polygon(0 0, 60% 0%, 100% 100%, 0% 100%);
+            background: linear-gradient(59deg, var(--window) 0%, var(--window) 57%, var(--window-shadow) 55%, var(--window-shadow) 100%);
+        }
+
+        .truck-button .truck .front:after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 2px;
+            right: 0;
+            bottom: 3px;
+            background: var(--front-light);
+        }
+
+        .truck-button .truck .box {
+            width: 13px;
+            height: 13px;
+            right: 56px;
+            bottom: 0;
+            z-index: 1;
+            border-radius: 1px;
+            overflow: hidden;
+            transform: translate(calc(var(--box-x, -24) * 1px), calc(var(--box-y, -6) * 1px)) scale(var(--box-s, .5));
+            opacity: var(--box-o, 0);
+            background: linear-gradient(68deg, var(--box) 0%, var(--box) 50%, var(--box-shadow) 50.2%, var(--box-shadow) 100%);
+            background-size: 250% 100%;
+            background-position-x: calc(var(--bx, 0) * 1%);
+        }
+
+        .truck-button .truck .box:before {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, .2);
+            left: 0;
+            right: 0;
+            top: 6px;
+            height: 1px;
+        }
+
+        .truck-button .truck .box:after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            left: 100%;
+            top: 0;
+            bottom: 0;
+            background: var(--back);
+            transform: translateX(calc(var(--hx, 0) * 1px));
+        }
+
+        .truck-button.animation {
+            --rx: -90deg;
+            --br: 0;
+        }
+
+        .truck-button.animation .default {
+            --o: 0;
+        }
+
+        .truck-button.animation.done {
+            --rx: 0deg;
+            --br: 15px;
+            --br-d: .2s;
+        }
+
+        .truck-button.animation.done .success {
+            --o: 1;
+            --offset: 0;
         }
     </style>
 </head>
@@ -619,7 +837,21 @@
                     <input type="email" placeholder="Email Address" required>
                     <textarea placeholder="Describe your web app requirements..." rows="3" required></textarea>
 
-                    <button type="submit" class="order-btn pulse">Order Now</button>
+                    <button type="submit" class="truck-button pulse">
+                        <span class="default">Order Now</span>
+                        <span class="success">
+                            Order Placed
+                            <svg viewbox="0 0 12 10">
+                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                            </svg>
+                        </span>
+                        <div class="truck">
+                            <div class="wheel"></div>
+                            <div class="back"></div>
+                            <div class="front"></div>
+                            <div class="box"></div>
+                        </div>
+                    </button>
                 </form>
             </div>
 
@@ -645,7 +877,21 @@
                     <input type="email" placeholder="Email Address" required>
                     <textarea placeholder="Describe your Arduino project needs..." rows="3" required></textarea>
 
-                    <button type="submit" class="order-btn pulse">Order Now</button>
+                    <button type="submit" class="truck-button pulse">
+                        <span class="default">Order Now</span>
+                        <span class="success">
+                            Order Placed
+                            <svg viewbox="0 0 12 10">
+                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                            </svg>
+                        </span>
+                        <div class="truck">
+                            <div class="wheel"></div>
+                            <div class="back"></div>
+                            <div class="front"></div>
+                            <div class="box"></div>
+                        </div>
+                    </button>
                 </form>
             </div>
 
@@ -671,7 +917,21 @@
                     <input type="email" placeholder="Email Address" required>
                     <textarea placeholder="Describe your robotics project..." rows="3" required></textarea>
 
-                    <button type="submit" class="order-btn pulse">Order Now</button>
+                    <button type="submit" class="truck-button pulse">
+                        <span class="default">Order Now</span>
+                        <span class="success">
+                            Order Placed
+                            <svg viewbox="0 0 12 10">
+                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                            </svg>
+                        </span>
+                        <div class="truck">
+                            <div class="wheel"></div>
+                            <div class="back"></div>
+                            <div class="front"></div>
+                            <div class="box"></div>
+                        </div>
+                    </button>
                 </form>
             </div>
         </div>
@@ -691,13 +951,14 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script>
-        // Form submission handling
+        // Form submission handling with truck animation
         document.querySelectorAll('.order-form').forEach(form => {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Get form data
+                // Get form data and build message
                 const formData = new FormData(this);
                 const data = Object.fromEntries(formData);
                 
@@ -731,19 +992,142 @@
                 message += `\n⏰ *Order Time:* ${new Date().toLocaleString()}\n`;
                 message += `\n💬 Please confirm this order and provide further details.`;
                 
-                // Show popup
-                showOrderConfirmation();
+                // Get button elements
+                const button = this.querySelector('.truck-button');
+                let box = button.querySelector('.box'),
+                    truck = button.querySelector('.truck');
                 
-                // Send to WhatsApp
-                setTimeout(() => {
-                    const whatsappUrl = `https://wa.me/918016847169?text=${encodeURIComponent(message)}`;
-                    window.open(whatsappUrl, '_blank');
-                }, 1000);
-                
-                // Reset form after delay
-                setTimeout(() => {
-                    this.reset();
-                }, 3000);
+                if(!button.classList.contains('done')) {
+                    
+                    if(!button.classList.contains('animation')) {
+
+                        button.classList.add('animation');
+
+                        gsap.to(button, {
+                            '--box-s': 1,
+                            '--box-o': 1,
+                            duration: .3,
+                            delay: .5
+                        });
+
+                        gsap.to(box, {
+                            x: 0,
+                            duration: .4,
+                            delay: .7
+                        });
+
+                        gsap.to(button, {
+                            '--hx': -5,
+                            '--bx': 50,
+                            duration: .18,
+                            delay: .92
+                        });
+
+                        gsap.to(box, {
+                            y: 0,
+                            duration: .1,
+                            delay: 1.15
+                        });
+
+                        gsap.set(button, {
+                            '--truck-y': 0,
+                            '--truck-y-n': -26
+                        });
+
+                        gsap.to(button, {
+                            '--truck-y': 1,
+                            '--truck-y-n': -25,
+                            duration: .2,
+                            delay: 1.25,
+                            onComplete() {
+                                gsap.timeline({
+                                    onComplete() {
+                                        button.classList.add('done');
+                                        // Execute order confirmation after animation
+                                        showOrderConfirmation();
+                                        
+                                        setTimeout(() => {
+                                            const whatsappUrl = `https://wa.me/918016847169?text=${encodeURIComponent(message)}`;
+                                            window.location.href = whatsappUrl;
+                                        }, 1000);
+                                        
+                                        // Reset form and button after delay
+                                        setTimeout(() => {
+                                            this.reset();
+                                            // Reset button state
+                                            button.classList.remove('animation', 'done');
+                                            gsap.set(truck, {
+                                                x: 4
+                                            });
+                                            gsap.set(button, {
+                                                '--progress': 0,
+                                                '--hx': 0,
+                                                '--bx': 0,
+                                                '--box-s': .5,
+                                                '--box-o': 0,
+                                                '--truck-y': 0,
+                                                '--truck-y-n': -26
+                                            });
+                                            gsap.set(box, {
+                                                x: -24,
+                                                y: -6
+                                            });
+                                        }, 3000);
+                                    }
+                                }).to(truck, {
+                                    x: 0,
+                                    duration: .4
+                                }).to(truck, {
+                                    x: 40,
+                                    duration: 1
+                                }).to(truck, {
+                                    x: 20,
+                                    duration: .6
+                                }).to(truck, {
+                                    x: 96,
+                                    duration: .4
+                                });
+                                gsap.to(button, {
+                                    '--progress': 1,
+                                    duration: 2.4,
+                                    ease: "power2.in"
+                                });
+                            }
+                        });
+                        
+                    }
+                    
+                } else {
+                    // If already done, execute order immediately
+                    showOrderConfirmation();
+                    
+                    setTimeout(() => {
+                        const whatsappUrl = `https://wa.me/918016847169?text=${encodeURIComponent(message)}`;
+                        window.location.href = whatsappUrl;
+                    }, 1000);
+                    
+                    setTimeout(() => {
+                        this.reset();
+                        // Reset button state
+                        button.classList.remove('animation', 'done');
+                        gsap.set(truck, {
+                            x: 4
+                        });
+                        gsap.set(button, {
+                            '--progress': 0,
+                            '--hx': 0,
+                            '--bx': 0,
+                            '--box-s': .5,
+                            '--box-o': 0,
+                            '--truck-y': 0,
+                            '--truck-y-n': -26
+                        });
+                        gsap.set(box, {
+                            x: -24,
+                            y: -6
+                        });
+                    }, 3000);
+                }
             });
         });
         
@@ -758,8 +1142,6 @@
             const popup = document.getElementById('orderPopup');
             popup.classList.remove('show');
         }
-        
-
 
         // Add more floating elements dynamically
         function createFloatingElement() {
@@ -778,8 +1160,6 @@
 
         // Create floating elements periodically
         setInterval(createFloatingElement, 3000);
-
-
 
         // Add scroll animations
         window.addEventListener('scroll', () => {
